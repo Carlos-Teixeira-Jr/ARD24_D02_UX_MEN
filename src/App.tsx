@@ -8,9 +8,14 @@ function App() {
     <>
       <Routes>
         {/* Rotas publicas ficam aqui */}
-        <Route element={<PrivateRoute />}>
-          {/* Rotas privadas ficam aqui */}
-          <Route path="/create-plant" element={<CreatePlant />} />
+        <Route
+          path="/create-plant"
+          element={
+            <PrivateRoute>
+              <CreatePlant />
+            </PrivateRoute>
+          }
+        >
         </Route>
       </Routes>
     </>

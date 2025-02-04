@@ -6,6 +6,7 @@ import { formatPrice } from "../utils/masks/formatPrice";
 import { formatDiscount } from "../utils/masks/formatDiscount";
 import { validatePrice } from "../utils/validators/validatePrice";
 import { validateDiscount } from "../utils/validators/validateDiscount";
+import { SignIn } from "@clerk/clerk-react";
 
 export function CreatePlant() {
   const [formData, setFormData] = useState({
@@ -18,7 +19,6 @@ export function CreatePlant() {
     img: "",
     highlighted: false,
   });
-  console.log("🚀 ~ CreatePlant ~ formData:", formData)
 
   const [formDataErrors, setFormDataErrors] = useState({
     name: "",
@@ -169,6 +169,19 @@ export function CreatePlant() {
         ...newFormDataErrors,
         img: "Enter image URL",
       });
+    }
+
+    if(Object.values(newFormDataErrors).some(error => error !== "")) {
+      const formDataPayload = {
+        name: formData.name,
+        subtitle: formData.plantSubtitle,
+        category: formData.category,
+        price: formData.price,
+        discountPercentage: formData.discountPercentage,
+        description: formData.description,
+        img: formData.img,
+        highlighted: formData.highlighted,
+      };
     }
   };
 

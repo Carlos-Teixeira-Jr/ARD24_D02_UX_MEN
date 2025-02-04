@@ -3,14 +3,16 @@ import { createRoot } from "react-dom/client";
 import { BrowserRouter } from "react-router-dom";
 import "./index.css";
 import App from "./App.tsx";
-import { AuthProvider } from "./context/AuthContext.tsx";
+import { ClerkProvider } from "@clerk/clerk-react";
+
+const clerkKey = import.meta.env.VITE_CLERK_PUBLISHABLE_KEY;
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
-    <BrowserRouter>
-      <AuthProvider>
+    <ClerkProvider publishableKey={clerkKey}>
+      <BrowserRouter>
         <App />
-      </AuthProvider>
-    </BrowserRouter>
+      </BrowserRouter>
+    </ClerkProvider>
   </StrictMode>
 );

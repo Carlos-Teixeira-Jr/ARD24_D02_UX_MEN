@@ -2,14 +2,14 @@
 
 const Footer = () => {
   return (
-    <div className="bg-emerald-950 bg-[url(./assets/images/fundo-footer.svg)] w-full h-[422px] pt-[80px] px-[83px]">
-      <div className="flex flex-wrap">
+    <div className="bg-emerald-950 bg-[url(./assets/images/fundo-footer.svg)] w-full h-[422px] pt-[80px] px-[83px] text-white">
+      <div className="flex justify-between">
         <div>
           <h2>Stay Fresh</h2>
           <p>compassinhos@gmail.com</p>
           <p>+55 41 99999-9999</p>
         </div>
-        <div>
+        <div className="flex gap-[95px] justify-between ">
           <div>
             <h4>Links</h4>
             <a href="#">About us</a>
@@ -23,8 +23,8 @@ const Footer = () => {
           </div>
         </div>
       </div>
-      <div>
-        <div className=" bg-amber-200 bg-[url('../assets/images/GroupPlant.png')] w-[49px] h-[54px]"></div>
+      <div className="mt-[95px] pt=[28px] flex justify-between">
+        <div className=" bg-[url('./assets/images/GroupPlant.png')] w-[49px] h-[54px]"></div>
         <div>
           <p>Compassinhos ®. All rights reserved.</p>
         </div>

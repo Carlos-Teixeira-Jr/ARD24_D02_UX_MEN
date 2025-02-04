@@ -1,33 +1,47 @@
-
 const Header = () => {
- 
-    const isUserLogger = true
-     
-
+  const isUserLogger = true;
 
   return (
-    <div className="space-between">
-      <div>
-        <img src="../assets/images/Frame 121.png" alt="" />
+    <div className="flex place-items-center justify-between mx-auto px-[40px] h-[83px] bg-slate-200">
+      <div className=" bg-[url('./assets/images/Frame121.png')] w-[49px] h-[54px]">
       </div>
       <div>
-        {!isUserLogger? (<a href="#">Home</a> ) : (
-            <ul className="flex">
-                <li>
-                    <a href="#">Home</a>
-                </li>
-                <li>
-                    <a href="#">Poducts</a>
-                </li>
-                <li>
-                    <a href="#">About me</a>
+        {!isUserLogger ? (
+            <ul>
+                <li className="font-[inter] text-[16px] p-[16px] text-emerald-900">
+                <a href="#">Home</a>
                 </li>
             </ul>
+        ) : (
+          <ul className="flex gap-[16px] p-[16px]">
+            <li className="font-[inter] text-[16px] text-emerald-900">
+              <a href="#">Home</a>
+            </li>
+            <li className="font-[inter] text-[16px] text-slate-500">
+              <a href="#">Poducts</a>
+            </li>
+            <li className="font-[inter] text-[16px] text-slate-500">
+              <a href="#">About me</a>
+            </li>
+          </ul>
         )}
       </div>
-      <div></div>
+      <div>
+        {isUserLogger ? (
+          <button className="px-[40px] py-[12px] bg-emerald-900 rounded-[8px] text-white">Log out</button>
+        ) : (
+          <ul className="font-[inter] text-[16px] flex gap-[40px]">
+            <li>
+              <button className="my-[12px] text-slate-900">Register</button>
+            </li>
+            <li>
+              <button className="px-[40px] py-[12px] bg-emerald-900 rounded-[8px] text-white">Login</button>
+            </li>
+          </ul>
+        )}
+      </div>
     </div>
-  )
-}
+  );
+};
 
-export default Header
+export default Header;

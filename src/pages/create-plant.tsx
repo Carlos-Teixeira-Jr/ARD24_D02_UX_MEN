@@ -62,7 +62,7 @@ export function CreatePlant() {
     <main className="flex gap-14">
       <div className="flex-1 pt-8.5 pl-16 flex flex-col gap-5">
         <div className="gap-1 flex flex-col w-2/3">
-          <h1 className="font-secondary text-primary text-titles font-bold">
+          <h1 className="font-secondary text-primary text-titles font-bold text-4xl">
             Register your plant
           </h1>
           <p className="font-inter text-[#64748B] font-normal">
@@ -78,29 +78,51 @@ export function CreatePlant() {
               </label>
               {input.key !== "description" ? (
                 <input
-                  value={input.value === 0 || input.value === 0.0 ? input.placeholder : input.value.toString()}
+                  value={
+                    input.value === 0 || input.value === 0.0
+                      ? input.placeholder
+                      : input.value.toString()
+                  }
                   placeholder={input.placeholder}
                   className="border p-3 rounded-lg border-[#E2E8F0] h-11.5 bg-[#F1F5F9] text-[#64748B]"
+                  onChange={(e) =>
+                    setFormData({ ...formData, [input.key]: e.target.value })
+                  }
                 />
               ) : (
                 <textarea
                   value={input.value.toString()}
                   placeholder={input.placeholder}
                   className="border p-3 rounded-lg border-[#E2E8F0] h-48.5 bg-[#F1F5F9]"
+                  onChange={(e) =>
+                    setFormData({ ...formData, [input.key]: e.target.value })
+                  }
                 />
               )}
             </div>
           ))}
           <div className="flex gap-2">
-            <input type="checkbox" id="highlighted" className="w-6 h-6"/>
-            <p className="text-[#334155] font-inter font-normal">highlight product</p>
+            <input
+              type="checkbox"
+              id="highlighted"
+              className="w-6 h-6"
+              checked={formData.highlighted}
+              onChange={() =>
+                setFormData({ ...formData, highlighted: !formData.highlighted })
+              }
+            />
+            <p className="text-[#334155] font-inter font-normal">
+              highlight product
+            </p>
           </div>
 
-          <button className="bg-primary text-[#FCFCFC] p-3 rounded-lg mt-3 mb-4 font-inter font-semibold">Register plant</button>
+          <button className="bg-primary text-[#FCFCFC] p-3 rounded-lg mt-3 mb-4 font-inter font-semibold">
+            Register plant
+          </button>
         </form>
       </div>
       <div className="flex-1 bg-gradient-to-b from-black/0 to-black/40">
-        <img src={plantImage} className="w-full h-full object-cover"/>
+        <img src={plantImage} className="w-full h-full object-cover" />
       </div>
     </main>
   );

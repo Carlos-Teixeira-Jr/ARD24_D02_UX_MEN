@@ -1,15 +1,20 @@
-import './App.css'
-import { Route, Routes } from 'react-router-dom'
-import { CreatePlant } from './pages/create-plant'
+import "./App.css";
+import { Route, Routes } from "react-router-dom";
+import { CreatePlant } from "./pages/create-plant";
+import { PrivateRoute } from "./routes/PrivateRoute";
 
 function App() {
   return (
     <>
       <Routes>
-        <Route path="/create-plant" element={<CreatePlant />} />
+        {/* Rotas publicas ficam aqui */}
+        <Route element={<PrivateRoute />}>
+          {/* Rotas privadas ficam aqui */}
+          <Route path="/create-plant" element={<CreatePlant />} />
+        </Route>
       </Routes>
     </>
-  )
+  );
 }
 
-export default App
+export default App;

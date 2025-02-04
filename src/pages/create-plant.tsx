@@ -1,17 +1,35 @@
-import { useState } from "react";
+import { useMemo, useState } from "react";
 import plantImage from "../assets/images/plant.svg";
+import { validateName } from "../utils/validators/validateName";
+import { PlantCategory } from "../interfaces/CreatePlantInterface";
+import { formatPrice } from "../utils/masks/formatPrice";
+import { formatDiscount } from "../utils/masks/formatDiscount";
+import { validatePrice } from "../utils/validators/validatePrice";
+import { validateDiscount } from "../utils/validators/validateDiscount";
 
 export function CreatePlant() {
   const [formData, setFormData] = useState({
     name: "",
     plantSubtitle: "",
     category: "",
-    price: 0.0,
-    discountPercentage: 0,
+    price: "",
+    discountPercentage: "",
     description: "",
     img: "",
     highlighted: false,
   });
+  console.log("🚀 ~ CreatePlant ~ formData:", formData)
+
+  const [formDataErrors, setFormDataErrors] = useState({
+    name: "",
+    plantSubtitle: "",
+    category: "",
+    price: "",
+    discountPercentage: "",
+    description: "",
+    img: "",
+  });
+  console.log("🚀 ~ CreatePlant ~ formDataErrors:", formDataErrors)
 
   const inputs = [
     {
@@ -19,44 +37,140 @@ export function CreatePlant() {
       value: formData.name,
       placeholder: "Echinocereus Cactus",
       label: "Name",
+      errorMsg: formDataErrors.name,
     },
     {
       key: "plantSubtitle",
       value: formData.plantSubtitle,
       placeholder: "A majestic addition to your plant collection",
       label: "Plant subtitle",
+      errorMsg: formDataErrors.plantSubtitle,
     },
     {
       key: "category",
       value: formData.category,
       placeholder: "Cactus",
       label: "Category",
+      errorMsg: formDataErrors.category,
     },
     {
       key: "price",
       value: formData.price,
-      placeholder: "$139.99",
+      placeholder: "$",
       label: "Price",
+      errorMsg: formDataErrors.price,
     },
     {
       key: "discountPercentage",
       value: formData.discountPercentage,
-      placeholder: "20%",
+      placeholder: "%",
       label: "Discount percentage",
+      errorMsg: formDataErrors.discountPercentage,
     },
     {
       key: "description",
       value: formData.description,
       placeholder: "Ladyfinger cactus...",
       label: "Description",
+      errorMsg: formDataErrors.description,
     },
     {
       key: "img",
       value: formData.img,
       placeholder: "Echinocereus Cactus",
       label: "Image URL",
+      errorMsg: formDataErrors.img,
     },
   ];
+
+  const categorySelectOptions = useMemo(
+    () =>
+      Object.values(PlantCategory).map((category) => ({
+        label: category.charAt(0).toUpperCase() + category.slice(1),
+        value: category,
+      })),
+    []
+  );
+
+  const handleSubmit = () => {
+    setFormDataErrors({
+      name: "",
+      plantSubtitle: "",
+      category: "",
+      price: "",
+      discountPercentage: "",
+      description: "",
+      img: "",
+    });
+
+    let newFormDataErrors = {
+      name: "",
+      plantSubtitle: "",
+      category: "",
+      price: "",
+      discountPercentage: "",
+      description: "",
+      img: "",
+    };
+
+    if (!validateName(formData.name).isValid) {
+      newFormDataErrors.name = validateName(formData.name).errorMsg;
+      setFormDataErrors({
+        ...newFormDataErrors,
+        name: validateName(formData.name).errorMsg,
+      });
+    }
+    if (!validateName(formData.plantSubtitle).isValid) {
+      newFormDataErrors.plantSubtitle = validateName(
+        formData.plantSubtitle
+      ).errorMsg;
+      setFormDataErrors({
+        ...newFormDataErrors,
+        plantSubtitle: validateName(formData.plantSubtitle).errorMsg,
+      });
+    }
+    if (formData.category === "") {
+      newFormDataErrors.category = "Select category";
+      setFormDataErrors({
+        ...newFormDataErrors,
+        category: "Select category",
+      });
+    }
+    if (!validatePrice(formData.price).isValid) {
+      console.log("entrou no erro de preço")
+      newFormDataErrors.price = validatePrice(formData.price).errorMsg;
+      setFormDataErrors({
+        ...newFormDataErrors,
+        price: validatePrice(formData.price).errorMsg,
+      });
+    }
+    if (!validateDiscount(formData.discountPercentage).isValid) {
+      if (!validateDiscount(formData.discountPercentage).isValid) {
+        newFormDataErrors.discountPercentage = validateDiscount(
+          formData.discountPercentage
+        ).errorMsg;
+        setFormDataErrors({
+          ...newFormDataErrors,
+          discountPercentage: validateDiscount(formData.discountPercentage)
+            .errorMsg,
+        });
+      }
+    }
+    if (formData.description === "") {
+      newFormDataErrors.description = "Enter description";
+      setFormDataErrors({
+        ...newFormDataErrors,
+        description: "Enter description",
+      });
+    }
+    if (formData.img === "") {
+      newFormDataErrors.img = "Enter image URL";
+      setFormDataErrors({
+        ...newFormDataErrors,
+        img: "Enter image URL",
+      });
+    }
+  };
 
   return (
     <main className="flex gap-14">
@@ -76,28 +190,94 @@ export function CreatePlant() {
               <label className="text-[#334155] font-inter font-medium">
                 {input.label}
               </label>
-              {input.key !== "description" ? (
-                <input
-                  value={
-                    input.value === 0 || input.value === 0.0
-                      ? input.placeholder
-                      : input.value.toString()
-                  }
-                  placeholder={input.placeholder}
-                  className="border p-3 rounded-lg border-[#E2E8F0] h-11.5 bg-[#F1F5F9] text-[#64748B]"
-                  onChange={(e) =>
-                    setFormData({ ...formData, [input.key]: e.target.value })
-                  }
-                />
+              {input.key !== "description" &&
+              input.key !== "img" &&
+              input.key !== "category" ? (
+                <>
+                  <input
+                    value={
+                      input.value === ""
+                        ? input.placeholder
+                        : input.value.toString()
+                    }
+                    placeholder={input.placeholder}
+                    className="border p-3 rounded-lg border-[#E2E8F0] h-11.5 bg-[#F1F5F9] text-[#64748B]"
+                    onChange={(e) => {
+                      if (input.key === "price") {
+                        setFormData({
+                          ...formData,
+                          [input.key]: formatPrice(e.target.value),
+                        });
+                      } else if (input.key === "discountPercentage") {
+                        console.log("test")
+                        setFormData({
+                          ...formData,
+                          [input.key]: formatDiscount(e.target.value),
+                        });
+                      } else {
+                        setFormData({
+                          ...formData,
+                          [input.key]: e.target.value,
+                        });
+                      }
+                    }}
+                  />
+                  {input.errorMsg !== "" && (
+                    <span className="text-red-500 text-sm">
+                      {input.errorMsg}
+                    </span>
+                  )}
+                </>
+              ) : input.key === "description" ? (
+                <>
+                  <textarea
+                    value={input.value.toString()}
+                    placeholder={input.placeholder}
+                    className="border p-3 rounded-lg border-[#E2E8F0] h-48.5 bg-[#F1F5F9]"
+                    onChange={(e) =>
+                      setFormData({ ...formData, [input.key]: e.target.value })
+                    }
+                  />
+                  {input.errorMsg !== "" && (
+                    <span className="text-red-500 text-sm">
+                      {input.errorMsg}
+                    </span>
+                  )}
+                </>
               ) : (
-                <textarea
-                  value={input.value.toString()}
-                  placeholder={input.placeholder}
-                  className="border p-3 rounded-lg border-[#E2E8F0] h-48.5 bg-[#F1F5F9]"
-                  onChange={(e) =>
-                    setFormData({ ...formData, [input.key]: e.target.value })
-                  }
-                />
+                <>
+                  <select
+                    value={input.value}
+                    className="border p-3 rounded-lg border-[#E2E8F0] h-11.5 bg-[#F1F5F9] text-[#64748B] cursor-pointer"
+                    onChange={(e) =>
+                      setFormData({ ...formData, [input.key]: e.target.value })
+                    }
+                  >
+                    <option
+                      value={formData.category}
+                      className="cursor-pointer"
+                      disabled
+                    >
+                      Select category
+                    </option>
+                    {categorySelectOptions.map((category) => (
+                      <option
+                        key={category.label}
+                        value={category.value}
+                        onClick={() =>
+                          setFormData({ ...formData, category: category.value })
+                        }
+                      >
+                        {category.label}
+                      </option>
+                    ))}
+                  </select>
+                  {input.errorMsg !== "" && (
+                    <span className="text-red-500 text-sm">
+                      {input.errorMsg}
+                    </span>
+                  )}
+                </>
               )}
             </div>
           ))}
@@ -116,7 +296,13 @@ export function CreatePlant() {
             </p>
           </div>
 
-          <button className="bg-primary text-[#FCFCFC] p-3 rounded-lg mt-3 mb-4 font-inter font-semibold">
+          <button
+            className="bg-primary text-[#FCFCFC] p-3 rounded-lg mt-3 mb-4 font-inter font-semibold cursor-pointer"
+            onClick={(e) => {
+              e.preventDefault();
+              handleSubmit();
+            }}
+          >
             Register plant
           </button>
         </form>

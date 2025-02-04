@@ -12,6 +12,7 @@ function App() {
           path="/create-plant"
           element={
             <PrivateRoute>
+              {/* Rotas privadas */}
               <CreatePlant />
             </PrivateRoute>
           }

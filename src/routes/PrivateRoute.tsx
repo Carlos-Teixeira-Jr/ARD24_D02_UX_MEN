@@ -8,6 +8,7 @@ interface IPrivateRoute {
 
 export function PrivateRoute({children}: IPrivateRoute) {
   // const {isSignedIn} = useAuth();
+  // Determina se o usuário está logado ou não;
   const isSignedIn = true;
 
   return isSignedIn ? <>{children}</> : <Navigate to="/login" replace />

@@ -1,17 +1,16 @@
 import { useMemo, useState } from "react";
 import plantImage from "../assets/images/plant.svg";
 import { validateName } from "../utils/validators/validateName";
-import { PlantCategory } from "../interfaces/CreatePlantInterface";
+import { IFormDataPayload, PlantCategory } from "../interfaces/CreatePlantInterface";
 import { formatPrice } from "../utils/masks/formatPrice";
 import { formatDiscount } from "../utils/masks/formatDiscount";
 import { validatePrice } from "../utils/validators/validatePrice";
 import { validateDiscount } from "../utils/validators/validateDiscount";
-import { SignIn } from "@clerk/clerk-react";
 
 export function CreatePlant() {
   const [formData, setFormData] = useState({
     name: "",
-    plantSubtitle: "",
+    subtitle: "",
     category: "",
     price: "",
     discountPercentage: "",
@@ -22,14 +21,13 @@ export function CreatePlant() {
 
   const [formDataErrors, setFormDataErrors] = useState({
     name: "",
-    plantSubtitle: "",
+    subtitle: "",
     category: "",
     price: "",
     discountPercentage: "",
     description: "",
     img: "",
   });
-  console.log("🚀 ~ CreatePlant ~ formDataErrors:", formDataErrors)
 
   const inputs = [
     {
@@ -40,11 +38,11 @@ export function CreatePlant() {
       errorMsg: formDataErrors.name,
     },
     {
-      key: "plantSubtitle",
-      value: formData.plantSubtitle,
+      key: "subtitle",
+      value: formData.subtitle,
       placeholder: "A majestic addition to your plant collection",
       label: "Plant subtitle",
-      errorMsg: formDataErrors.plantSubtitle,
+      errorMsg: formDataErrors.subtitle,
     },
     {
       key: "category",
@@ -92,10 +90,10 @@ export function CreatePlant() {
     []
   );
 
-  const handleSubmit = () => {
+  const handleSubmit = async () => {
     setFormDataErrors({
       name: "",
-      plantSubtitle: "",
+      subtitle: "",
       category: "",
       price: "",
       discountPercentage: "",
@@ -105,7 +103,7 @@ export function CreatePlant() {
 
     let newFormDataErrors = {
       name: "",
-      plantSubtitle: "",
+      subtitle: "",
       category: "",
       price: "",
       discountPercentage: "",
@@ -120,13 +118,13 @@ export function CreatePlant() {
         name: validateName(formData.name).errorMsg,
       });
     }
-    if (!validateName(formData.plantSubtitle).isValid) {
-      newFormDataErrors.plantSubtitle = validateName(
-        formData.plantSubtitle
+    if (!validateName(formData.subtitle).isValid) {
+      newFormDataErrors.subtitle = validateName(
+        formData.subtitle
       ).errorMsg;
       setFormDataErrors({
         ...newFormDataErrors,
-        plantSubtitle: validateName(formData.plantSubtitle).errorMsg,
+        subtitle: validateName(formData.subtitle).errorMsg,
       });
     }
     if (formData.category === "") {
@@ -171,17 +169,41 @@ export function CreatePlant() {
       });
     }
 
-    if(Object.values(newFormDataErrors).some(error => error !== "")) {
-      const formDataPayload = {
+    console.log("🚀 ~ handleSubmit ~ Object.values:", Object.values(newFormDataErrors).some(error => error !== ""))
+
+    if(!Object.values(newFormDataErrors).some(error => error !== "")) {
+      const formDataPayload: IFormDataPayload = {
         name: formData.name,
-        subtitle: formData.plantSubtitle,
-        category: formData.category,
-        price: formData.price,
-        discountPercentage: formData.discountPercentage,
+        subtitle: formData.subtitle,
+        category: formData.category as PlantCategory,
+        price: Number(formData.price),
+        discountPercentage: Number(formData.discountPercentage),
         description: formData.description,
         img: formData.img,
         highlighted: formData.highlighted,
       };
+
+      try {
+        const response = await fetch("http://localhost:3001/products", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(formDataPayload),
+        });
+
+      console.log("entrou")
+        
+        if (response.ok) {
+          // Mensagem de sucesso;
+          console.log("Succes on creating product!");
+        } else {
+          // Mensagem de erro
+          console.error("Error on creating product", response.statusText);
+        }
+      } catch (error) {
+        console.error("Error:", error);
+      }
     }
   };
 
@@ -204,7 +226,6 @@ export function CreatePlant() {
                 {input.label}
               </label>
               {input.key !== "description" &&
-              input.key !== "img" &&
               input.key !== "category" ? (
                 <>
                   <input
@@ -271,7 +292,7 @@ export function CreatePlant() {
                       className="cursor-pointer"
                       disabled
                     >
-                      Select category
+                      {formData.category ? formData.category : "Select category"}
                     </option>
                     {categorySelectOptions.map((category) => (
                       <option
@@ -298,7 +319,7 @@ export function CreatePlant() {
             <input
               type="checkbox"
               id="highlighted"
-              className="w-6 h-6"
+              className="w-6 h-6 cursor-pointer"
               checked={formData.highlighted}
               onChange={() =>
                 setFormData({ ...formData, highlighted: !formData.highlighted })

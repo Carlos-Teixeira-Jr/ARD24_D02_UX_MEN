@@ -83,7 +83,7 @@ export function UserConfigPage() {
   };
 
   return (
-    <main className="flex md:flex-row flex-col gap-14 bg-white">
+    <main className="flex md:flex-row flex-col gap-5 md:gap-14 bg-white">
       <div className="flex-1 md:pt-8.5 md:pl-16 p-5 flex flex-col gap-5">
         <div className="gap-1 flex flex-col w-2/3">
           <h1 className="font-secondary text-primary text-titles font-bold text-4xl">

@@ -2,9 +2,9 @@
   "users": [
     {
       "id": "1",
-      "name": "Carlos",
-      "email": "carlos@email.com",
-      "password": "password123"
+      "name": "Carlos Novo Editado",
+      "email": "carlosnovo@email.com",
+      "password": "Teste123!"
     }
   ],
   "products": [

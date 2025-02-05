@@ -1,7 +1,8 @@
 import "./App.css";
 import { Route, Routes } from "react-router-dom";
-import { CreatePlant } from "./pages/create-plant";
+import { RegisterProductPage } from "./pages/register";
 import { PrivateRoute } from "./routes/PrivateRoute";
+import { EditProductPage } from "./pages/edit";
 
 function App() {
   return (
@@ -12,12 +13,18 @@ function App() {
           path="/create-plant"
           element={
             <PrivateRoute>
-              {/* Rotas privadas */}
-              <CreatePlant />
+              <RegisterProductPage />
             </PrivateRoute>
           }
-        >
-        </Route>
+        />
+        <Route
+          path="/edit-plant"
+          element={
+            <PrivateRoute>
+              <EditProductPage />
+            </PrivateRoute>
+          }
+        />
       </Routes>
     </>
   );

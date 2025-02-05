@@ -5,16 +5,26 @@ export enum PlantCategory {
   OfficeDesk = "office desk",
 }
 
-
 export interface ICreatePlantSelect {
   value: PlantCategory;
   label: string;
 }
 
+export interface IFormData {
+  name: string;
+  subtitle: string;
+  category: string;
+  price: string;
+  discountPercentage: string;
+  description: string;
+  img: string;
+  highlighted: boolean;
+}
+
 export interface IFormDataPayload {
   name: string;
   subtitle: string;
-  category: PlantCategory;
+  category: string;
   price: number;
   discountPercentage: number;
   description: string;

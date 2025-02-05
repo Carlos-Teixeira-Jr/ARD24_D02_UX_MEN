@@ -83,8 +83,8 @@ export function UserConfigPage() {
   };
 
   return (
-    <main className="flex gap-14">
-      <div className="flex-1 pt-8.5 pl-16 flex flex-col gap-5">
+    <main className="flex md:flex-row flex-col gap-5 md:gap-14 bg-white">
+      <div className="flex-1 md:pt-8.5 md:pl-16 p-5 flex flex-col gap-5">
         <div className="gap-1 flex flex-col w-2/3">
           <h1 className="font-secondary text-primary text-titles font-bold text-4xl">
             User config
@@ -108,6 +108,7 @@ export function UserConfigPage() {
                 type="text"
                 placeholder={input.placeholder}
                 value={input.value}
+                className="border p-3 rounded-lg border-[#E2E8F0] h-11.5 bg-[#F1F5F9] text-[#64748B]"
                 onChange={(e) =>
                   setFormData({ ...formData, [input.key]: e.target.value })
                 }

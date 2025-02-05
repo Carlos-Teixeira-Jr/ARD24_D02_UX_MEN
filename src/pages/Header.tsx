@@ -1,5 +1,5 @@
 const Header = () => {
-  const isUserLogger = true;
+  const isUserLogger = false;
 
   return (
     <div className="flex place-items-center justify-between mx-auto px-[40px] h-[83px] border-slate-200 border-b-[1px]">

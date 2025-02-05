@@ -3,6 +3,7 @@ import { Route, Routes } from "react-router-dom";
 import { RegisterProductPage } from "./pages/register";
 import { PrivateRoute } from "./routes/PrivateRoute";
 import { EditProductPage } from "./pages/edit";
+import { UserConfigPage } from "./pages/userConfig";
 
 function App() {
   return (
@@ -22,6 +23,14 @@ function App() {
           element={
             <PrivateRoute>
               <EditProductPage />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/user-config"
+          element={
+            <PrivateRoute>
+              <UserConfigPage/>
             </PrivateRoute>
           }
         />

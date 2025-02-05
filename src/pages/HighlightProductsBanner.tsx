@@ -2,7 +2,7 @@
 const HighlightProductsBanner = () => {
   return (
     <div>
-      HighlightProductsBanner
+      lagrias
     </div>
   )
 }

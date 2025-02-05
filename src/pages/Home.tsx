@@ -1,15 +1,15 @@
-import Container1 from "./container-1";
-import Container2 from "./Container-2";
-import Container3 from "./Container-3";
-import Container4 from "./Container-4";
+import TopBannerContainer from "./TopBannerContainer";
+import HintsBannerContainer from "./HintsBannerContainer";
+import AboutBannerContainer from "./AboutBannerContainer";
+import HighlightProductsBanner from "./HighlightProductsBanner";
 
 const Home = () => {
   return (
     <div>
-      <Container1 />
-      <Container2 />
-      <Container3 />
-      <Container4 />
+      <TopBannerContainer />
+      <HintsBannerContainer />
+      <AboutBannerContainer />
+      <HighlightProductsBanner />
     </div>
   );
 };

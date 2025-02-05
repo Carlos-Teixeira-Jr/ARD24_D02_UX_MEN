@@ -1,5 +1,5 @@
 const Header = () => {
-  const isUserLogger = true;
+  const isUserLogger = false;
 
   return (
     <div className="flex place-items-center justify-between mx-auto px-[40px] h-[83px] bg-slate-200">
@@ -14,13 +14,13 @@ const Header = () => {
             </ul>
         ) : (
           <ul className="flex gap-[16px] p-[16px]">
-            <li className="font-[inter] text-[16px] text-emerald-900">
+            <li className="font-inter text-[16px] text-emerald-900">
               <a href="#">Home</a>
             </li>
-            <li className="font-[inter] text-[16px] text-slate-500">
+            <li className="font-inter text-[16px] text-slate-500">
               <a href="#">Poducts</a>
             </li>
-            <li className="font-[inter] text-[16px] text-slate-500">
+            <li className="font-inter text-[16px] text-slate-500">
               <a href="#">About me</a>
             </li>
           </ul>

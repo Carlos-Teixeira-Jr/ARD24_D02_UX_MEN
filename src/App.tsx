@@ -1,11 +1,25 @@
-import Footer from "./components/Footer";
-import Header from "./components/Header";
+
+import "./App.css";
+import { Route, Routes } from "react-router-dom";
+import { CreatePlant } from "./pages/create-plant";
+import { PrivateRoute } from "./routes/PrivateRoute";
+import Header from "./pages/Header";
 
 function App() {
   return (
     <>
-      <Header />
-      <Footer />
+      <Routes>
+        {/* Rotas publicas ficam aqui */}
+        <Header/>
+        <Route
+          path="/create-plant"
+          element={
+            <PrivateRoute>
+              <CreatePlant />
+            </PrivateRoute>
+          }
+        ></Route>
+      </Routes>
     </>
   );
 }

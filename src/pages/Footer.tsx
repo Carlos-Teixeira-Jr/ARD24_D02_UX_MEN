@@ -23,7 +23,7 @@ const Footer = () => {
           </div>
         </div>
       </div>
-      <div className="mt-[95px] pt=[28px] flex justify-between">
+      <div className="mt-[95px]  flex justify-between border-t-emerald-950 border-t-1 pt-[28px]">
         <div className=" bg-[url('./assets/images/GroupPlant.png')] w-[49px] h-[54px]"></div>
         <div>
           <p>Compassinhos ®. All rights reserved.</p>

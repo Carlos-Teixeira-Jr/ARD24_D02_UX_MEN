@@ -3,6 +3,7 @@ import plantImage from "../assets/images/plant.svg";
 import { validateName } from "../utils/validators/validateName";
 import { validateEmail } from "../utils/validators/validateEmail";
 import { validatePassword } from "../utils/validators/validatePassword";
+import { Toast } from "../components/toast/toast";
 
 export function UserConfigPage() {
   const [formData, setFormData] = useState({
@@ -10,7 +11,6 @@ export function UserConfigPage() {
     email: "",
     password: "",
   });
-  console.log("🚀 ~ UserConfigPage ~ formData:", formData.password)
 
   const [formDataErrors, setFormDataErrors] = useState({
     name: "",
@@ -19,6 +19,11 @@ export function UserConfigPage() {
   });
 
   const [hiddenPassword, setHiddenPassword] = useState("");
+  const [showToast, setShowToast] = useState({
+    show: false,
+    message: "",
+    type: "",
+  });
 
   // const {userId} = useAuth();
   const userId = 1;
@@ -86,6 +91,20 @@ export function UserConfigPage() {
     setHiddenPassword("*".repeat(actualPassword.length));
   };
 
+  useEffect(()=> {
+    if (showToast) {
+      const timer = setTimeout(() => {
+        setShowToast({
+          show: false,
+          message: "",
+          type: "",
+        });
+      }, 5000);
+  
+      return () => clearTimeout(timer);
+    }
+  },[showToast])
+
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
@@ -139,12 +158,26 @@ export function UserConfigPage() {
 
       if (response.ok) {
         console.log("Success on editing user!");
+        setShowToast({
+          show: true,
+          message: "Success on editing user!",
+          type: "success",
+        });
       } else {
         console.error("Error on editing user", response.statusText);
+        setShowToast({
+          show: true,
+          message: "Error on editing user",
+          type: "error",
+        })
       }
-
     } catch (error) {
       console.error(error);
+      setShowToast({
+        show: true,
+        message: "Error on editing user",
+        type: "error",
+      })
     }
   };
 
@@ -205,6 +238,12 @@ export function UserConfigPage() {
       <div className="flex-1 bg-gradient-to-b from-black/0 to-black/40">
         <img src={plantImage} className="w-full h-full object-cover" />
       </div>
+
+      {showToast && (
+        <Toast
+          toastProps={showToast}
+        />
+      )}
     </main>
   );
 }

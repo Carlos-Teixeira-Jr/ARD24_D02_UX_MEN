@@ -1,8 +1,6 @@
-// import { Routes ,Route, Link } from "react-router-dom"
-
 const Footer = () => {
   return (
-    <div className="bg-emerald-950 bg-[url(./assets/images/fundo-footer.svg)] w-full h-[422px] pt-[80px] pb-[48px] px-[83px] font-primary text-white">
+    <div className={`bg-emerald-950 bg-[url(/src/assets/images/fundo-footer.svg)] w-full h-[422px] pt-[80px] pb-[48px] px-[83px] font-primary text-white`}>
       <div className="flex justify-between">
         <div>
           <h2 className="font-secondary text-[40px] font-bold">Stay Fresh</h2>

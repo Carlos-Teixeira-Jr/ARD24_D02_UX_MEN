@@ -1,6 +1,7 @@
 import carlosPicture from "../../assets/images/devs/carlos-dev.jpeg";
 import bernardoPicture from "../../assets/images/devs/bernardo-dev.png";
 import gianPicture from "../../assets/images/devs/gian-dev.png";
+import gabrielPicture from "../../assets/images/devs/gabriel-dev.jpg";
 import { useState } from "react";
 
 export function AboutUsDevsBanner() {
@@ -22,7 +23,7 @@ export function AboutUsDevsBanner() {
       name: "Gian Vieceli",
       role: "Frontend Developer",
       img: gianPicture,
-      info: "lorem ipsun lorem ipsun lorem ipsun lorem ipsun lorem ipsun lorem ipsun lorem ipsun lorem ipsun lorem ipsun lorem ipsun lorem ipsun lorem ipsun lorem ipsun lorem ipsun lorem ipsun lorem ipsun lorem ipsun lorem ipsun ",
+      info: "dada dadadada dada dadadada dada dadadada dada dadadada dada dadadada dada dadadada dada dadadada dada dadadada dada dadadada dada dadadada dada dadadada dada dadadada dada dadadada dada dadadada dada dadadada dada dadadada dada dadadada dada dadadada dada dadadada ",
     },
     {
       key: "maria",
@@ -42,10 +43,24 @@ export function AboutUsDevsBanner() {
       key: "grabriel",
       name: "Gabriel Barela",
       role: "Frontend Developer",
-      img: "../../assets/devs/Carlos.png",
+      img: gabrielPicture,
       info: "lorem ipsun lorem ipsun lorem ipsun lorem ipsun lorem ipsun lorem ipsun lorem ipsun lorem ipsun lorem ipsun lorem ipsun lorem ipsun lorem ipsun lorem ipsun lorem ipsun lorem ipsun lorem ipsun lorem ipsun lorem ipsun ",
     },
   ];
+
+  const handleIconClick = (key: string) => {
+    if (devCardText.key === key) {
+      setDevCardText({
+        key: "",
+        text: "",
+      });
+    } else {
+      setDevCardText({
+        key: key,
+        text: devsCards.find((card) => card.key === key)?.info || "",
+      });
+    }
+  };
 
   return (
     <section className="flex flex-col justify-center items-center my-36 px-28">
@@ -61,11 +76,14 @@ export function AboutUsDevsBanner() {
 
       <div className="flex justify-center items-center mt-20 gap-10">
         {devsCards.map((dev) => (
-          <div className="flex flex-col justify-center items-center gap-2">
+          <div
+            className="flex flex-col justify-center items-center gap-2 cursor-pointer hover:shadow-2xl ease-in-out duration-200 p-4 rounded-lg"
+            onClick={() => handleIconClick(dev.key)}
+          >
             <img
               src={dev.img}
               alt={dev.name}
-              className="w-40 h-40 rounded-full object-cover cursor-pointer"
+              className="w-40 h-40 rounded-full object-cover cursor-pointer shrink-0"
             />
             <p className="font-secondary text-primary text-titles font-bold text-xl cursor-pointer transform hover:scale-110 ease-in-out duration-100">
               {dev.name}
@@ -75,7 +93,9 @@ export function AboutUsDevsBanner() {
             </p>
           </div>
         ))}
+      </div>
 
+      <div className="flex justify-center items-center w-1/2 my-8 min-h-32">
         <p
           className={`font-inter text-[#64748B] font-normal transition-opacity duration-500 ease-in-out ${
             devCardText.text ? "opacity-100" : "opacity-0"

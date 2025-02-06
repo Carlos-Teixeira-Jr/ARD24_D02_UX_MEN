@@ -14,6 +14,7 @@ interface IProductForm {
 }
 
 export function ProductForm({ productData, onSubmit, mode }: IProductForm) {
+
   const [formData, setFormData] = useState({
     name: "",
     subtitle: "",

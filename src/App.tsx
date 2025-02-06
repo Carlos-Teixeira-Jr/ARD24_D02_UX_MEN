@@ -1,12 +1,11 @@
 import "./App.css";
-import Header from "./components/header/Header";
-import Footer from "./components/footer/Footer";
 import Home from "./pages/Home";
 import { Routes, Route } from "react-router-dom";
 import { EditProductPage } from "./pages/edit";
 import { RegisterProductPage } from "./pages/register";
 import { UserConfigPage } from "./pages/userConfig";
 import { PrivateRoute } from "./routes/PrivateRoute";
+import { AboutUsPage } from "./pages/aboutUs";
 
 function App() {
   return (
@@ -16,6 +15,12 @@ function App() {
           path="/"
           element={
             <Home/>
+          }
+        />
+        <Route
+          path="/about-us"
+          element={
+            <AboutUsPage/>
           }
         />
         <Route

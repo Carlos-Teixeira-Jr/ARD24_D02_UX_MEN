@@ -1,18 +1,31 @@
+import { useEffect, useState } from "react";
+
 interface IToast {
   toastProps: {
     message: string;
     type: "success" | "error" | string;
     show: boolean;
-  }
+  },
+  handleRemoveToast: (toastProps: any) => void;
 }
 
-export function Toast({ toastProps: { message, type, show } }: IToast) {
-console.log("🚀 ~ Toast ~ show:", show)
+export function Toast({ toastProps: { message, type, show }, handleRemoveToast }: IToast) {
+  let showToast = show;
 
-  if (!show) return null;
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      handleRemoveToast({ show: false, message: "", type: "" });
+    }, 5000);
+
+    return () => clearTimeout(timer);
+  }, [show, handleRemoveToast]);
+
+  if (!showToast) {
+    return null;
+  }
 
   return (
-    show && (
+    showToast && (
       <div
         className={`fixed top-5 right-5 px-10 py-5 rounded-lg shadow-lg text-white transition-all duration-500 ease-in-out transform ${
           type === "success" ? "bg-green-500" : "bg-red-500"

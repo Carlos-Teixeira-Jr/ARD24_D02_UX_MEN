@@ -242,6 +242,7 @@ export function UserConfigPage() {
       {showToast.show && (
         <Toast
           toastProps={showToast}
+          handleRemoveToast={setShowToast}
         />
       )}
     </main>

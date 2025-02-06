@@ -1,5 +1,5 @@
+import { ProductForm } from "../components/registerProduct/productForm";
 import { IFormDataPayload } from "../interfaces/CreatePlantInterface";
-import { ProductForm } from "../components/productForm";
 
 export function RegisterProductPage() {
   const handleRegisterProduct = async (formData: IFormDataPayload) => {

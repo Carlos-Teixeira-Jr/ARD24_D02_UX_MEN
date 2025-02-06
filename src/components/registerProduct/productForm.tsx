@@ -185,15 +185,17 @@ export function ProductForm({ productData, onSubmit, mode }: IProductForm) {
     if (Object.values(newFormDataErrors).some((error) => error !== "")) {
       setFormDataErrors(newFormDataErrors);
       return;
+    } else {
+      const formatedPrice = formData.price.replace("$", "").replace(",", ".");
+      const formatedDiscount = formData.discountPercentage.replace("%", "");
+      const parsedFormData = {
+        ...formData,
+        price: parseFloat(formatedPrice),
+        discountPercentage: Number(formatedDiscount),
+      };
+  
+      onSubmit(parsedFormData);
     }
-
-    const parsedFormData = {
-      ...formData,
-      price: parseFloat(formData.price),
-      discountPercentage: Number(formData.discountPercentage),
-    };
-
-    onSubmit(parsedFormData);
   };
 
   return (

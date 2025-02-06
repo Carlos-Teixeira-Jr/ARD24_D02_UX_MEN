@@ -1,8 +1,13 @@
-import { ProductForm } from "../components/productForm";
+import { useState } from "react";
+import { ProductForm } from "../components/registerProduct/productForm";
 import { IFormDataPayload } from "../interfaces/CreatePlantInterface";
 
-
 export function EditProductPage() {
+  const [showToast, setShowToast] = useState({
+    show: false,
+    message: "",
+    type: "",
+  });
 
   const handleEditProduct = async (formData: IFormDataPayload) => {
     const formDataPayload: IFormDataPayload = {
@@ -25,19 +30,25 @@ export function EditProductPage() {
         body: JSON.stringify(formDataPayload),
       });
 
-      console.log("entrou");
-
       if (response.ok) {
-        // Mensagem de sucesso;
         console.log("Success on editing product!");
+        setShowToast({
+          show: true,
+          message: "Success on editing product!",
+          type: "success",
+        })
       } else {
-        // Mensagem de erro
         console.error("Error on editing product", response.statusText);
+        setShowToast({
+          show: true,
+          message: "Error on editing product",
+          type: "error",
+        })
       }
     } catch (error) {
       console.error("Error:", error);
     }
-  }
+  };
 
-  return <ProductForm onSubmit={handleEditProduct} mode={"edit"}/>
+  return <ProductForm onSubmit={handleEditProduct} mode={"edit"} />;
 }

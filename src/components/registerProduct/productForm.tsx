@@ -1,15 +1,11 @@
 import { useEffect, useMemo, useState } from "react";
-import {
-  IFormData,
-  IFormDataPayload,
-  PlantCategory,
-} from "../interfaces/CreatePlantInterface";
-import { formatDiscount } from "../utils/masks/formatDiscount";
-import { formatPrice } from "../utils/masks/formatPrice";
-import { validateDiscount } from "../utils/validators/validateDiscount";
-import { validateName } from "../utils/validators/validateName";
-import { validatePrice } from "../utils/validators/validatePrice";
-import plantImage from "../assets/images/plant.svg";
+import plantImage from "../../assets/images/plant.svg";
+import { IFormData, IFormDataPayload, PlantCategory } from "../../interfaces/CreatePlantInterface";
+import { formatDiscount } from "../../utils/masks/formatDiscount";
+import { formatPrice } from "../../utils/masks/formatPrice";
+import { validateDiscount } from "../../utils/validators/validateDiscount";
+import { validateName } from "../../utils/validators/validateName";
+import { validatePrice } from "../../utils/validators/validatePrice";
 
 interface IProductForm {
   productData?: IFormData;

@@ -7,6 +7,7 @@ interface IToast {
 }
 
 export function Toast({ toastProps: { message, type, show } }: IToast) {
+console.log("🚀 ~ Toast ~ show:", show)
 
   if (!show) return null;
 

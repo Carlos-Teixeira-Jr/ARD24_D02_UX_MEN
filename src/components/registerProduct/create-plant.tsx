@@ -1,11 +1,11 @@
 import { useMemo, useState } from "react";
 import plantImage from "../assets/images/plant.svg";
-import { validateName } from "../utils/validators/validateName";
-import { PlantCategory } from "../interfaces/CreatePlantInterface";
-import { formatPrice } from "../utils/masks/formatPrice";
-import { formatDiscount } from "../utils/masks/formatDiscount";
-import { validatePrice } from "../utils/validators/validatePrice";
-import { validateDiscount } from "../utils/validators/validateDiscount";
+import { validateName } from "../../utils/validators/validateName";
+import { PlantCategory } from "../../interfaces/CreatePlantInterface";
+import { formatPrice } from "../../utils/masks/formatPrice";
+import { formatDiscount } from "../../utils/masks/formatDiscount";
+import { validatePrice } from "../../utils/validators/validatePrice";
+import { validateDiscount } from "../../utils/validators/validateDiscount";
 // import { SignIn } from "@clerk/clerk-react";
 
 export function CreatePlant() {

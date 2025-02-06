@@ -9,10 +9,10 @@ const clerkKey = import.meta.env.VITE_CLERK_PUBLISHABLE_KEY;
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
-    {/* <ClerkProvider publishableKey={clerkKey}>
-      <BrowserRouter> */}
+    <ClerkProvider publishableKey={clerkKey}>
+      <BrowserRouter>
         <App />
-      {/* </BrowserRouter>
-    </ClerkProvider> */}
+      </BrowserRouter>
+    </ClerkProvider>
   </StrictMode>
 );

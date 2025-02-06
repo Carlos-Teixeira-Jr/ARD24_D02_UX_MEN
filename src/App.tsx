@@ -1,21 +1,23 @@
 import "./App.css";
-// import { Route, Routes } from "react-router-dom";
-// import { RegisterProductPage } from "./pages/register";
-// import { PrivateRoute } from "./routes/PrivateRoute";
-// import { EditProductPage } from "./pages/edit";
-// import { UserConfigPage } from "./pages/userConfig";
-import Header from "./pages/Header";
-import Footer from "./pages/Footer";
+import Header from "./components/header/Header";
+import Footer from "./components/footer/Footer";
 import Home from "./pages/Home";
+import { Routes, Route } from "react-router-dom";
+import { EditProductPage } from "./pages/edit";
+import { RegisterProductPage } from "./pages/register";
+import { UserConfigPage } from "./pages/userConfig";
+import { PrivateRoute } from "./routes/PrivateRoute";
 
 function App() {
   return (
     <>
-      <Header />
-      <Home/>
-      <Footer/>
-      {/* <Routes>
-        Rotas publicas ficam aqui
+      <Routes>
+        <Route
+          path="/"
+          element={
+            <Home/>
+          }
+        />
         <Route
           path="/create-plant"
           element={
@@ -40,7 +42,7 @@ function App() {
             </PrivateRoute>
           }
         />
-      </Routes> */}
+      </Routes>
     </>
   );
 }

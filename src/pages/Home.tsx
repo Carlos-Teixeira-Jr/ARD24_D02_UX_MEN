@@ -1,15 +1,19 @@
-import TopBannerContainer from "./TopBannerContainer";
-import HintsBannerContainer from "./HintsBannerContainer";
-import AboutBannerContainer from "./AboutBannerContainer";
-import HighlightProductsBanner from "./HighlightProductsBanner";
+import TopBannerContainer from "../components/home/TopBannerContainer";
+import HintsBannerContainer from "../components/home/HintsBannerContainer";
+import AboutBannerContainer from "../components/home/AboutBannerContainer";
+import HighlightProductsBanner from "../components/home/HighlightProductsBanner";
+import Footer from "../components/footer/Footer";
+import Header from "../components/header/Header";
 
 const Home = () => {
   return (
     <div>
+      <Header />
       <TopBannerContainer />
       <HintsBannerContainer />
       <AboutBannerContainer />
       <HighlightProductsBanner />
+      <Footer />
     </div>
   );
 };

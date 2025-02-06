@@ -12,10 +12,9 @@ const Footer = () => {
             <h3 className="font-bold text-2xl mb-8">Links</h3>
             <ul>
               <li>
-                <a href="#">About us</a>
+                <a href="/about-us">About us</a>
               </li>
             </ul>
-            {/* <Link to="/aboult-us"></Link> */}
           </div>
           <div>
             <h3 className="font-bold text-2xl mb-8">Community</h3>

@@ -1,6 +1,7 @@
 import carlosPicture from "../../assets/images/devs/carlos-dev.jpeg";
 import bernardoPicture from "../../assets/images/devs/bernardo-dev.png";
 import gianPicture from "../../assets/images/devs/gian-dev.png";
+import mariaPicture from "../../assets/images/devs/maria-dev.jpg";
 import gabrielPicture from "../../assets/images/devs/gabriel-dev.jpg";
 import { useEffect, useState } from "react";
 
@@ -48,7 +49,7 @@ export function AboutUsDevsBanner() {
       key: "maria",
       name: "Maria Bernardes",
       role: "Frontend Developer",
-      img: "../../assets/devs/Carlos.png",
+      img: mariaPicture,
       info: "lorem ipsun lorem ipsun lorem ipsun lorem ipsun lorem ipsun lorem ipsun lorem ipsun lorem ipsun lorem ipsun lorem ipsun lorem ipsun lorem ipsun lorem ipsun lorem ipsun lorem ipsun lorem ipsun lorem ipsun lorem ipsun ",
     },
     {

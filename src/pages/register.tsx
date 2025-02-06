@@ -9,6 +9,7 @@ export function RegisterProductPage() {
     message: "",
     type: "",
   });
+  console.log("🚀 ~ RegisterProductPage ~ showToast:", showToast)
 
   const handleRegisterProduct = async (formData: IFormDataPayload) => {
     const formDataPayload: IFormDataPayload = {
@@ -42,7 +43,7 @@ export function RegisterProductPage() {
           show: true,
           message: "Error on creating product",
           type: "error",
-        })
+        });
       }
     } catch (error) {
       console.error("Error:", error);
@@ -50,7 +51,7 @@ export function RegisterProductPage() {
         show: true,
         message: "Error on creating product",
         type: "error",
-      })
+      });
     }
   };
 
@@ -58,7 +59,9 @@ export function RegisterProductPage() {
     <>
       <ProductForm onSubmit={handleRegisterProduct} mode={"create"} />
 
-      {showToast && <Toast toastProps={showToast} />}
+      {showToast.show && (
+        <Toast toastProps={showToast} handleRemoveToast={setShowToast} />
+      )}
     </>
   );
 }

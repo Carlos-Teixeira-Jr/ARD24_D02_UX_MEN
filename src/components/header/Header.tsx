@@ -1,3 +1,5 @@
+import { DarkModeToggle } from "../darkMode/darkModeToggle";
+
 const Header = () => {
   const isUserLogger = false;
 
@@ -34,6 +36,9 @@ const Header = () => {
           </button>
         ) : (
           <ul className="font-[inter] text-[16px] flex gap-[40px]">
+            <li>
+              <DarkModeToggle/>
+            </li>
             <li>
               <button className="my-[12px] cursor-pointer text-slate-900 hover:text-slate-500">
                 Register

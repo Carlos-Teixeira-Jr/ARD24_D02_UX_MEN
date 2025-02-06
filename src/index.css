@@ -1,5 +1,15 @@
 @import "tailwindcss";
 
+@layer base {
+  body {
+    @apply bg-white;
+  }
+
+  html.dark body {
+    @apply bg-black
+  }
+}
+
 @theme {
   --font-primary: "Inter", "sans-serif";
   --font-secondary: "Playfair Display", "serif";

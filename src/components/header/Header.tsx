@@ -23,7 +23,7 @@ const Header = () => {
               <NavLink to="/"className={({ isActive }) => (isActive ? "text-emerald-900 hover:text-emeral-400" : "text-slate-500 hover:text-slate-900")}>Home</NavLink>
             </li>
             <li className="font-inter text-[16px] hover:text-[20px]">
-              <NavLink to="/asd"className={({ isActive }) => (isActive ? "text-emerald-900 hover:text-emeral-700" : "text-slate-500 hover:text-slate-900")}>Poducts</NavLink>
+              <NavLink to="/catalogo"className={({ isActive }) => (isActive ? "text-emerald-900 hover:text-emeral-700" : "text-slate-500 hover:text-slate-900")}>Poducts</NavLink>
             </li>
             <li className="font-inter text-[16px] hover:text-[20px]">
               <NavLink to="/user-config"className={({ isActive }) => (isActive ? "text-emerald-900 hover:text-emeral-700" : "text-slate-500 hover:text-slate-900")}>About me</NavLink>

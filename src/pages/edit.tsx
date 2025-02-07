@@ -38,23 +38,25 @@ export function EditProductPage() {
           show: true,
           message: "Success on editing product!",
           type: "success",
-        })
+        });
       } else {
         console.error("Error on editing product", response.statusText);
         setShowToast({
           show: true,
           message: "Error on editing product",
           type: "error",
-        })
+        });
       }
     } catch (error) {
       console.error("Error:", error);
     }
   };
 
-  return <div>
-    <Header/>
-    <ProductForm onSubmit={handleEditProduct} mode={"edit"} />;
-    <Footer/>
-  </div> 
+  return (
+    <div>
+      <Header />
+      <ProductForm onSubmit={handleEditProduct} mode={"edit"} />;
+      <Footer />
+    </div>
+  );
 }

@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
-import DarkModeIcon from "../../assets/icons/darkmodeIcon";
-import LightModeIcon from "../../assets/icons/lightmodeIcon";
+import DarkModeIcon from "../../assets/icons/darkModeIcon";
+import LightModeIcon from "../../assets/icons/lightModeIcon";
+
 
 export function DarkModeToggle() {
   const [isDark, setIsDark] = useState(

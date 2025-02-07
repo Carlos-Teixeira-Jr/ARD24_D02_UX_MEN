@@ -1,5 +1,4 @@
 import "./App.css";
-<<<<<<< HEAD
 import Home from "./pages/Home";
 import { Routes, Route } from "react-router-dom";
 import { EditProductPage } from "./pages/edit";
@@ -53,26 +52,4 @@ function App() {
   );
 }
 
-=======
-import React from 'react';
-import LoginForm from './components/LoginForm';
-
-
-const App: React.FC = () => {
-  const handleLogin = (email: string, password: string) => {
-    console.log('Email:', email);
-    console.log('Senha:', password);
-    //autenticação com Clerk pendente
-  };
-
-  return (
-    <> 
-    
-      <LoginForm onLogin={handleLogin} />
-
-    </>
-  );
-};
-
->>>>>>> main
 export default App;

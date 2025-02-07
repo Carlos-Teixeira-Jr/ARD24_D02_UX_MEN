@@ -2,6 +2,8 @@ import { useState } from "react";
 import { ProductForm } from "../components/registerProduct/productForm";
 import { IFormDataPayload } from "../interfaces/CreatePlantInterface";
 import { Toast } from "../components/toast/toast";
+import Header from "../components/header/Header";
+import Footer from "../components/footer/Footer";
 
 export function RegisterProductPage() {
   const [showToast, setShowToast] = useState({
@@ -57,11 +59,13 @@ export function RegisterProductPage() {
 
   return (
     <>
+    <Header/>
       <ProductForm onSubmit={handleRegisterProduct} mode={"create"} />
 
       {showToast.show && (
         <Toast toastProps={showToast} handleRemoveToast={setShowToast} />
       )}
+      <Footer/>
     </>
   );
 }

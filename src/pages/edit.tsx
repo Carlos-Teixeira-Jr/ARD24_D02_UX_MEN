@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { ProductForm } from "../components/registerProduct/productForm";
 import { IFormDataPayload } from "../interfaces/CreatePlantInterface";
+import Header from "../components/header/Header";
+import Footer from "../components/footer/Footer";
 
 export function EditProductPage() {
   const [showToast, setShowToast] = useState({
@@ -50,5 +52,9 @@ export function EditProductPage() {
     }
   };
 
-  return <ProductForm onSubmit={handleEditProduct} mode={"edit"} />;
+  return <div>
+    <Header/>
+    <ProductForm onSubmit={handleEditProduct} mode={"edit"} />;
+    <Footer/>
+  </div> 
 }

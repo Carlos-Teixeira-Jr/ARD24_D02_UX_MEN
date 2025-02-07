@@ -25,8 +25,6 @@ function App() {
             <LoginForm/>
           }
         />
-
-
         <Route
           path="/about-us"
           element={
@@ -34,7 +32,7 @@ function App() {
           }
         />
         <Route
-          path="/create-plant"
+          path="/products/new"
           element={
             <PrivateRoute>
               <RegisterProductPage />

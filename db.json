@@ -80,6 +80,17 @@
       "description": "asd",
       "img": "https://i.pinimg.com/474x/7f/05/4d/7f054dffe20497b46ade96cfc7fd0433.jpg",
       "highlighted": false
+    },
+    {
+      "id": "1032",
+      "name": "Teste de criação",
+      "subtitle": "Uma linda planta para o seu quintal.",
+      "category": "outdoor",
+      "price": 55,
+      "discountPercentage": 10,
+      "description": "Lorem ipsun Lorem ipsun Lorem ipsun Lorem ipsun Lorem ipsun Lorem ipsun Lorem ipsun Lorem ipsun Lorem ipsun Lorem ipsun Lorem ipsun Lorem ipsun Lorem ipsun Lorem ipsun Lorem ipsun Lorem ipsun Lorem ipsun Lorem ipsun Lorem ipsun Lorem ipsun Lorem ipsun Lorem ipsun Lorem ipsun Lorem ipsun Lorem ipsun Lorem ipsun ",
+      "img": "https://images-americanas.b2w.io/produtos/4296063595/imagens/vaso-de-planta-para-sala-quintal-varanda-coluna-dubai-grande/4296063691_1_large.jpg",
+      "highlighted": true
     }
   ]
 }

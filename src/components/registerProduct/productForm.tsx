@@ -257,7 +257,7 @@ export function ProductForm({ productData, onSubmit, mode }: IProductForm) {
                     <textarea
                       value={input.value.toString()}
                       placeholder={input.placeholder}
-                      className="border p-3 rounded-lg border-[#E2E8F0] h-48.5 bg-[#F1F5F9]"
+                      className="border p-3 rounded-lg border-[#E2E8F0] h-48.5 bg-[#F1F5F9] text-[#64748B]"
                       onChange={(e) =>
                         setFormData({
                           ...formData,

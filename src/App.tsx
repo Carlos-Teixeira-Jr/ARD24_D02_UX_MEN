@@ -8,6 +8,7 @@ import { PrivateRoute } from "./routes/PrivateRoute";
 import { AboutUsPage } from "./pages/aboutUs";
 import LoginForm from "./pages/loginForm";
 import { ListProductsPage } from "./pages/listProducts";
+import { ProductDetailsPage } from "./pages/productDetails";
 
 function App() {
   return (
@@ -25,6 +26,14 @@ function App() {
           }
         />
         <Route
+          path="/products/:id"
+          element={
+            <PrivateRoute>
+              <ProductDetailsPage />
+            </PrivateRoute>
+          }
+        />
+        <Route
           path="/products/new"
           element={
             <PrivateRoute>
@@ -33,7 +42,7 @@ function App() {
           }
         />
         <Route
-          path="/edit-plant"
+          path="/product/:id/edit"
           element={
             <PrivateRoute>
               <EditProductPage />

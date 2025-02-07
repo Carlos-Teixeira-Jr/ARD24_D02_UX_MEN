@@ -58,6 +58,28 @@
       "description": "testeteste teste",
       "img": "https://b3577058.smushcdn.com/3577058/wp-content/uploads/2019/05/botanica-varanda-4-1-1024x1024.jpg?lossy=1&strip=0&webp=1",
       "highlighted": true
+    },
+    {
+      "id": "a963",
+      "name": "jgrdgh",
+      "subtitle": "jgfy",
+      "category": "outdoor",
+      "price": 10,
+      "discountPercentage": 10,
+      "description": "ujgyfryuhy",
+      "img": "jhytfrhhihihin",
+      "highlighted": false
+    },
+    {
+      "id": "0602",
+      "name": "jgrdgh",
+      "subtitle": "jgfy",
+      "category": "outdoor",
+      "price": 10,
+      "discountPercentage": 10,
+      "description": "ujgyfryuhy",
+      "img": "jhytfrhhihihin",
+      "highlighted": false
     }
   ]
 }

@@ -18,7 +18,7 @@ const Header = () => {
         ) : (
           <ul className="flex gap-[16px] p-[16px]">
             <li className="font-inter text-[16px] text-emerald-900">
-              <a href="#">Home</a>
+              <a href="/">Home</a>
             </li>
             <li className="font-inter text-[16px] text-slate-500 hover:text-slate-900">
               <a href="#">Poducts</a>

@@ -223,11 +223,7 @@ export function ProductForm({ productData, onSubmit, mode }: IProductForm) {
                 {input.key !== "description" && input.key !== "category" ? (
                   <>
                     <input
-                      value={
-                        input.value === ""
-                          ? input.placeholder
-                          : input.value.toString()
-                      }
+                      value={input.value.toString()}
                       placeholder={input.placeholder}
                       className="border p-3 rounded-lg border-[#E2E8F0] h-11.5 bg-[#F1F5F9] text-[#64748B]"
                       onChange={(e) => {

@@ -69,6 +69,17 @@
       "description": "a plant from inside ",
       "img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTyib40d97IUvTkrXTRLUS_-3lbPZ5aGAwvyw&sactus",
       "highlighted": true
+    },
+    {
+      "id": "8cc8",
+      "name": "random plant",
+      "subtitle": "plant?",
+      "category": "indoor",
+      "price": 10,
+      "discountPercentage": 50,
+      "description": "asd",
+      "img": "https://i.pinimg.com/474x/7f/05/4d/7f054dffe20497b46ade96cfc7fd0433.jpg",
+      "highlighted": false
     }
   ]
 }

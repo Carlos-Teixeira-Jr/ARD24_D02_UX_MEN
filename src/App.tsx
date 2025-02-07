@@ -7,28 +7,21 @@ import { UserConfigPage } from "./pages/userConfig";
 import { PrivateRoute } from "./routes/PrivateRoute";
 import { AboutUsPage } from "./pages/aboutUs";
 import LoginForm from "./pages/loginForm";
-
+import { ListProductsPage } from "./pages/listProducts";
 
 function App() {
   return (
     <>
       <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/loginForm" element={<LoginForm />} />
+        <Route path="/about-us" element={<AboutUsPage />} />
         <Route
-          path="/"
+          path="/products"
           element={
-            <Home/>
-          }
-        />
-        <Route
-          path="/loginForm"
-          element={
-            <LoginForm/>
-          }
-        />
-        <Route
-          path="/about-us"
-          element={
-            <AboutUsPage/>
+            <PrivateRoute>
+              <ListProductsPage />
+            </PrivateRoute>
           }
         />
         <Route

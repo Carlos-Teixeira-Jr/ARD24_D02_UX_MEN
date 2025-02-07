@@ -148,7 +148,6 @@ export function ProductForm({ productData, onSubmit, mode }: IProductForm) {
       });
     }
     if (!validatePrice(formData.price).isValid) {
-      console.log("entrou no erro de preço");
       newFormDataErrors.price = validatePrice(formData.price).errorMsg;
       setFormDataErrors({
         ...newFormDataErrors,

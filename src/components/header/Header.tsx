@@ -1,7 +1,8 @@
 import { DarkModeToggle } from "../darkMode/darkModeToggle";
+import { Link } from "react-router-dom";
 
 const Header = () => {
-  const isSignedIn = false;
+  const isSignedIn = true;
 
   return (
     <div className="flex place-items-center justify-between mx-auto px-5 md:px-[40px] h-[83px] border-slate-200 border-b-[1px]">
@@ -12,26 +13,26 @@ const Header = () => {
         {!isSignedIn ? (
           <ul>
             <li className="font-[inter] text-[16px] p-[16px] text-emerald-900">
-              <a href="#">Home</a>
+            <Link to="/">Home</Link>
             </li>
           </ul>
         ) : (
-          <ul className="flex gap-[16px] p-[16px]">
+          <ul className="flex md:gap-[16px] md:p-[16px]">
             <li className="font-inter text-[16px] text-emerald-900">
-              <a href="#">Home</a>
+              <Link to="/">Home</Link>
             </li>
             <li className="font-inter text-[16px] text-slate-500 hover:text-slate-900">
-              <a href="#">Poducts</a>
+              <Link to="/">Poducts</Link>
             </li>
             <li className="font-inter text-[16px] text-slate-500 hover:text-slate-900">
-              <a href="#">About me</a>
+              <Link to="#">About me</Link>
             </li>
           </ul>
         )}
       </div>
       <div>
         {isSignedIn ? (
-          <button className="px-[40px] py-[12px] cursor-pointer bg-emerald-900 hover:bg-emerald-700 rounded-[8px] text-white">Log out</button>
+          <button className="md:px-[40px] md:py-[12px] py-2 px-0 cursor-pointer bg-emerald-900 hover:bg-emerald-700 rounded-[8px] text-white">Log out</button>
         ) : (
           <ul className="font-[inter] text-[16px] flex gap-[40px]">
             <li>
@@ -43,7 +44,7 @@ const Header = () => {
               </button>
             </li>
             <li>
-              <button className="md:px-[40px] md:py-[12px] py-2 px-5 bg-emerald-900 hover:bg-emerald-700 cursor-pointer rounded-[8px] text-white">
+              <button className=" md:px-[40px] md:py-[12px] py-2 px-2 bg-emerald-900 hover:bg-emerald-700 cursor-pointer rounded-[8px] text-white">
                 Login
               </button>
             </li>

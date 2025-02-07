@@ -12,7 +12,7 @@ const Header = () => {
         {!isSignedIn ? (
           <ul>
             <li className="font-[inter] text-[16px] p-[16px] text-emerald-900">
-              <a href="#">Home</a>
+              <a href="/">Home</a>
             </li>
           </ul>
         ) : (

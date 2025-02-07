@@ -5,7 +5,7 @@ const Header = () => {
   const isSignedIn = true;
 
   return (
-    <div className="flex place-items-center justify-between mx-auto px-5 md:px-[40px] h-[83px] border-slate-200 border-b-[1px]">
+    <div className="flex place-items-center justify-between mx-auto px-[5px] md:px-[40px] h-[83px] border-slate-200 border-b-[1px]">
       <a href="/">
         <div className=" bg-[url('./assets/images/Frame121.png')] w-[49px] h-[54px]" />
       </a>
@@ -17,7 +17,7 @@ const Header = () => {
             </li>
           </ul>
         ) : (
-          <ul className="flex md:gap-[16px] md:p-[16px]">
+          <ul className="flex md:gap-[16px] gap-[10px] md:p-[16px]">
             <li className="font-inter text-[16px] text-emerald-900">
               <Link to="/">Home</Link>
             </li>
@@ -32,7 +32,7 @@ const Header = () => {
       </div>
       <div>
         {isSignedIn ? (
-          <button className="md:px-[40px] md:py-[12px] py-2 px-0 cursor-pointer bg-emerald-900 hover:bg-emerald-700 rounded-[8px] text-white">Log out</button>
+          <button className="md:px-[40px] md:py-[12px] py-2 px-2 cursor-pointer bg-emerald-900 hover:bg-emerald-700 rounded-[8px] text-white">Log out</button>
         ) : (
           <ul className="font-[inter] text-[16px] flex gap-[40px]">
             <li>

@@ -7,8 +7,8 @@ export function validateDiscount(price: string): {
   let discountValue = Number(cleanedPrice);
   let errorMsg = "";
   
-  if (discountValue < 1) {
-    errorMsg = "Discount percentage must be at least 1 number";
+  if (discountValue < 0) {
+    errorMsg = "Discount percentage must be at least 0 number";
   }
   if (discountValue > 100) {
     errorMsg = "Discount percentage must be less than 100";

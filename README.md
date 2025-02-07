@@ -50,3 +50,4 @@ npm run server
 ## **Contato**
 
 - **Carlos Teixeira:** teixeirahist1988@gmail.com
+- **Gian Vieceli:** gianvieceli@gmail.com

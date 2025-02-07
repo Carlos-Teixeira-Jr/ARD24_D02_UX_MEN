@@ -72,6 +72,7 @@ const HighlightProductsBanner = () => {
       <div className="overflow-hidden gap-[30px]">
         <Slider ref={sliderRef} {...settings}>
           {product.map((produto) => (
+            produto.highlighted && (
             <div className="max-w-[389px] relative min-w-[389px] h-[462px]">
               <div className="w-full h-[388px]">
                 <img
@@ -101,7 +102,7 @@ const HighlightProductsBanner = () => {
                 </p>
               </div>
             </div>
-          ))}
+          )))}
         </Slider>
       </div>
     </div>

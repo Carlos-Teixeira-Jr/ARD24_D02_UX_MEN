@@ -1,9 +1,7 @@
-// import { Routes ,Route, Link } from "react-router-dom"
-
 const Footer = () => {
   return (
-    <div className="bg-emerald-950 bg-[url(./assets/images/fundo-footer.svg)] w-full h-[422px] pt-[80px] pb-[48px] px-[83px] font-primary text-white">
-      <div className="flex justify-between">
+    <div className={`bg-emerald-950 bg-[url(/src/assets/images/fundo-footer.svg)] w-full md:h-[422px] pt-5 md:pt-[80px] md:py-[48px] py-5 px-5 md:px-[83px] font-primary text-white`}>
+      <div className="flex md:flex-row flex-col justify-between gap-5 md:gap-0">
         <div>
           <h2 className="font-secondary text-[40px] font-bold">Stay Fresh</h2>
           <p className="font-normal text-[16px] mt-4">compassinhos@gmail.com</p>
@@ -14,10 +12,9 @@ const Footer = () => {
             <h3 className="font-bold text-2xl mb-8">Links</h3>
             <ul>
               <li>
-                <a href="#">About us</a>
+                <a href="/about-us">About us</a>
               </li>
             </ul>
-            {/* <Link to="/aboult-us"></Link> */}
           </div>
           <div>
             <h3 className="font-bold text-2xl mb-8">Community</h3>

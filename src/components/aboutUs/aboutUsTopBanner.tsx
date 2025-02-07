@@ -55,8 +55,8 @@ export function AboutUsTopBanner() {
 
   return (
     <main className="flex md:flex-row flex-col gap-5 md:gap-14">
-      <div className="flex-1 flex flex-row gap-5">
-        <div className="gap-6 flex flex-col flex-1 px-16 py-9">
+      <div className="flex-1 flex flex-col md:flex-row gap-5">
+        <div className="gap-6 flex flex-col flex-1 px-5 md:px-16 py-5 md:py-9">
           <h1 className="font-secondary text-primary text-titles font-bold text-4xl">
             About Us
           </h1>
@@ -71,7 +71,7 @@ export function AboutUsTopBanner() {
             diverse projects.
           </p>
 
-          <h2 className="font-secondary text-primary text-titles font-bold text-4xl mt-20">
+          <h2 className="font-secondary text-primary text-titles font-bold text-4xl md:mt-20">
             Tech Stack
           </h2>
 

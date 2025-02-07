@@ -24,6 +24,7 @@ export function UserConfigPage() {
     message: "",
     type: "",
   });
+  console.log("🚀 ~ UserConfigPage ~ showToast:", showToast)
 
   // const {userId} = useAuth();
   const userId = 1;
@@ -92,18 +93,17 @@ export function UserConfigPage() {
   };
 
   useEffect(()=> {
-    if (showToast) {
+    if (showToast.show) {
       const timer = setTimeout(() => {
-        setShowToast({
+        setShowToast((prev) => ({
+          ...prev,
           show: false,
-          message: "",
-          type: "",
-        });
-      }, 5000);
+        }));
+      }, 3000);
   
       return () => clearTimeout(timer);
     }
-  },[showToast])
+  },[showToast.show])
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -239,9 +239,10 @@ export function UserConfigPage() {
         <img src={plantImage} className="w-full h-full object-cover" />
       </div>
 
-      {showToast && (
+      {showToast.show && (
         <Toast
           toastProps={showToast}
+          handleRemoveToast={setShowToast}
         />
       )}
     </main>

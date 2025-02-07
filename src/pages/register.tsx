@@ -1,7 +1,16 @@
+import { useState } from "react";
+import { ProductForm } from "../components/registerProduct/productForm";
 import { IFormDataPayload } from "../interfaces/CreatePlantInterface";
-import { ProductForm } from "../components/productForm";
+import { Toast } from "../components/toast/toast";
 
 export function RegisterProductPage() {
+  const [showToast, setShowToast] = useState({
+    show: false,
+    message: "",
+    type: "",
+  });
+  console.log("🚀 ~ RegisterProductPage ~ showToast:", showToast)
+
   const handleRegisterProduct = async (formData: IFormDataPayload) => {
     const formDataPayload: IFormDataPayload = {
       name: formData.name,
@@ -23,19 +32,36 @@ export function RegisterProductPage() {
         body: JSON.stringify(formDataPayload),
       });
 
-      console.log("entrou");
-
       if (response.ok) {
-        // Mensagem de sucesso;
-        console.log("Success on creating product!");
+        setShowToast({
+          show: true,
+          message: "Success on creating product!",
+          type: "success",
+        });
       } else {
-        // Mensagem de erro
-        console.error("Error on creating product", response.statusText);
+        setShowToast({
+          show: true,
+          message: "Error on creating product",
+          type: "error",
+        });
       }
     } catch (error) {
       console.error("Error:", error);
+      setShowToast({
+        show: true,
+        message: "Error on creating product",
+        type: "error",
+      });
     }
   };
 
-  return <ProductForm onSubmit={handleRegisterProduct} mode={"create"} />;
+  return (
+    <>
+      <ProductForm onSubmit={handleRegisterProduct} mode={"create"} />
+
+      {showToast.show && (
+        <Toast toastProps={showToast} handleRemoveToast={setShowToast} />
+      )}
+    </>
+  );
 }

@@ -13,21 +13,13 @@ const Header = () => {
         {!isSignedIn ? (
           <ul>
             <li className="font-[inter] text-[16px] p-[16px] text-emerald-900">
-<<<<<<< HEAD
-              <a href="/">Home</a>
-=======
             <Link to="/">Home</Link>
->>>>>>> 3888faf4c1bbc344c0b79979173aab4df388c716
             </li>
           </ul>
         ) : (
           <ul className="flex md:gap-[16px] gap-[10px] md:p-[16px]">
             <li className="font-inter text-[16px] text-emerald-900">
-<<<<<<< HEAD
-              <a href="/">Home</a>
-=======
               <Link to="/">Home</Link>
->>>>>>> 3888faf4c1bbc344c0b79979173aab4df388c716
             </li>
             <li className="font-inter text-[16px] text-slate-500 hover:text-slate-900">
               <Link to="/">Poducts</Link>

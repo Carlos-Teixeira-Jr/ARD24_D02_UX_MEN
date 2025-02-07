@@ -23,8 +23,4 @@
     "noUncheckedSideEffectImports": true
   },
   "include": ["src"]
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> fc31645f171024ec79a283d8f88255982595d8cb

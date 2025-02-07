@@ -73,10 +73,10 @@ const HighlightProductsBanner = () => {
         <Slider ref={sliderRef} {...settings}>
           {product.map((produto) => (
             <div className="max-w-[389px] relative min-w-[389px] h-[462px]">
-              <div className={`w-full h-[388px] bg-center bg-cover`}>
+              <div className="w-full h-[388px]">
                 <img
                   src={produto.img}
-                  className="w-full h-[388px]"
+                  className="w-full h-[388px] object-cover "
                   alt="Plant image"
                 />
                 <p className="absolute right-2 top-2 rounded-full w-fit justify-self-end bg-emerald-100 py-[6.48px] px-[12.95px] border-[1.62px] border-emerald-50 text-emerald-900 font-primary">
@@ -95,7 +95,7 @@ const HighlightProductsBanner = () => {
                   ).toFixed(2)}
                   {produto.discountPercentage !== 0 && (
                     <p className="text-slate-400 line-through">
-                      R${produto.price}
+                      R${(produto.price).toFixed(2)}
                     </p>
                   )}
                 </p>

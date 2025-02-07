@@ -33,7 +33,9 @@ const Footer = () => {
         </div>
       </div>
       <div className="mt-[48px] place-items-center flex justify-between border-t-emerald-950 border-t-1 pt-[28px]">
+        <a href="/">
         <div className=" bg-[url('./assets/images/GroupPlant.png')] w-[49px] h-[54px]"></div>
+        </a>
         <div className="font-primary">
           <p>Compassinhos ®. All rights reserved.</p>
         </div>

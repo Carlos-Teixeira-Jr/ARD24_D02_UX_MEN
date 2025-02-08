@@ -11,17 +11,20 @@ import { ListProductsPage } from "./pages/listProducts";
 import { ProductDetailsPage } from "./pages/productDetails";
 import { PageNotFoundPage } from "./pages/404Page";
 import { useEffect } from "react";
+import { ForbiddenPage } from "./pages/403Page";
 
 const validRoutes = [
   "/",
   "/loginForm",
   "/about-us",
   "/page-not-found",
-  "products",
-  "products/new",
-  "products/:id/edit",
-  "user-config",
+  "/products",
+  "/products/new",
+  "/products/:id/edit",
+  "/user-config",
 ];
+
+//Todo: resolver isso aqui
 
 function RouteValidator() {
   const location = useLocation();
@@ -29,7 +32,9 @@ function RouteValidator() {
 
   useEffect(() => {
     if (!validRoutes.includes(location.pathname)) {
-      navigate("/page-not-found");
+      console.log("🚀 ~ useEffect ~ validRoutes.includes(location.pathname):", validRoutes.includes(location.pathname))
+      console.log("🚀 ~ useEffect ~ location.pathname:", location.pathname)
+      // navigate("/page-not-found");
     }
   },[location.pathname, navigate]);
 
@@ -45,6 +50,7 @@ function App() {
         <Route path="/loginForm" element={<LoginForm />} />
         <Route path="/about-us" element={<AboutUsPage />} />
         <Route path="/page-not-found" element={<PageNotFoundPage />} />
+        <Route path="/forbidden-page" element={<ForbiddenPage />} />
         <Route
           path="/products"
           element={

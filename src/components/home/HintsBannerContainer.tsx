@@ -1,18 +1,18 @@
 const HintsBannerContainer = () => {
   return (
-    <div className="mx-[112px] mt-[148px]">
-      <div className="text-center mb-20 ">
-        <h1 className="font-secondary font-bold text-[40px] text-emerald-900 mb-4">
+    <div className="md:mx-[112px] justify-items-center mt-12 md:mt-[148px]">
+      <div className="text-center mb-20 w-[90%] md:w-auto">
+        <h1 className="font-secondary font-bold text-2xl md:text-[40px] text-emerald-900 mb-4">
           Steps to take care of your plants
         </h1>
-        <p className="font-normal font-primary text-slate-500 w-[682px] mx-auto">
+        <p className="font-normal font-primary text-slate-500 md:w-[682px] mx-[5%] md:mx-auto">
           By following these three steps - proper watering, appropriate
           sunlight, and providing essential nutrients - you'll be well on your
           way to maintaining healthy and thriving plants.
         </p>
       </div>
-      <div className="flex gap-12">
-        <div className="w-[374px] text-center">
+      <div className="grid grid-cols-1 md:flex gap-12 w-[90%] md:w-full">
+        <div className="w-[374px] text-center my-4">
           <div className="mx-auto h-[72px] w-[72px] bg-emerald-900 rounded-full bg-[url('./assets/images/gota.svg')] bg-center bg-no-repeat"></div>
           <div>
             <h3 className="font-primary font-bold text-2xl  my-6">Watering</h3>
@@ -22,7 +22,7 @@ const HintsBannerContainer = () => {
             </p>
           </div>
         </div>
-        <div className="w-[374px] text-center">
+        <div className="w-[374px] text-center my-4">
           <div className="mx-auto h-[72px] w-[72px] bg-emerald-900 rounded-full bg-[url('./assets/images/sun.svg')] bg-center bg-no-repeat"></div>
           <div>
             <h3 className="font-primary font-bold text-2xl  my-6">Sunlight</h3>
@@ -33,7 +33,7 @@ const HintsBannerContainer = () => {
             </p>
           </div>
         </div>
-        <div className="w-[374px] text-center">
+        <div className="w-[374px] text-center my-4">
           <div className="mx-auto h-[72px] w-[72px] bg-emerald-900 rounded-full bg-[url('./assets/images/bag.svg')] bg-center bg-no-repeat"></div>
           <div>
             <h3 className="font-primary font-bold text-2xl my-6">

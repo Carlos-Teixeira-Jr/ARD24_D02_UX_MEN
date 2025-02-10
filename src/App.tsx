@@ -7,6 +7,7 @@ import { UserConfigPage } from "./pages/userConfig";
 import { PrivateRoute } from "./routes/PrivateRoute";
 import { AboutUsPage } from "./pages/aboutUs";
 import LoginForm from "./pages/loginForm";
+import PlantNotFound from "./pages/pagina_4041";
 
 
 function App() {
@@ -17,6 +18,12 @@ function App() {
           path="/"
           element={
             <Home/>
+          }
+        />
+        <Route
+          path="/404"
+          element={
+          <PlantNotFound/>
           }
         />
         <Route

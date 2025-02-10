@@ -1,8 +1,10 @@
+import { useClerk, useUser } from "@clerk/clerk-react";
 import { DarkModeToggle } from "../darkMode/darkModeToggle";
 import { Link } from "react-router-dom";
 
 const Header = () => {
-  const isSignedIn = true;
+  const {isSignedIn} = useUser();
+  const { signOut } = useClerk();
 
   return (
     <div className="flex place-items-center justify-between mx-auto px-[5px] md:px-[40px] h-[83px] border-slate-200 border-b-[1px]">
@@ -32,19 +34,19 @@ const Header = () => {
       </div>
       <div>
         {isSignedIn ? (
-          <button className="md:px-[40px] md:py-[12px] py-2 px-2 cursor-pointer bg-emerald-900 hover:bg-emerald-700 rounded-[8px] text-white">Log out</button>
+          <button className="md:px-[40px] md:py-[12px] py-2 px-2 cursor-pointer bg-emerald-900 hover:bg-emerald-700 rounded-[8px] text-white" onClick={() => signOut()}>Log out</button>
         ) : (
           <ul className="font-[inter] text-[16px] flex gap-[40px]">
             <li>
               <DarkModeToggle/>
             </li>
             <li>
-              <button className="my-[12px] cursor-pointer text-slate-900 hover:text-slate-500">
+              <button className="my-[12px] cursor-pointer text-slate-900 hover:text-slate-500" onClick={() => window.location.href = "/register"}>
                 Register
               </button>
             </li>
             <li>
-              <button className=" md:px-[40px] md:py-[12px] py-2 px-2 bg-emerald-900 hover:bg-emerald-700 cursor-pointer rounded-[8px] text-white">
+              <button onClick={() => window.location.href = "/loginForm"} className=" md:px-[40px] md:py-[12px] py-2 px-2 bg-emerald-900 hover:bg-emerald-700 cursor-pointer rounded-[8px] text-white">
                 Login
               </button>
             </li>

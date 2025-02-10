@@ -2,7 +2,8 @@
   "users": [
     {
       "id": "1",
-      "name": "trtrtrtrtr",
+      "firstName": "trtrtrtrtr",
+      "lastName": "Teixeira",
       "email": "carlosnovo@email.com",
       "password": "Teste123!"
     }

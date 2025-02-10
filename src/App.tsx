@@ -12,10 +12,14 @@ import { ProductDetailsPage } from "./pages/productDetails";
 import { PageNotFoundPage } from "./pages/404Page";
 import { useEffect } from "react";
 import { ForbiddenPage } from "./pages/403Page";
+import RegisterUserPage from "./pages/registerUserPage";
+import { VerifyEmail } from "./pages/VerifyEmail";
 
 const routes = [
   {path: "/"},
   {path: "/loginForm"},
+  {path: "/register"},
+  {path: "/verify"},
   {path: "/about-us"},
   {path: "/page-not-found"},
   {path: "/forbidden-page"},
@@ -49,9 +53,12 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/loginForm" element={<LoginForm />} />
+        <Route path="/register" element={<RegisterUserPage />} />
+        <Route path="/verify" element={<VerifyEmail />} />
         <Route path="/about-us" element={<AboutUsPage />} />
         <Route path="/page-not-found" element={<PageNotFoundPage />} />
         <Route path="/forbidden-page" element={<ForbiddenPage />} />
+        <Route path="verify-email" element={<VerifyEmail />} />
         
         <Route
           path="/products"

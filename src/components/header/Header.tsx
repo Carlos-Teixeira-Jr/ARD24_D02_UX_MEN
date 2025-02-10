@@ -92,9 +92,11 @@ const Header = () => {
               </Link>
             </li>
             <li>
+              <Link to="/loginForm"> 
               <button className=" md:px-[40px] md:py-[12px] py-2 px-2 bg-emerald-900 hover:bg-emerald-700 cursor-pointer rounded-[8px] text-white">
                 Login
               </button>
+              </Link>
             </li>
           </ul>
         )}

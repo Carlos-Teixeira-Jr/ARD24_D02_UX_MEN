@@ -73,7 +73,7 @@ const HighlightProductsBanner = () => {
         <Slider ref={sliderRef} {...settings}>
           {product.map((produto) => (
             produto.highlighted && (
-            <div className="max-w-[389px] relative md:h-[462px] border-2 border-white ">
+            <div className="max-w-[389px] relative md:h-[462px] border-2 border-transparent ">
               <div className="w-full h-[200px] md:h-[388px]">
                 <img
                   src={produto.img}

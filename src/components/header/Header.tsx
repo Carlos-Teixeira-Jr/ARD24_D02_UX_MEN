@@ -44,7 +44,7 @@ const Header = () => {
             </li>
             <li className="font-inter text-[16px] hover:text-[20px]">
               <NavLink
-                to="/catalogo"
+                to="/products"
                 className={({ isActive }) =>
                   isActive
                     ? "text-emerald-900 hover:text-emeral-700"

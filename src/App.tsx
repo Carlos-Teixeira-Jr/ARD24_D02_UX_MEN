@@ -7,7 +7,7 @@ import { UserConfigPage } from "./pages/userConfig";
 import { PrivateRoute } from "./routes/PrivateRoute";
 import { AboutUsPage } from "./pages/aboutUs";
 import LoginForm from "./pages/loginForm";
-
+import RegisterUser from "./pages/registerUser";
 
 function App() {
   return (
@@ -25,8 +25,12 @@ function App() {
             <LoginForm/>
           }
         />
-
-
+          <Route
+          path="/registerUser"
+          element={
+            <RegisterUser/>
+          }
+        />
         <Route
           path="/about-us"
           element={

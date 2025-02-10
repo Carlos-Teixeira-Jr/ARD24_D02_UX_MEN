@@ -15,7 +15,7 @@ const HintsBannerContainer = () => {
         <div className="w-[90%] md:w-[374px] text-center my-4">
           <div className="mx-auto h-[72px] w-[72px] bg-emerald-900 rounded-full bg-[url('./assets/images/gota.svg')] bg-center bg-no-repeat"></div>
           <div>
-            <h3 className="font-primary font-bold text-2xl my-6">Watering</h3>
+            <h3 className="font-primary font-bold text-2xl text-slate-950 my-6">Watering</h3>
             <p className="font-primary text-slate-500">
               water your plants when the top inch of soil feels dry to the
               touch. Avoid overwatering, as it can lead to root dehydration.
@@ -25,7 +25,7 @@ const HintsBannerContainer = () => {
         <div className="w-[90%] md:w-[374px] text-center my-4">
           <div className="mx-auto h-[72px] w-[72px] bg-emerald-900 rounded-full bg-[url('./assets/images/sun.svg')] bg-center bg-no-repeat"></div>
           <div>
-            <h3 className="font-primary font-bold text-2xl  my-6">Sunlight</h3>
+            <h3 className="font-primary font-bold text-2xl text-slate-950 my-6">Sunlight</h3>
             <p className="font-primary text-slate-500">
               Most plants need adequate sunlight to thrive. Place your plants in
               areas that receive the appropriate amount of light for their
@@ -36,7 +36,7 @@ const HintsBannerContainer = () => {
         <div className="w-[90%] md:w-[374px] text-center my-4">
           <div className="mx-auto h-[72px] w-[72px] bg-emerald-900 rounded-full bg-[url('./assets/images/bag.svg')] bg-center bg-no-repeat"></div>
           <div>
-            <h3 className="font-primary font-bold text-2xl my-6">
+            <h3 className="font-primary font-bold text-2xl text-slate-950 my-6">
               Nutrients and Fertilizing
             </h3>
             <p className="font-primary text-slate-500">

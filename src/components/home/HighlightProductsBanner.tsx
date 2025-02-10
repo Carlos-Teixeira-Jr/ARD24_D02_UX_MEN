@@ -47,9 +47,9 @@ const HighlightProductsBanner = () => {
   };
 
   return (
-    <div className="mt-[164px] mb-[96px] mx-[5%] md:ml-[112px]">
-      <div className="max-w-[90%] md:flex md:justify-between mb-8 md:mr-[112px]">
-        <div className="min-w-full md:w-[548px]">
+    <div className="mt-12 md:mt-[164px] mb-[96px]">
+      <div className="max-w-[90%] md:flex md:justify-between mb-8 mx-[5%] md:mx-[112px]">
+        <div className="md:w-[548px]">
           <h1 className="max-w-[90%] md:w-[455px] text-emerald-900 font-secondary font-bold text-3xl md:text-[40px] mb-4">
             This weeks Most Popular and best selling
           </h1>
@@ -58,7 +58,7 @@ const HighlightProductsBanner = () => {
             faucibus dolor volutpat adipiscing amet ipsum. In.
           </p>
         </div>
-        <div className="flex mt-4 md:mt-auto ml-auto justify-items-end justify-between w-[104px]">
+        <div className="hidden md:flex mt-auto justify-items-end justify-between w-[104px]">
           <button
             className="cursor-pointer w-10 h-10 bg-[url('./assets/images/left.svg')] bg-center bg-no-repeat"
             onClick={previous}
@@ -69,26 +69,26 @@ const HighlightProductsBanner = () => {
           ></button>
         </div>
       </div>
-      <div className="overflow-hidden gap-[30px]">
+      <div className="overflow-hidden gap-[30px] md:ml-[112px]">
         <Slider ref={sliderRef} {...settings}>
           {product.map((produto) => (
             produto.highlighted && (
-            <div className="max-w-[389px] relative min-w-[389px] h-[462px]">
-              <div className="w-full h-[388px]">
+            <div className="max-w-[389px] relative md:h-[462px] border-2 border-white ">
+              <div className="w-full h-[200px] md:h-[388px]">
                 <img
                   src={produto.img}
-                  className="w-full h-[388px] object-cover "
+                  className="w-full h-[150px] md:h-[388px] object-cover"
                   alt="Plant image"
                 />
-                <p className="absolute right-2 top-2 rounded-full w-fit justify-self-end bg-emerald-100 py-[6.48px] px-[12.95px] border-[1.62px] border-emerald-50 text-emerald-900 font-primary">
+                <p className="md:absolute right-2 top-2 rounded-full md:w-fit justify-self-end bg-emerald-100 py-[6.48px] px-[12.95px] w-full text-center text-sm  md:text-[16px] border-[1.62px] border-emerald-50 text-emerald-900 font-primary">
                   {produto.category}
                 </p>
               </div>
               <div className="mt-[14px] w-[323px]">
-                <h2 className="font-primary font-semibold text-2xl text-slate-600">
+                <h2 className="font-primary font-semibold md:text-2xl text-slate-600">
                   {produto.name}
                 </h2>
-                <p className="flex font-primary text-slate-500 gap-4">
+                <p className="md:flex font-primary text-sm md:text[16px] text-slate-500 gap-4">
                   R$
                   {(
                     produto.price -

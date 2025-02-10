@@ -1,13 +1,11 @@
-import { useState } from "react";
 import { DarkModeToggle } from "../darkMode/darkModeToggle";
 import { Link, NavLink } from "react-router-dom";
 import { useUser } from "@clerk/clerk-react";
 import { useClerk } from "@clerk/clerk-react";
 
 const Header = () => {
-  const isSignedIn = useUser().isSignedIn;;
+  const isSignedIn = useUser().isSignedIn;
   const { signOut } = useClerk();
- 
 
   return (
     <div className="flex place-items-center justify-between mx-auto px-[5px] md:px-[40px] h-[83px] border-slate-200 border-b-[1px]">
@@ -63,8 +61,7 @@ const Header = () => {
                   isActive
                     ? "text-emerald-900 hover:text-emeral-700"
                     : "text-slate-500 hover:text-slate-900"
-                }
-              >
+                }>
                 About me
               </NavLink>
             </li>
@@ -75,13 +72,12 @@ const Header = () => {
         {isSignedIn ? (
           <div className="flex gap-4">
             <DarkModeToggle />
-              <Link
-                onClick={signOut}
-                to="/"
-                className="md:px-[40px] md:py-[12px] py-2 px-2 cursor-pointer bg-emerald-900 hover:bg-emerald-700 rounded-[8px] text-white"
-              >
-                Log out
-              </Link>
+            <Link
+              to="/"
+              className="md:px-[40px] md:py-[12px] py-2 px-2 cursor-pointer bg-emerald-900 hover:bg-emerald-700 rounded-[8px] text-white"
+            >
+              <button onClick={() => signOut()}>Log out</button>
+            </Link>
           </div>
         ) : (
           <ul className="font-[inter] text-[16px] flex gap-[40px]">
@@ -96,10 +92,7 @@ const Header = () => {
               </Link>
             </li>
             <li>
-              <button
-                onClick={() => setIsSignedIn(true)}
-                className=" md:px-[40px] md:py-[12px] py-2 px-2 bg-emerald-900 hover:bg-emerald-700 cursor-pointer rounded-[8px] text-white"
-              >
+              <button className=" md:px-[40px] md:py-[12px] py-2 px-2 bg-emerald-900 hover:bg-emerald-700 cursor-pointer rounded-[8px] text-white">
                 Login
               </button>
             </li>

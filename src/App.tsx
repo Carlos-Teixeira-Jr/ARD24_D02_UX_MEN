@@ -10,6 +10,7 @@ import {
 import { EditProductPage } from "./pages/edit";
 import { RegisterProductPage } from "./pages/register";
 import { UserConfigPage } from "./pages/userConfig";
+import RegisterUser from "./pages/registerUser";
 import { PrivateRoute } from "./routes/PrivateRoute";
 import { AboutUsPage } from "./pages/aboutUs";
 import LoginForm from "./pages/loginForm";
@@ -21,7 +22,8 @@ import { ProductDetailsPage } from "./pages/productDetails";
 
 const routes = [
   { path: "/" },
-  { path: "/loginForm" },
+  { path: "/login" },
+  { path: "/register" },
   { path: "/about-us" },
   { path: "/page-not-found" },
   { path: "/forbidden-page" },
@@ -54,7 +56,8 @@ function App() {
       <RouteValidator />
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/loginForm" element={<LoginForm />} />
+        <Route path="/login" element={<LoginForm />} />
+        <Route path="/register" element={<RegisterUser />} />
         <Route path="/about-us" element={<AboutUsPage />} />
         <Route path="/page-not-found" element={<PageNotFoundPage />} />
         <Route path="/forbidden-page" element={<ForbiddenPage />} />

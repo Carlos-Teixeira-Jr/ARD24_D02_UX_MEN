@@ -85,16 +85,18 @@ const Header = () => {
               <DarkModeToggle />
             </li>
             <li>
-              <Link to="">
+              <Link to="register">
                 <button className="my-[12px] cursor-pointer text-slate-900 hover:text-slate-500">
                   Register
                 </button>
               </Link>
             </li>
             <li>
-              <button className=" md:px-[40px] md:py-[12px] py-2 px-2 bg-emerald-900 hover:bg-emerald-700 cursor-pointer rounded-[8px] text-white">
-                Login
-              </button>
+              <Link to="/login">
+                <button className=" md:px-[40px] md:py-[12px] py-2 px-2 bg-emerald-900 hover:bg-emerald-700 cursor-pointer rounded-[8px] text-white">
+                  Login
+                </button>
+              </Link>
             </li>
           </ul>
         )}

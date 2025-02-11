@@ -13,6 +13,12 @@ const LoginForm: React.FC = () => {
   const [stayConnected, setStayConnected] = useState(false);
   const [loading, setLoading] = useState(false);
 
+  const [showToast, setShowToast] = useState({
+    show: false,
+    message: "",
+    type: "",
+  });
+
   const [error, setError] = useState("");
 
   const handleSubmit = useCallback(
@@ -28,12 +34,14 @@ const LoginForm: React.FC = () => {
           password,
         });
 
+
         await setActive?.({ session: signInResource?.createdSessionId });
 
       } catch (error: any) {
         if (error?.errors?.[0]?.code === "session_exists") {
         } else {
           setError(JSON.stringify(error?.errors));
+
         }
       } finally {
         setLoading(false);
@@ -44,15 +52,16 @@ const LoginForm: React.FC = () => {
 
   useEffect(() => {
     if (isSignedIn) {
-      navigate("/");
-      //Lista de produto aqui
+      navigate("/products");
     }
   }, [isSignedIn, navigate]);
 
   return (
     <div className="flex min-h-screen">
       <div className="flex place-items-center justify-between mx-auto px-[40px] h-[83px]">
+      <a href="/">
         <div className=" bg-[url('./assets/images/Logo.png')] w-[49px] h-[54px]"></div>
+      </a>
       </div>   
       <div className="w-1/2 flex items-center  bg-white">
         <div>
@@ -98,8 +107,7 @@ const LoginForm: React.FC = () => {
                 <span className="ml-2 text-gray-700">Stay connected</span>
               </label>
             </div>
-            <button disabled={loading} type="submit" className="w-full bg-primary text-white p-3 rounded-lg mb-4 font-inter font-semibold cursor-pointer">Login          {loading ? "loading..." : "Sign In"}
-            </button>
+            <button disabled={loading} type="submit" className="w-full bg-primary text-white p-3 rounded-lg mb-4 font-inter font-semibold cursor-pointer">Login</button>
             {error && <div>{error}</div>}
           </form>
         </div>

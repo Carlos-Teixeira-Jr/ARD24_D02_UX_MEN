@@ -1,6 +1,6 @@
 import { Navigate } from "react-router-dom";
 import { ReactNode } from "react";
-import { useAuth } from "@clerk/clerk-react";
+
 
 interface IPrivateRoute {
   children: ReactNode

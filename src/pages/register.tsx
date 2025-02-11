@@ -4,6 +4,7 @@ import { IFormDataPayload } from "../interfaces/CreatePlantInterface";
 import { Toast } from "../components/toast/toast";
 import Header from "../components/header/Header";
 import Footer from "../components/footer/Footer";
+import { useNavigate } from "react-router-dom";
 
 export function RegisterProductPage() {
   const [showToast, setShowToast] = useState({
@@ -11,7 +12,8 @@ export function RegisterProductPage() {
     message: "",
     type: "",
   });
-  console.log("🚀 ~ RegisterProductPage ~ showToast:", showToast)
+
+  const navigate = useNavigate();
 
   const handleRegisterProduct = async (formData: IFormDataPayload) => {
     const formDataPayload: IFormDataPayload = {
@@ -40,6 +42,7 @@ export function RegisterProductPage() {
           message: "Success on creating product!",
           type: "success",
         });
+        navigate("/products");
       } else {
         setShowToast({
           show: true,
@@ -65,6 +68,7 @@ export function RegisterProductPage() {
       {showToast.show && (
         <Toast toastProps={showToast} handleRemoveToast={setShowToast} />
       )}
+
       <Footer/>
     </>
   );

@@ -1,34 +1,63 @@
 import "./App.css";
 import Home from "./pages/Home";
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, useLocation, useNavigate, matchRoutes } from "react-router-dom";
 import { EditProductPage } from "./pages/edit";
 import { RegisterProductPage } from "./pages/register";
 import { UserConfigPage } from "./pages/userConfig";
 import { PrivateRoute } from "./routes/PrivateRoute";
 import { AboutUsPage } from "./pages/aboutUs";
 import LoginForm from "./pages/loginForm";
-import RegisterUser from "./pages/registerUser";
+import { ListProductsPage } from "./pages/listProducts";
+import { PageNotFoundPage } from "./pages/404Page";
+import { useEffect } from "react";
+import { ForbiddenPage } from "./pages/403Page";
+
+const routes = [
+  {path: "/"},
+  {path: "/loginForm"},
+  {path: "/about-us"},
+  {path: "/page-not-found"},
+  {path: "/forbidden-page"},
+  {path: "/products"},
+  {path: "/products/:id"},
+  {path: "/products/new"},
+  {path: "/product/:id/edit"},
+  {path: "/user-config"},
+];
+
+//Todo: resolver isso aqui
+
+function RouteValidator() {
+  const location = useLocation();
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    const match = matchRoutes(routes, location);
+    if (!match) {
+      navigate("/page-not-found", { replace: true });
+    }
+  },[location, navigate]);
+
+  return null;
+}
 
 function App() {
   return (
     <>
+    <RouteValidator/>
       <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/loginForm" element={<LoginForm />} />
+        <Route path="/about-us" element={<AboutUsPage />} />
+        <Route path="/page-not-found" element={<PageNotFoundPage />} />
+        <Route path="/forbidden-page" element={<ForbiddenPage />} />
+        
         <Route
-          path="/"
+          path="/products"
           element={
-            <Home/>
-          }
-        />
-        <Route
-          path="/loginForm"
-          element={
-            <LoginForm/>
-          }
-        />
-          <Route
-          path="/registerUser"
-          element={
-            <RegisterUser/>
+            <PrivateRoute>
+              <ListProductsPage />
+            </PrivateRoute>
           }
         />
         <Route
@@ -38,7 +67,7 @@ function App() {
           }
         />
         <Route
-          path="/create-plant"
+          path="/products/new"
           element={
             <PrivateRoute>
               <RegisterProductPage />
@@ -46,7 +75,7 @@ function App() {
           }
         />
         <Route
-          path="/edit-plant"
+          path="/product/:id/edit"
           element={
             <PrivateRoute>
               <EditProductPage />

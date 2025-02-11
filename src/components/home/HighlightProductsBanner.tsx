@@ -3,6 +3,7 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { useEffect, useRef, useState } from "react";
 import { IFormDataPayload } from "../../interfaces/CreatePlantInterface";
+import Card from "../commom/cards/card";
 
 const HighlightProductsBanner = () => {
   const [product, setProduct] = useState<IFormDataPayload[]>([]);

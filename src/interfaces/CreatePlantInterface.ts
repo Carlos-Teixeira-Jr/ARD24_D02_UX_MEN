@@ -11,6 +11,7 @@ export interface ICreatePlantSelect {
 }
 
 export interface IFormData {
+  id?: string;
   name: string;
   subtitle: string;
   category: string;
@@ -22,6 +23,7 @@ export interface IFormData {
 }
 
 export interface IFormDataPayload {
+  id?: string;
   name: string;
   subtitle: string;
   category: string;

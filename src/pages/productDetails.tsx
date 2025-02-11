@@ -19,7 +19,6 @@ export function ProductDetailsPage() {
   });
 
   const urlParams = useParams();
-  console.log("🚀 ~ ProductDetailsPage ~ product:", product)
 
   useEffect(() => {
     // const urlParams = useParams();

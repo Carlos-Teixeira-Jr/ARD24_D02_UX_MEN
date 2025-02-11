@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import Card from "../commom/cards/card";
-import { IFormDataPayload } from "../../interfaces/CreatePlantInterface";
+import { IFormData, IFormDataPayload } from "../../interfaces/CreatePlantInterface";
 import { useNavigate } from "react-router-dom";
 
 interface ICard {
@@ -9,8 +9,9 @@ interface ICard {
 
 export function ProductsList({filters}: ICard) {
   const [input, setInput] = useState("");
-  const [products, setProducts] = useState([]);
-  const [filteredProducts, setFilteredProducts] = useState([]);
+  console.log("🚀 ~ ProductsList ~ input:", input)
+  const [products, setProducts] = useState<IFormDataPayload[]>([]);
+  const [filteredProducts, setFilteredProducts] = useState<IFormDataPayload[]>([]);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -40,29 +41,43 @@ export function ProductsList({filters}: ICard) {
       }
     };
     fetchData();
-  }, [input]);
+  }, []);
 
   useEffect(() => {
-    const filteredProducts = products.filter((produto: IFormDataPayload) => {
-      return produto.name.toLowerCase().includes(input.toLowerCase());
-    });
-    setFilteredProducts(filteredProducts);
-  }, [input, products]);
+    let filtered = products;
+
+    if (input) {
+      filtered.filter((produto) => produto.name.toLowerCase().includes(input.toLowerCase()));
+      filtered = products.filter((produto: IFormDataPayload) => {
+        return produto.name.toLowerCase().includes(input.toLowerCase());
+      });
+    }
+
+    console.log("🚀 ~ useEffect ~ filters.length > 0:", filters.length > 0)
+
+    if (filters.length > 0) {
+      filtered = filtered.filter((produto: IFormDataPayload) => {
+        return filters.includes(produto.category);
+      });
+    }
+
+    setFilteredProducts(filtered);
+  }, [input, products, filters]);
 
   const handleFilterInputChange = (value: string) => {
     setInput(value);
   };
 
-  useEffect(() => {
-    if (filters.length > 0) {
-      const filteredProducts = products.filter((produto: IFormDataPayload) => {
-        return filters.includes(produto.category) && produto.name.toLowerCase().includes(input.toLowerCase());
-      });
-      setFilteredProducts(filteredProducts);
-    } else {
-      setFilteredProducts(products);
-    }
-  })
+  // useEffect(() => {
+  //   if (filters.length > 0) {
+  //     const filteredProducts = products.filter((produto: IFormDataPayload) => {
+  //       return filters.includes(produto.category) && produto.name.toLowerCase().includes(input.toLowerCase());
+  //     });
+  //     setFilteredProducts(filteredProducts);
+  //   } else {
+  //     setFilteredProducts(products);
+  //   }
+  // })
 
   return (
     <section className="pt-8 pb-26 px-7 w-full">

@@ -15,8 +15,8 @@ export interface IFormData {
   name: string;
   subtitle: string;
   category: string;
-  price: string;
-  discountPercentage: string;
+  price: number;
+  discountPercentage: number;
   description: string;
   img: string;
   highlighted: boolean;

@@ -9,7 +9,6 @@ interface ICard {
 
 export function ProductsList({filters}: ICard) {
   const [input, setInput] = useState("");
-  console.log("🚀 ~ ProductsList ~ input:", input)
   const [products, setProducts] = useState<IFormDataPayload[]>([]);
   const [filteredProducts, setFilteredProducts] = useState<IFormDataPayload[]>([]);
   const navigate = useNavigate();
@@ -53,8 +52,6 @@ export function ProductsList({filters}: ICard) {
       });
     }
 
-    console.log("🚀 ~ useEffect ~ filters.length > 0:", filters.length > 0)
-
     if (filters.length > 0) {
       filtered = filtered.filter((produto: IFormDataPayload) => {
         return filters.includes(produto.category);
@@ -67,17 +64,6 @@ export function ProductsList({filters}: ICard) {
   const handleFilterInputChange = (value: string) => {
     setInput(value);
   };
-
-  // useEffect(() => {
-  //   if (filters.length > 0) {
-  //     const filteredProducts = products.filter((produto: IFormDataPayload) => {
-  //       return filters.includes(produto.category) && produto.name.toLowerCase().includes(input.toLowerCase());
-  //     });
-  //     setFilteredProducts(filteredProducts);
-  //   } else {
-  //     setFilteredProducts(products);
-  //   }
-  // })
 
   return (
     <section className="pt-8 pb-26 px-7 w-full">

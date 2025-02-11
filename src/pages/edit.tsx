@@ -1,18 +1,20 @@
 import { useEffect, useState } from "react";
 import { ProductForm } from "../components/registerProduct/productForm";
-import { IFormData, IFormDataPayload } from "../interfaces/CreatePlantInterface";
+import {
+  IFormData,
+  IFormDataPayload,
+} from "../interfaces/CreatePlantInterface";
 import Header from "../components/header/Header";
 import Footer from "../components/footer/Footer";
 import { Toast } from "../components/toast/toast";
 
 export function EditProductPage() {
-
-  const [productData, setProductData] = useState<IFormData>({
+  const [productData, setProductData] = useState<IFormDataPayload>({
     name: "",
     subtitle: "",
     category: "",
-    price: 0.0,
-    discountPercentage: 0,
+    price: "",
+    discountPercentage: "",
     description: "",
     img: "",
     highlighted: false,
@@ -26,16 +28,19 @@ export function EditProductPage() {
 
   useEffect(() => {
     const productId = window.location.pathname.split("/")[2];
-    console.log("🚀 ~ useEffect ~ productId:", productId)
+    console.log("🚀 ~ useEffect ~ productId:", productId);
     const fetchData = async () => {
       try {
-        const response = await fetch(`http://localhost:3001/products/${productId}`, {
-          method: "GET",
-          headers: {
-            "Content-Type": "application/json",
-          },
-        });
-  
+        const response = await fetch(
+          `http://localhost:3001/products/${productId}`,
+          {
+            method: "GET",
+            headers: {
+              "Content-Type": "application/json",
+            },
+          }
+        );
+
         if (response.ok) {
           const data = await response.json();
           setProductData(data);
@@ -45,23 +50,23 @@ export function EditProductPage() {
             show: true,
             message: "Error fetching data",
             type: "error",
-          })
+          });
         }
       } catch (error) {
         console.error(error);
       }
-    }
+    };
 
     fetchData();
-  },[])
+  }, []);
 
   const handleEditProduct = async (formData: IFormData) => {
-    const formDataPayload: IFormDataPayload = {
+    const formDataPayload: IFormData = {
       name: formData.name,
       subtitle: formData.subtitle,
       category: formData.category,
-      price: formData.price,
-      discountPercentage: formData.discountPercentage,
+      price: Number(formData.price),
+      discountPercentage: Number(formData.discountPercentage),
       description: formData.description,
       img: formData.img,
       highlighted: formData.highlighted,
@@ -99,8 +104,14 @@ export function EditProductPage() {
   return (
     <div>
       <Header />
-      <ProductForm productData={productData} onSubmit={handleEditProduct} mode={"edit"} />;
-      {showToast.show && <Toast toastProps={showToast} handleRemoveToast={setShowToast} />}
+      <ProductForm
+        productData={productData}
+        onSubmit={handleEditProduct}
+        mode={"edit"}
+      />
+      {showToast.show && (
+        <Toast toastProps={showToast} handleRemoveToast={setShowToast} />
+      )}
       <Footer />
     </div>
   );

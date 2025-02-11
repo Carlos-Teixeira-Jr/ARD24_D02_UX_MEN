@@ -8,19 +8,19 @@ import { validateName } from "../../utils/validators/validateName";
 import { validatePrice } from "../../utils/validators/validatePrice";
 
 interface IProductForm {
-  productData?: IFormData;
+  productData?: IFormDataPayload;
   onSubmit: (data: IFormData) => void;
   mode: "create" | "edit";
 }
 
 export function ProductForm({ productData, onSubmit, mode }: IProductForm) {
 
-  const [formData, setFormData] = useState<IFormData>({
+  const [formData, setFormData] = useState<IFormDataPayload>({
     name: "",
     subtitle: "",
     category: "",
-    price: 0.0,
-    discountPercentage: 0,
+    price: "",
+    discountPercentage: "",
     description: "",
     img: "",
     highlighted: false,
@@ -222,20 +222,19 @@ export function ProductForm({ productData, onSubmit, mode }: IProductForm) {
                 {input.key !== "description" && input.key !== "category" ? (
                   <>
                     <input
-                      value={input.value}
+                      value={input.value.toString()}
                       placeholder={input.placeholder}
                       className="border p-3 rounded-lg border-[#E2E8F0] h-11.5 bg-[#F1F5F9] text-[#64748B]"
                       onChange={(e) => {
                         if (input.key === "price") {
                           setFormData({
                             ...formData,
-                            [input.key]: Number(formatPrice(e.target.value)),
+                            [input.key]: formatPrice(e.target.value),
                           });
                         } else if (input.key === "discountPercentage") {
-                          console.log("test");
                           setFormData({
                             ...formData,
-                            [input.key]: Number(formatDiscount(e.target.value)),
+                            [input.key]: formatDiscount(e.target.value),
                           });
                         } else {
                           setFormData({

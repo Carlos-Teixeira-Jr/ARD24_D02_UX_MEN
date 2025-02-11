@@ -11,8 +11,8 @@ export function ProductDetailsPage() {
     name: "",
     subtitle: "",
     category: "",
-    price: "",
-    discountPercentage: "",
+    price: 0.0,
+    discountPercentage: 0,
     description: "",
     img: "",
     highlighted: false

@@ -17,9 +17,9 @@ import { ListProductsPage } from "./pages/listProducts";
 import { PageNotFoundPage } from "./pages/404Page";
 import { useEffect } from "react";
 import { ForbiddenPage } from "./pages/403Page";
-import RegisterUserPage from "./pages/registerUserPage";
 import { VerifyEmail } from "./pages/VerifyEmail";
 import { ProductDetailsPage } from "./pages/productDetails";
+import RegisterUser from "./pages/registerUser";
 
 const routes = [
   {path: "/"},
@@ -32,7 +32,7 @@ const routes = [
   {path: "/products"},
   {path: "/products/:id"},
   {path: "/products/new"},
-  {path: "/product/:id/edit"},
+  {path: "/products/:id/edit"},
   {path: "/user-config"},
 ];
 
@@ -57,7 +57,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/loginForm" element={<LoginForm />} />
-        <Route path="/register" element={<RegisterUserPage />} />
+        <Route path="/register" element={<RegisterUser />} />
         <Route path="/verify" element={<VerifyEmail />} />
         <Route path="/about-us" element={<AboutUsPage />} />
         <Route path="/page-not-found" element={<PageNotFoundPage />} />

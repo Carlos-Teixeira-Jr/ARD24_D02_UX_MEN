@@ -50,7 +50,7 @@ const HighlightProductsBanner = () => {
     slidesToScroll: 1,
     afterChange: (index: number) => {
       setActualSlide(index + 2);
-    }
+    },
   };
 
   return (
@@ -78,38 +78,42 @@ const HighlightProductsBanner = () => {
       </div>
       <div className="overflow-hidden gap-[30px] md:ml-[112px]">
         <Slider ref={sliderRef} {...settings}>
-          {product.map((produto) => (
-            produto.highlighted && (
-            <div className="max-w-[389px] relative md:h-[462px] border-2 border-transparent ">
-              <div className="w-full h-[200px] md:h-[388px]">
-                <img
-                  src={produto.img}
-                  className="w-full h-[150px] md:h-[388px] object-cover"
-                  alt="Plant image"
-                />
-                <p className="md:absolute right-2 top-2 rounded-full md:w-fit justify-self-end bg-emerald-100 py-[6.48px] px-[12.95px] w-full text-center text-sm  md:text-[16px] border-[1.62px] border-emerald-50 text-emerald-900 font-primary">
-                  {produto.category}
-                </p>
-              </div>
-              <div className="mt-[14px] w-[323px]">
-                <h2 className="font-primary font-semibold md:text-2xl text-slate-600">
-                  {produto.name}
-                </h2>
-                <p className="md:flex font-primary text-sm md:text[16px] text-slate-500 gap-4">
-                  R$
-                  {(
-                    produto.price -
-                    (produto.price * produto.discountPercentage) / 100
-                  ).toFixed(2)}
-                  {produto.discountPercentage !== 0 && (
-                    <p className="text-slate-400 line-through">
-                      R${(produto.price).toFixed(2)}
+          {product.map(
+            (produto) =>
+              produto.highlighted && (
+                <div className="max-w-[389px] relative md:h-[462px] border-2 border-transparent" key={produto.id}>
+                  <div className="w-full h-[200px] md:h-[388px]">
+                    <img
+                      src={produto.img}
+                      className="w-full h-[150px] md:h-[388px] object-cover"
+                      alt="Plant image"
+                    />
+                    <p className="md:absolute right-2 top-2 rounded-full md:w-fit justify-self-end bg-emerald-100 py-[6.48px] px-[12.95px] w-full text-center text-sm  md:text-[16px] border-[1.62px] border-emerald-50 text-emerald-900 font-primary">
+                      {produto.category}
                     </p>
-                  )}
-                </p>
-              </div>
-            </div>
-          )))}
+                  </div>
+                  <div className="mt-[14px] w-[323px]">
+                    <h2 className="font-primary font-semibold md:text-2xl text-slate-600">
+                      {produto.name}
+                    </h2>
+                    <div className="md:flex font-primary text-sm md:text[16px] text-slate-500 gap-4">
+                      R$
+                      {(
+                        Number(produto.price) -
+                        (Number(produto.price) *
+                          Number(produto.discountPercentage)) /
+                          100
+                      ).toFixed(2)}
+                      {Number(produto.discountPercentage) !== 0 && (
+                        <p className="text-slate-400 line-through">
+                          R${Number(produto.price).toFixed(2)}
+                        </p>
+                      )}
+                    </div>
+                  </div>
+                </div>
+              )
+          )}
         </Slider>
       </div>
     </div>

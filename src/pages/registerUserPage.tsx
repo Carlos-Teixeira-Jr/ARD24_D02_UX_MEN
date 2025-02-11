@@ -1,11 +1,12 @@
 import { useState } from "react";
 import { validateEmail } from "../utils/validators/validateEmail";
 import { validatePassword } from "../utils/validators/validatePassword";
-import { Toast } from "../components/toast/toast";
+import { IToast, Toast } from "../components/toast/toast";
 import { useSignUp } from "@clerk/clerk-react";
 import plantImage from "../assets/images/plant.png";
 import { validateName } from "../utils/validators/validateName";
 import { useNavigate } from "react-router-dom";
+import { handleSaveUserOnDb } from "../utils/hooks/handleCreateUserOnDb";
 
 // import { SignIn } from "@clerk/clerk-react";
 
@@ -79,9 +80,15 @@ const RegisterUserPage = () => {
             message: "Success on login!",
             type: "success",
           });
-          navigate("/verify")
+          
+          await handleSaveUserOnDb({
+            firstName: name.split(" ")[0] || "teste",
+            lastName: name.split(" ")[1] || "teste2",
+            emailAddress: email,
+            password: password,
+          });
+
         } catch (error: any) {
-          console.error("erro", error.errors);
           setShowToast({
             show: true,
             message: "Error on login!",
@@ -100,6 +107,8 @@ const RegisterUserPage = () => {
             message: "Success on login!",
             type: "success",
           })
+
+          navigate("/verify")
         } catch (error: any) {
           console.error("erro", error.errors);
           setShowToast({

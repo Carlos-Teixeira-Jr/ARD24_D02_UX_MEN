@@ -13,14 +13,14 @@ const Header = () => {
         <div className=" bg-[url('./assets/images/Frame121.png')] w-[49px] h-[54px]" />
       </a>
       <div>
-        {!isSignedIn ? (
+        {isSignedIn ? (
           <ul>
             <li className="font-inter text-[16px] hover:text-[20px]">
               <NavLink
                 to="/"
                 className={({ isActive }) =>
                   isActive
-                    ? "text-emerald-900 hover:text-emeral-400"
+                    ? "text-emerald-900 hover:text-emeral-00"
                     : "text-slate-500 hover:text-slate-900"
                 }
               >
@@ -36,7 +36,7 @@ const Header = () => {
                 className={({ isActive }) =>
                   isActive
                     ? "text-emerald-900 hover:text-emeral-400"
-                    : "text-slate-500 hover:text-slate-900"
+                    : "text-slate-500 hover:text-slate-600"
                 }
               >
                 Home
@@ -48,7 +48,7 @@ const Header = () => {
                 className={({ isActive }) =>
                   isActive
                     ? "text-emerald-900 hover:text-emeral-700"
-                    : "text-slate-500 hover:text-slate-900"
+                    : "text-slate-500 hover:text-slate-600"
                 }
               >
                 Poducts
@@ -60,7 +60,7 @@ const Header = () => {
                 className={({ isActive }) =>
                   isActive
                     ? "text-emerald-900 hover:text-emeral-700"
-                    : "text-slate-500 hover:text-slate-900"
+                    : "text-slate-500 hover:text-slate-600"
                 }>
                 About me
               </NavLink>
@@ -86,7 +86,7 @@ const Header = () => {
             </li>
             <li>
               <Link to="">
-                <button className="my-[12px] cursor-pointer text-slate-900 hover:text-slate-500">
+                <button className="my-[12px] cursor-pointer">
                   Register
                 </button>
               </Link>

@@ -16,17 +16,17 @@ const LoginForm: React.FC = () => {
       <div className="flex place-items-center justify-between mx-auto px-[40px] h-[83px]">
         <div className=" bg-[url('./assets/images/Logo.png')] w-[49px] h-[54px]"></div>
       </div>   
-      <div className="w-1/2 flex items-center  bg-white">
+      <div className="w-1/2 flex items-center">
         <div>
-          <h1 className="w-120 font-secondary text-primary text-titles font-bold text-4xl">
+          <h1 className="w-120 font-secondary text-titles font-bold text-4xl">
             Sign Up
           </h1>
-          <p className="font-inter text-[#64748B] font-normal">
+          <p className="font-inter font-normal">
             Lorem ipsum dolor sit amet consectetur.
           </p>
           <form onSubmit={handleSubmit}>
             <div className="mb-4">
-              <label htmlFor="email" className="block text-gray-700">E-mail:</label>
+              <label htmlFor="email" className="block">E-mail:</label>
               <input 
                 type="email"
                 id="email"
@@ -38,7 +38,7 @@ const LoginForm: React.FC = () => {
               />
             </div>
             <div className="mb-4">
-              <label htmlFor="password" className="block text-gray-700">Password:</label>
+              <label htmlFor="password" className="block">Password:</label>
               <input
                 type="password"
                 id="password"
@@ -57,10 +57,10 @@ const LoginForm: React.FC = () => {
                   onChange={(e) => setStayConnected(e.target.checked)}
                   className="form-checkbox"
                 />
-                <span className="ml-2 text-gray-700">Stay connected</span>
+                <span className="ml-2">Stay connected</span>
               </label>
             </div>
-            <button type="submit" className="w-full bg-primary text-white p-3 rounded-lg mb-4 font-inter font-semibold cursor-pointer">Login</button>
+            <button type="submit" className="w-full bg-primary hover:bg-emerald-700 text-white p-3 rounded-lg mb-4 font-inter font-semibold cursor-pointer">Login</button>
           </form>
         </div>
       </div>

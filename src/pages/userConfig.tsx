@@ -186,7 +186,7 @@ export function UserConfigPage() {
   return (
     <>
       <Header />
-      <main className="flex md:flex-row flex-col gap-5 md:gap-14 bg-white">
+      <main className="flex md:flex-row flex-col gap-5 md:gap-14">
         <div className="flex-1 md:pt-8.5 md:pl-16 p-5 flex flex-col gap-5">
           <div className="gap-1 flex flex-col w-2/3">
             <h1 className="font-secondary text-primary text-titles font-bold text-4xl">
@@ -214,7 +214,7 @@ export function UserConfigPage() {
                   type="text"
                   placeholder={input.placeholder}
                   value={input.value}
-                  className="border p-3 rounded-lg border-[#E2E8F0] h-11.5 bg-[#F1F5F9] text-[#64748B]"
+                  className="border p-3 rounded-lg border-[#E2E8F0] h-11.5 text-[#64748B]"
                   onChange={
                     input.key === "password"
                       ? handlePasswordChange
@@ -235,7 +235,7 @@ export function UserConfigPage() {
 
             <button
               type="submit"
-              className="bg-primary cursor-pointer text-white font-inter font-semibold py-2.5 rounded-md"
+              className="bg-primary hover:bg-emerald-700 cursor-pointer text-white font-inter font-semibold py-2.5 rounded-md"
             >
               Edit account
             </button>

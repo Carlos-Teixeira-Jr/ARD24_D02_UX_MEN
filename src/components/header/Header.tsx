@@ -13,7 +13,7 @@ const Header = () => {
         <div className=" bg-[url('./assets/images/Frame121.png')] w-[49px] h-[54px]" />
       </a>
       <div>
-        {isSignedIn ? (
+        {!isSignedIn ? (
           <ul>
             <li className="font-inter text-[16px] hover:text-[20px]">
               <NavLink

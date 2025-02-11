@@ -23,7 +23,7 @@ const AboutBannerContainer = () => {
           Get ready to explore our virtual garden and discover the joys of
           gardening with us!
         </p>
-        <Link to="/catalogo">
+        <Link to="/products">
           <button className="px-30 md:px-10 py-3 rounded-[8px] text-white bg-emerald-900 hover:bg-emerald-700 font-semibold cursor-pointer">
             See more photos
           </button>

@@ -7,7 +7,7 @@ import { validateName } from "../utils/validators/validateName";
 import { validatePassword } from "../utils/validators/validatePassword";
 import { Toast } from "../components/toast/toast";
 
-const LoginForm: React.FC = () => {
+const RegisterUser: React.FC = () => {
   const navigate = useNavigate();
   const { signUp } = useSignUp();
 
@@ -127,8 +127,10 @@ const LoginForm: React.FC = () => {
   return (
     <div className="flex min-h-screen">
       <div className="flex place-items-center justify-between mx-auto px-[40px] h-[83px]">
-        <div className=" bg-[url('./assets/images/Logo.png')] w-[49px] h-[54px]"></div>
-      </div>
+        <a href="/">
+          <div className=" bg-[url('./assets/images/Logo.png')] w-[49px] h-[54px]"></div>
+        </a>      
+      </div>   
       <div className="w-1/2 flex items-center  bg-white">
         <div>
           <h1 className="w-120 font-secondary text-primary text-titles font-bold text-4xl">
@@ -229,4 +231,4 @@ const LoginForm: React.FC = () => {
   );
 };
 
-export default LoginForm;
+export default RegisterUser;

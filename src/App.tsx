@@ -8,7 +8,6 @@ import { PrivateRoute } from "./routes/PrivateRoute";
 import { AboutUsPage } from "./pages/aboutUs";
 import LoginForm from "./pages/loginForm";
 import { ListProductsPage } from "./pages/listProducts";
-import { ProductDetailsPage } from "./pages/productDetails";
 import { PageNotFoundPage } from "./pages/404Page";
 import { useEffect } from "react";
 import { ForbiddenPage } from "./pages/403Page";
@@ -62,11 +61,9 @@ function App() {
           }
         />
         <Route
-          path="/products/:id"
+          path="/about-us"
           element={
-            <PrivateRoute>
-              <ProductDetailsPage />
-            </PrivateRoute>
+            <AboutUsPage/>
           }
         />
         <Route

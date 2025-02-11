@@ -43,7 +43,7 @@ export function AboutUsDevsBanner() {
       name: "Gian Vieceli",
       role: "Frontend Developer",
       img: gianPicture,
-      info: "dada dadadada dada dadadada dada dadadada dada dadadada dada dadadada dada dadadada dada dadadada dada dadadada dada dadadada dada dadadada dada dadadada dada dadadada dada dadadada dada dadadada dada dadadada dada dadadada dada dadadada dada dadadada dada dadadada ",
+      info: "Front-end Developer passionate about building efficient and elegant solutions. With experience in JavaScript, TypeScript, React, and Node.js, focused on writing clean and scalable code. Enjoys tackling challenges and solving problems creatively, always aiming to improve skills and deliver value through technology.",
     },
     {
       key: "maria",

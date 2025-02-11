@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { ProductForm } from "../components/registerProduct/productForm";
 import { IFormDataPayload } from "../interfaces/CreatePlantInterface";
+import Header from "../components/header/Header";
+import Footer from "../components/footer/Footer";
 
 export function EditProductPage() {
   const [showToast, setShowToast] = useState({
@@ -36,19 +38,25 @@ export function EditProductPage() {
           show: true,
           message: "Success on editing product!",
           type: "success",
-        })
+        });
       } else {
         console.error("Error on editing product", response.statusText);
         setShowToast({
           show: true,
           message: "Error on editing product",
           type: "error",
-        })
+        });
       }
     } catch (error) {
       console.error("Error:", error);
     }
   };
 
-  return <ProductForm onSubmit={handleEditProduct} mode={"edit"} />;
+  return (
+    <div>
+      <Header />
+      <ProductForm onSubmit={handleEditProduct} mode={"edit"} />;
+      <Footer />
+    </div>
+  );
 }

@@ -62,7 +62,7 @@ export function RegisterProductPage() {
 
   return (
     <>
-      <Header />
+    <Header/>
       <ProductForm onSubmit={handleRegisterProduct} mode={"create"} />
 
       {showToast.show && (

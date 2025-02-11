@@ -7,7 +7,7 @@ import { useNavigate } from "react-router";
 import { useSignUp } from "@clerk/clerk-react";
 import { Link } from "react-router";
 
-const LoginForm: React.FC = () => {
+const RegisterUser: React.FC = () => {
 
     //REGISTER AINDA NÃO FUNCIONAL
   const navigate = useNavigate();
@@ -74,7 +74,9 @@ const LoginForm: React.FC = () => {
   return (
     <div className="flex min-h-screen">
       <div className="flex place-items-center justify-between mx-auto px-[40px] h-[83px]">
-        <div className=" bg-[url('./assets/images/Logo.png')] w-[49px] h-[54px]"></div>
+        <a href="/">
+          <div className=" bg-[url('./assets/images/Logo.png')] w-[49px] h-[54px]"></div>
+        </a>      
       </div>   
       <div className="w-1/2 flex items-center  bg-white">
         <div>
@@ -146,4 +148,4 @@ const LoginForm: React.FC = () => {
   );
 };    
 
-export default LoginForm;
+export default RegisterUser;

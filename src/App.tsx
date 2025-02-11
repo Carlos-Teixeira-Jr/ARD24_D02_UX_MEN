@@ -1,6 +1,12 @@
 import "./App.css";
 import Home from "./pages/Home";
-import { Routes, Route, useLocation, useNavigate, matchRoutes } from "react-router-dom";
+import {
+  Routes,
+  Route,
+  useLocation,
+  useNavigate,
+  matchRoutes,
+} from "react-router-dom";
 import { EditProductPage } from "./pages/edit";
 import { RegisterProductPage } from "./pages/register";
 import { UserConfigPage } from "./pages/userConfig";
@@ -8,12 +14,12 @@ import { PrivateRoute } from "./routes/PrivateRoute";
 import { AboutUsPage } from "./pages/aboutUs";
 import LoginForm from "./pages/loginForm";
 import { ListProductsPage } from "./pages/listProducts";
-import { ProductDetailsPage } from "./pages/productDetails";
 import { PageNotFoundPage } from "./pages/404Page";
 import { useEffect } from "react";
 import { ForbiddenPage } from "./pages/403Page";
 import RegisterUserPage from "./pages/registerUserPage";
 import { VerifyEmail } from "./pages/VerifyEmail";
+import { ProductDetailsPage } from "./pages/productDetails";
 
 const routes = [
   {path: "/"},
@@ -30,8 +36,6 @@ const routes = [
   {path: "/user-config"},
 ];
 
-//Todo: resolver isso aqui
-
 function RouteValidator() {
   const location = useLocation();
   const navigate = useNavigate();
@@ -41,7 +45,7 @@ function RouteValidator() {
     if (!match) {
       navigate("/page-not-found", { replace: true });
     }
-  },[location, navigate]);
+  }, [location, navigate]);
 
   return null;
 }
@@ -49,7 +53,7 @@ function RouteValidator() {
 function App() {
   return (
     <>
-    <RouteValidator/>
+      <RouteValidator />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/loginForm" element={<LoginForm />} />
@@ -76,6 +80,7 @@ function App() {
             </PrivateRoute>
           }
         />
+        <Route path="/about-us" element={<AboutUsPage />} />
         <Route
           path="/products/new"
           element={
@@ -85,7 +90,7 @@ function App() {
           }
         />
         <Route
-          path="/product/:id/edit"
+          path="/products/:id/edit"
           element={
             <PrivateRoute>
               <EditProductPage />

@@ -12,7 +12,6 @@ interface ISideMenu {
 
 export function SideMenu({handleSelectedFilters}: ISideMenu) {
   const [selectedFilters, setSelectedFilters] = useState<string[]>([]);
-  console.log("🚀 ~ SideMenu ~ selectedFilters:", selectedFilters)
 
   const categories: Category[] = [
     {

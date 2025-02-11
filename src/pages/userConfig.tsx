@@ -4,6 +4,8 @@ import { validateName } from "../utils/validators/validateName";
 import { validateEmail } from "../utils/validators/validateEmail";
 import { validatePassword } from "../utils/validators/validatePassword";
 import { Toast } from "../components/toast/toast";
+import Header from "../components/header/Header";
+import Footer from "../components/footer/Footer";
 
 export function UserConfigPage() {
   const [formData, setFormData] = useState({
@@ -91,7 +93,7 @@ export function UserConfigPage() {
     setHiddenPassword("*".repeat(actualPassword.length));
   };
 
-  useEffect(()=> {
+  useEffect(() => {
     if (showToast.show) {
       const timer = setTimeout(() => {
         setShowToast((prev) => ({
@@ -99,10 +101,10 @@ export function UserConfigPage() {
           show: false,
         }));
       }, 3000);
-  
+
       return () => clearTimeout(timer);
     }
-  },[showToast.show])
+  }, [showToast.show]);
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -168,7 +170,7 @@ export function UserConfigPage() {
           show: true,
           message: "Error on editing user",
           type: "error",
-        })
+        });
       }
     } catch (error) {
       console.error(error);
@@ -176,74 +178,78 @@ export function UserConfigPage() {
         show: true,
         message: "Error on editing user",
         type: "error",
-      })
+      });
     }
   };
 
   return (
-    <main className="flex md:flex-row flex-col gap-5 md:gap-14 bg-white">
-      <div className="flex-1 md:pt-8.5 md:pl-16 p-5 flex flex-col gap-5">
-        <div className="gap-1 flex flex-col w-2/3">
-          <h1 className="font-secondary text-primary text-titles font-bold text-4xl">
-            User config
-          </h1>
-          <p className="font-inter text-[#64748B] font-normal">
-            Lorem ipsum dolor sit amet consectetur. Turpis vitae at et massa
-            neque.
-          </p>
+    <>
+      <Header />
+      <main className="flex md:flex-row flex-col gap-5 md:gap-14 bg-white">
+        <div className="flex-1 md:pt-8.5 md:pl-16 p-5 flex flex-col gap-5">
+          <div className="gap-1 flex flex-col w-2/3">
+            <h1 className="font-secondary text-primary text-titles font-bold text-4xl">
+              User config
+            </h1>
+            <p className="font-inter text-[#64748B] font-normal">
+              Lorem ipsum dolor sit amet consectetur. Turpis vitae at et massa
+              neque.
+            </p>
+          </div>
+
+          <form
+            className="flex flex-col gap-5"
+            onSubmit={(e) => handleSubmit(e)}
+          >
+            {inputs.map((input) => (
+              <div key={input.key} className="flex flex-col gap-2">
+                <label
+                  htmlFor={input.key}
+                  className="font-inter text-[#475569] font-semibold"
+                >
+                  {input.label}
+                </label>
+                <input
+                  type="text"
+                  placeholder={input.placeholder}
+                  value={input.value}
+                  className="border p-3 rounded-lg border-[#E2E8F0] h-11.5 bg-[#F1F5F9] text-[#64748B]"
+                  onChange={
+                    input.key === "password"
+                      ? handlePasswordChange
+                      : (e) =>
+                          setFormData({
+                            ...formData,
+                            [input.key]: e.target.value,
+                          })
+                  }
+                />
+                {input.errorMsg && (
+                  <p className="font-inter text-[#DC2626] font-semibold">
+                    {input.errorMsg}
+                  </p>
+                )}
+              </div>
+            ))}
+
+            <button
+              type="submit"
+              className="bg-primary cursor-pointer text-white font-inter font-semibold py-2.5 rounded-md"
+            >
+              Edit account
+            </button>
+          </form>
         </div>
 
-        <form className="flex flex-col gap-5" onSubmit={(e) => handleSubmit(e)}>
-          {inputs.map((input) => (
-            <div key={input.key} className="flex flex-col gap-2">
-              <label
-                htmlFor={input.key}
-                className="font-inter text-[#475569] font-semibold"
-              >
-                {input.label}
-              </label>
-              <input
-                type="text"
-                placeholder={input.placeholder}
-                value={input.value}
-                className="border p-3 rounded-lg border-[#E2E8F0] h-11.5 bg-[#F1F5F9] text-[#64748B]"
-                onChange={
-                  input.key === "password"
-                    ? handlePasswordChange
-                    : (e) =>
-                        setFormData({
-                          ...formData,
-                          [input.key]: e.target.value,
-                        })
-                }
-              />
-              {input.errorMsg && (
-                <p className="font-inter text-[#DC2626] font-semibold">
-                  {input.errorMsg}
-                </p>
-              )}
-            </div>
-          ))}
+        <div className="flex-1 bg-gradient-to-b from-black/0 to-black/40">
+          <img src={plantImage} className="w-full h-full object-cover" />
+        </div>
 
-          <button
-            type="submit"
-            className="bg-primary cursor-pointer text-white font-inter font-semibold py-2.5 rounded-md"
-          >
-            Edit account
-          </button>
-        </form>
-      </div>
-
-      <div className="flex-1 bg-gradient-to-b from-black/0 to-black/40">
-        <img src={plantImage} className="w-full h-full object-cover" />
-      </div>
-
-      {showToast.show && (
-        <Toast
-          toastProps={showToast}
-          handleRemoveToast={setShowToast}
-        />
-      )}
-    </main>
+        {showToast.show && (
+          <Toast toastProps={showToast} handleRemoveToast={setShowToast} />
+        )}
+      </main>
+      <Footer />
+    </>
   );
 }

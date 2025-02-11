@@ -1,15 +1,61 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { ProductForm } from "../components/registerProduct/productForm";
-import { IFormDataPayload } from "../interfaces/CreatePlantInterface";
+import { IFormData, IFormDataPayload } from "../interfaces/CreatePlantInterface";
+import Header from "../components/header/Header";
+import Footer from "../components/footer/Footer";
+import { Toast } from "../components/toast/toast";
 
 export function EditProductPage() {
+
+  const [productData, setProductData] = useState<IFormData>({
+    name: "",
+    subtitle: "",
+    category: "",
+    price: 0.0,
+    discountPercentage: 0,
+    description: "",
+    img: "",
+    highlighted: false,
+  });
+
   const [showToast, setShowToast] = useState({
     show: false,
     message: "",
     type: "",
   });
 
-  const handleEditProduct = async (formData: IFormDataPayload) => {
+  useEffect(() => {
+    const productId = window.location.pathname.split("/")[2];
+    console.log("🚀 ~ useEffect ~ productId:", productId)
+    const fetchData = async () => {
+      try {
+        const response = await fetch(`http://localhost:3001/products/${productId}`, {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+          },
+        });
+  
+        if (response.ok) {
+          const data = await response.json();
+          setProductData(data);
+        } else {
+          console.error("Error fetching data:", response.statusText);
+          setShowToast({
+            show: true,
+            message: "Error fetching data",
+            type: "error",
+          })
+        }
+      } catch (error) {
+        console.error(error);
+      }
+    }
+
+    fetchData();
+  },[])
+
+  const handleEditProduct = async (formData: IFormData) => {
     const formDataPayload: IFormDataPayload = {
       name: formData.name,
       subtitle: formData.subtitle,
@@ -36,19 +82,26 @@ export function EditProductPage() {
           show: true,
           message: "Success on editing product!",
           type: "success",
-        })
+        });
       } else {
         console.error("Error on editing product", response.statusText);
         setShowToast({
           show: true,
           message: "Error on editing product",
           type: "error",
-        })
+        });
       }
     } catch (error) {
       console.error("Error:", error);
     }
   };
 
-  return <ProductForm onSubmit={handleEditProduct} mode={"edit"} />;
+  return (
+    <div>
+      <Header />
+      <ProductForm productData={productData} onSubmit={handleEditProduct} mode={"edit"} />;
+      {showToast.show && <Toast toastProps={showToast} handleRemoveToast={setShowToast} />}
+      <Footer />
+    </div>
+  );
 }

@@ -1,18 +1,21 @@
-import { validateEmail } from "../utils/validators/validateEmail";
-import { validatePassword } from "../utils/validators/validatePassword";
-import { Toast } from "../components/toast/toast";
-import { useState } from "react";
-import { useSignIn } from "@clerk/clerk-react";
+import { useSignIn, useUser } from "@clerk/clerk-react";
+import { useState, useCallback, FormEvent, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import { Toast } from "../components/toast/toast";
 
-// import { SignIn } from "@clerk/clerk-react";
 
-const LoginForm = () => {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+const LoginForm: React.FC = () => {
+  const navigate = useNavigate();
 
   const { signIn, setActive } = useSignIn();
-  const navigate = useNavigate();
+  const { isSignedIn } = useUser();
+
+  const [emailAddress, setEmailAddress] = useState("");
+  const [password, setPassword] = useState("");
+  const [stayConnected, setStayConnected] = useState(false);
+  const [loading, setLoading] = useState(false);
+
+  const [error, setError] = useState("");
 
   const [showToast, setShowToast] = useState({
     show: false,
@@ -20,51 +23,39 @@ const LoginForm = () => {
     type: "",
   });
 
-  const [emailError, setEmailError] = useState("");
-  const [passwordError, setPasswordError] = useState("");
+  const handleSubmit = useCallback(
+    async (event: FormEvent) => {
+      event.preventDefault();
 
-  const [stayConnected, setStayConnected] = useState(false);
+      setError("");
+      setLoading(true);
 
-  const handleSubmit = async (event: React.FormEvent) => {
-    event.preventDefault();
-    let newEmailError = "";
-    let newPasswordError = "";
-
-    if (!validateEmail(email)) {
-      newEmailError = validateEmail(email).errorMsg;
-    }
-
-    if (!validatePassword(password)) {
-      newPasswordError = validatePassword(password).errorMsg;
-    }
-
-    setEmailError(newEmailError);
-    setPasswordError(newPasswordError);
-
-    if (newEmailError === "" && newPasswordError === "") {
       try {
-        const signResource = await signIn?.create({
-          identifier: email,
+        const signInResource = await signIn?.create({
+          identifier: emailAddress,
           password,
         });
 
-        await setActive?.({ session: signResource?.createdSessionId });
-        navigate("/");
+        await setActive?.({ session: signInResource?.createdSessionId });
 
-        setShowToast({
-          show: true,
-          message: "Error on login!",
-          type: "error",
-        });
-      } catch (error) {
-        setShowToast({
-          show: true,
-          message: "Error on login!",
-          type: "error",
-        });
+      } catch (error: any) {
+        if (error?.errors?.[0]?.code === "session_exists") {
+        } else {
+          setError(JSON.stringify(error?.errors));
+        }
+      } finally {
+        setLoading(false);
       }
+    },
+    [signIn, emailAddress, navigate, setActive, password]
+  );
+
+  useEffect(() => {
+    if (isSignedIn) {
+      navigate("/");
+      //Lista de produto aqui
     }
-  };
+  }, [isSignedIn, navigate]);
 
   return (
     <div className="flex min-h-screen">
@@ -81,14 +72,12 @@ const LoginForm = () => {
           </p>
           <form onSubmit={handleSubmit}>
             <div className="mb-4">
-              <label htmlFor="email" className="block text-gray-700">
-                E-mail:
-              </label>
-              <input
+              <label htmlFor="emailAddress" className="block text-gray-700">E-mail:</label>
+              <input 
                 type="email"
-                id="email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
+                id="emailAddress"
+                value={emailAddress}
+                onChange={(e) => setEmailAddress(e.target.value)}
                 className="w-full p-2 border border-gray-300 rounded-lg mt-1"
                 placeholder="email@example.com"
                 required
@@ -119,12 +108,9 @@ const LoginForm = () => {
                 <span className="ml-2 text-gray-700">Stay connected</span>
               </label>
             </div>
-            <button
-              type="submit"
-              className="w-full bg-primary text-white p-3 rounded-lg mb-4 font-inter font-semibold cursor-pointer"
-            >
-              Login
+            <button disabled={loading} type="submit" className="w-full bg-primary text-white p-3 rounded-lg mb-4 font-inter font-semibold cursor-pointer">Login          {loading ? "loading..." : "Sign In"}
             </button>
+            {error && <div>{error}</div>}
           </form>
         </div>
       </div>
@@ -138,6 +124,6 @@ const LoginForm = () => {
       )}
     </div>
   );
-};
+};    
 
 export default LoginForm;

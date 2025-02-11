@@ -1,6 +1,6 @@
 import { useClerk, useUser } from "@clerk/clerk-react";
 import { DarkModeToggle } from "../darkMode/darkModeToggle";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 
 const Header = () => {
   const {isSignedIn} = useUser();
@@ -14,31 +14,77 @@ const Header = () => {
       <div>
         {!isSignedIn ? (
           <ul>
-            <li className="font-[inter] text-[16px] p-[16px] text-emerald-900">
-            <Link to="/">Home</Link>
+            <li className="font-inter text-[16px] hover:text-[20px]">
+              <NavLink
+                to="/"
+                className={({ isActive }) =>
+                  isActive
+                    ? "text-emerald-900 hover:text-emeral-400"
+                    : "text-slate-500 hover:text-slate-900"
+                }
+              >
+                Home
+              </NavLink>
             </li>
           </ul>
         ) : (
-          <ul className="flex md:gap-[16px] gap-[10px] md:p-[16px]">
-            <li className="font-inter text-[16px] text-emerald-900">
-              <a href="/">Home</a>
+          <ul className="flex relative md:gap-[16px] gap-[10px] md:p-[16px]">
+            <li className="font-inter text-[16px] hover:text-[20px]">
+              <NavLink
+                to="/"
+                className={({ isActive }) =>
+                  isActive
+                    ? "text-emerald-900 hover:text-emeral-400"
+                    : "text-slate-500 hover:text-slate-900"
+                }
+              >
+                Home
+              </NavLink>
             </li>
-            <li className="font-inter text-[16px] text-slate-500 hover:text-slate-900">
-              <Link to="/">Poducts</Link>
+            <li className="font-inter text-[16px] hover:text-[20px]">
+              <NavLink
+                to="/products"
+                className={({ isActive }) =>
+                  isActive
+                    ? "text-emerald-900 hover:text-emeral-700"
+                    : "text-slate-500 hover:text-slate-900"
+                }
+              >
+                Poducts
+              </NavLink>
             </li>
-            <li className="font-inter text-[16px] text-slate-500 hover:text-slate-900">
-              <Link to="#">About me</Link>
+            <li className="font-inter text-[16px] hover:text-[20px]">
+              <NavLink
+                to="/user-config"
+                className={({ isActive }) =>
+                  isActive
+                    ? "text-emerald-900 hover:text-emeral-700"
+                    : "text-slate-500 hover:text-slate-900"
+                }>
+                About me
+              </NavLink>
             </li>
           </ul>
         )}
       </div>
       <div>
         {isSignedIn ? (
-          <button className="md:px-[40px] md:py-[12px] py-2 px-2 cursor-pointer bg-emerald-900 hover:bg-emerald-700 rounded-[8px] text-white" onClick={() => signOut()}>Log out</button>
+          <>
+            <div className="flex gap-4">
+              <DarkModeToggle />
+              <Link
+                to="/"
+                className="md:px-[40px] md:py-[12px] py-2 px-2 cursor-pointer bg-emerald-900 hover:bg-emerald-700 rounded-[8px] text-white"
+              >
+                <button onClick={() => signOut()}>Log out</button>
+              </Link>
+            </div>
+          </>
+          
         ) : (
           <ul className="font-[inter] text-[16px] flex gap-[40px]">
             <li>
-              <DarkModeToggle/>
+              <DarkModeToggle />
             </li>
             <li>
               <button className="my-[12px] cursor-pointer text-slate-900 hover:text-slate-500" onClick={() => window.location.href = "/register"}>

@@ -8,7 +8,7 @@ interface IProductDetails {
 export function ProductDetails({ product }: IProductDetails) {
   return (
     <div className="flex gap-14 justify-between">
-      <div className="flex flex-col w-1/2 pl-12 py-14">
+      <div className="flex flex-col gap-5 w-1/2 pl-12 py-14">
         <div className="gap-1">
           <h1 className="font-secondary text-primary text-titles font-bold text-4xl">
             Echinocereus Cactus

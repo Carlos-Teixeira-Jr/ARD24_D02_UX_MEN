@@ -1,35 +1,69 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import "./App.css";
+import Home from "./pages/Home";
+import { Routes, Route } from "react-router-dom";
+import { EditProductPage } from "./pages/edit";
+import { RegisterProductPage } from "./pages/register";
+import { UserConfigPage } from "./pages/userConfig";
+import { PrivateRoute } from "./routes/PrivateRoute";
+import { AboutUsPage } from "./pages/aboutUs";
+import LoginForm from "./pages/loginForm";
+import RegisterUser from "./pages/registerUser";
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
     <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p className='text-red-500'>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+      <Routes>
+        <Route
+          path="/"
+          element={
+            <Home/>
+          }
+        />
+        <Route
+          path="/loginForm"
+          element={
+            <LoginForm/>
+          }
+        />
+          <Route
+          path="/registerUser"
+          element={
+            <RegisterUser/>
+          }
+        />
+        <Route
+          path="/about-us"
+          element={
+            <AboutUsPage/>
+          }
+        />
+        <Route
+          path="/create-plant"
+          element={
+            <PrivateRoute>
+              <RegisterProductPage />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/edit-plant"
+          element={
+            <PrivateRoute>
+              <EditProductPage />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/user-config"
+          element={
+            <PrivateRoute>
+              <UserConfigPage />
+            </PrivateRoute>
+          }
+        />
+      </Routes>
     </>
-  )
+  );
 }
 
-export default App
+export default App;

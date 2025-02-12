@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { ProductForm } from "../components/registerProduct/productForm";
-import { IFormData, IFormDataPayload } from "../interfaces/CreatePlantInterface";
+import { IFormData } from "../interfaces/CreatePlantInterface";
 import { Toast } from "../components/toast/toast";
 import Header from "../components/header/Header";
 import Footer from "../components/footer/Footer";

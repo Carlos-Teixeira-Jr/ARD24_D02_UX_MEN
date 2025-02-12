@@ -1,7 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router";
 import { useSignUp } from "@clerk/clerk-react";
-import { handleSaveUserOnDb } from "../utils/hooks/handleCreateUserOnDb";
 import { validateEmail } from "../utils/validators/validateEmail";
 import { validateName } from "../utils/validators/validateName";
 import { validatePassword } from "../utils/validators/validatePassword";

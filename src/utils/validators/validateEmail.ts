@@ -4,7 +4,10 @@ export function validateEmail(email: string): {
 } {
   let emailValue = email.trim();
   let errorMsg = "";
-  if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(emailValue)) {
+
+  if (emailValue.length === 0) {
+    errorMsg = "Email is required";
+  } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(emailValue)) {
     errorMsg = "Invalid email format";
   }
 

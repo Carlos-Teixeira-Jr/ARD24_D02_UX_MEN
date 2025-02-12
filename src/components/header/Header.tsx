@@ -1,4 +1,4 @@
-import { useAuth, useClerk, useUser } from "@clerk/clerk-react";
+import { useClerk, useUser } from "@clerk/clerk-react";
 import { DarkModeToggle } from "../darkMode/darkModeToggle";
 import { Link, NavLink } from "react-router-dom";
 
@@ -19,7 +19,7 @@ const Header = () => {
                 to="/"
                 className={({ isActive }) =>
                   isActive
-                    ? "text-emerald-900 hover:text-emeral-00"
+                    ? "text-emerald-900 hover:text-emeral-400"
                     : "text-slate-500 hover:text-slate-900"
                 }
               >
@@ -95,7 +95,7 @@ const Header = () => {
                 </li>
                 <li>
                   <Link to="register">
-                    <button className="my-[12px] cursor-pointer text-slate-900 hover:text-slate-500">
+                    <button className="my-[12px] cursor-pointer">
                       Register
                     </button>
                   </Link>

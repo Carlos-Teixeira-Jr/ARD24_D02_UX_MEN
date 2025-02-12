@@ -171,7 +171,7 @@ const RegisterUser: React.FC = () => {
           <div className=" bg-[url('./assets/images/Logo.png')] w-[49px] h-[54px]"></div>
         </a>
       </div>
-      <div className="w-1/2 flex items-center  bg-white">
+      <div className="w-1/2 flex items-center">
         <div>
           <h1 className="w-120 font-secondary text-primary text-titles font-bold text-4xl">
             Register
@@ -196,7 +196,7 @@ const RegisterUser: React.FC = () => {
                   type="text"
                   placeholder={input.placeholder}
                   value={input.value}
-                  className="border p-3 rounded-lg border-[#E2E8F0] h-11.5 bg-[#F1F5F9] text-[#64748B]"
+                  className="border p-3 rounded-lg border-[#E2E8F0] h-11.5 "
                   onChange={(e) => {
                     if (input.key === "password") {
                       handlePasswordChange(e);

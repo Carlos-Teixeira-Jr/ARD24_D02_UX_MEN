@@ -50,12 +50,11 @@
   }
 
   input{
-    @apply bg-[#F1F5F9]
+    @apply bg-slate-100
   }
 
   html.dark input{
-    @apply text-gray-100;
-    @apply bg-gray-800
+    @apply text-gray-100 bg-gray-800;
   }
 
   button{

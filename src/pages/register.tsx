@@ -6,6 +6,7 @@ import Header from "../components/header/Header";
 import Footer from "../components/footer/Footer";
 import { useNavigate } from "react-router-dom";
 import { useUser } from "@clerk/clerk-react";
+import { MobileMenu } from "../components/header/MobileMenu";
 
 export function RegisterProductPage() {
   const [showToast, setShowToast] = useState({
@@ -73,6 +74,7 @@ export function RegisterProductPage() {
   return (
     <>
     <Header/>
+    <MobileMenu/>
       <ProductForm onSubmit={handleRegisterProduct} mode={"create"} />
 
       {showToast.show && (

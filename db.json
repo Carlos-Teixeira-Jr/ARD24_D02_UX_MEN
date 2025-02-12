@@ -150,6 +150,28 @@
       "description": "Lorem ipsun Lorem ipsun Lorem ipsun Lorem ipsun Lorem ipsun Lorem ipsun Lorem ipsun Lorem ipsun Lorem ipsun Lorem ipsun Lorem ipsun Lorem ipsun Lorem ipsun Lorem ipsun Lorem ipsun Lorem ipsun Lorem ipsun Lorem ipsun Lorem ipsun Lorem ipsun Lorem ipsun Lorem ipsun Lorem ipsun Lorem ipsun Lorem ipsun Lorem ipsun ",
       "img": "https://images-americanas.b2w.io/produtos/4296063595/imagens/vaso-de-planta-para-sala-quintal-varanda-coluna-dubai-grande/4296063691_1_large.jpg",
       "highlighted": true
+    },
+    {
+      "id": "b900",
+      "name": "Teste de criação",
+      "subtitle": "Uma linda planta",
+      "category": "indoor",
+      "price": 50,
+      "discountPercentage": 5,
+      "description": "Lorem ipsun Lorem ipsun Lorem ipsun Lorem ipsun Lorem ipsun Lorem ipsun Lorem ipsun Lorem ipsun Lorem ipsun Lorem ipsun Lorem ipsun Lorem ipsun Lorem ipsun Lorem ipsun Lorem ipsun Lorem ipsun Lorem ipsun Lorem ipsun Lorem ipsun Lorem ipsun Lorem ipsun Lorem ipsun Lorem ipsun ",
+      "img": "https://s2.glbimg.com/aolshcRY2uBvI3SQzYfG2vWr350=/620x650/e.glbimg.com/og/ed/f/original/2020/12/11/costela-de-adao.jpg",
+      "highlighted": true
+    },
+    {
+      "id": "bde5",
+      "name": "Argireia nervosa",
+      "subtitle": "Uma planta peculiar",
+      "category": "outdoor",
+      "price": 100,
+      "discountPercentage": 8,
+      "description": "Lorem ipsun Lorem ipsun Lorem ipsun Lorem ipsun Lorem ipsun Lorem ipsun Lorem ipsun Lorem ipsun Lorem ipsun Lorem ipsun Lorem ipsun Lorem ipsun Lorem ipsun ",
+      "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1b/Elephant_creeper_%28Argyreia_nervosa%29_-_20100808.jpg/1200px-Elephant_creeper_%28Argyreia_nervosa%29_-_20100808.jpg",
+      "highlighted": true
     }
   ]
 }

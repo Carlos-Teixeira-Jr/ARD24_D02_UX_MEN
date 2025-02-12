@@ -5,6 +5,7 @@ import { ProductsList } from "../components/listProducts/productsList";
 import { SideMenu } from "../components/listProducts/sideMenu";
 import { useUser } from "@clerk/clerk-react";
 import { useNavigate } from "react-router-dom";
+import { MobileMenu } from "../components/header/MobileMenu";
 
 export function ListProductsPage() {
 
@@ -24,6 +25,7 @@ export function ListProductsPage() {
   return (
     <>
       <Header />
+      <MobileMenu/>
 
       <div className="flex">
         <SideMenu handleSelectedFilters={(filters) => setSelectedFilters(filters)} />

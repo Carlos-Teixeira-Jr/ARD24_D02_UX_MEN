@@ -10,7 +10,7 @@ import { useUser } from "@clerk/clerk-react";
 import { MobileMenu } from "../components/header/MobileMenu";
 
 export function UserConfigPage() {
-  const {user} = useUser();
+  const { user } = useUser();
   const [formData, setFormData] = useState({
     name: user?.firstName + " " + user?.lastName || "",
     email: user?.primaryEmailAddress?.emailAddress || "",
@@ -22,7 +22,7 @@ export function UserConfigPage() {
     name: "",
     email: "",
     currentPassword: "",
-    newPassword: ""
+    newPassword: "",
   });
 
   const [hiddenPassword, setHiddenPassword] = useState("");
@@ -73,7 +73,7 @@ export function UserConfigPage() {
     setFormData({ ...formData, currentPassword: actualPassword });
     setHiddenPassword("*".repeat(actualPassword.length));
   };
-  
+
   const handleNewPasswordChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const actualPassword =
       e.target.value.length > formData.newPassword.length
@@ -104,14 +104,14 @@ export function UserConfigPage() {
       name: "",
       email: "",
       currentPassword: "",
-      newPassword: ""
+      newPassword: "",
     });
 
     let newFormDataErrors = {
       name: "",
       email: "",
       currentPassword: "",
-      newPassword: ""
+      newPassword: "",
     };
 
     if (!validateName(formData.name).isValid) {
@@ -128,12 +128,16 @@ export function UserConfigPage() {
         email: validateEmail(formData.email).errorMsg,
       });
     }
-    if (!validatePassword(formData.currentPassword).isValid) {
-      newFormDataErrors.currentPassword = validatePassword(formData.currentPassword).errorMsg;
-      setFormDataErrors({
-        ...newFormDataErrors,
-        currentPassword: validatePassword(formData.currentPassword).errorMsg,
-      });
+    if (!formData.newPassword && !formData.currentPassword) {
+      if (!validatePassword(formData.currentPassword).isValid) {
+        newFormDataErrors.currentPassword = validatePassword(
+          formData.currentPassword
+        ).errorMsg;
+        setFormDataErrors({
+          ...newFormDataErrors,
+          currentPassword: validatePassword(formData.currentPassword).errorMsg,
+        });
+      }
     }
 
     if (Object.values(newFormDataErrors).some((error) => error !== "")) {
@@ -145,12 +149,39 @@ export function UserConfigPage() {
       await user?.update({
         firstName: formData.name.split(" ")[0],
         lastName: formData.name.split(" ")[1],
-      })
+      });
 
       if (formData.currentPassword && formData.newPassword) {
         await user?.updatePassword({
           currentPassword: formData.currentPassword,
           newPassword: formData.newPassword,
+        });
+      }
+
+      if (user?.primaryEmailAddress?.emailAddress) {
+        const newEmail = await user?.createEmailAddress({
+          email: formData.email!,
+        });
+        
+        await newEmail?.prepareVerification({
+          strategy: "email_link",
+          redirectUrl: "/",
+        });
+  
+        user?.update({
+          primaryEmailAddressId: newEmail?.id,
+        });
+
+        setShowToast({
+          show: true,
+          message: "Success on editing user. An verification link has been sent to your email",
+          type: "success",
+        })
+      } else {
+        setShowToast({
+          show: true,
+          message: "Success on editing user",
+          type: "success",
         });
       }
     } catch (error) {
@@ -166,7 +197,7 @@ export function UserConfigPage() {
   return (
     <>
       <Header />
-      <MobileMenu/>
+      <MobileMenu />
       <main className="flex md:flex-row flex-col gap-5 md:gap-14">
         <div className="flex-1 md:pt-8.5 md:pl-16 p-5 flex flex-col gap-5">
           <div className="gap-1 flex flex-col w-2/3">
@@ -199,7 +230,9 @@ export function UserConfigPage() {
                   onChange={
                     input.key === "currentPassword"
                       ? handlePasswordChange
-                      : input.key === "newPassword" ? handleNewPasswordChange : (e) =>
+                      : input.key === "newPassword"
+                      ? handleNewPasswordChange
+                      : (e) =>
                           setFormData({
                             ...formData,
                             [input.key]: e.target.value,

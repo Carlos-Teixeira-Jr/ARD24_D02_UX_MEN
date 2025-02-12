@@ -1,23 +1,72 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { ProductForm } from "../components/registerProduct/productForm";
-import { IFormDataPayload } from "../interfaces/CreatePlantInterface";
+import {
+  IFormData,
+  IFormDataPayload,
+} from "../interfaces/CreatePlantInterface";
 import Header from "../components/header/Header";
 import Footer from "../components/footer/Footer";
+import { Toast } from "../components/toast/toast";
+import { MobileMenu } from "../components/header/MobileMenu";
 
 export function EditProductPage() {
+  const [productData, setProductData] = useState<IFormDataPayload>({
+    name: "",
+    subtitle: "",
+    category: "",
+    price: "",
+    discountPercentage: "",
+    description: "",
+    img: "",
+    highlighted: false,
+  });
+
   const [showToast, setShowToast] = useState({
     show: false,
     message: "",
     type: "",
   });
 
-  const handleEditProduct = async (formData: IFormDataPayload) => {
-    const formDataPayload: IFormDataPayload = {
+  useEffect(() => {
+    const productId = window.location.pathname.split("/")[2];
+    const fetchData = async () => {
+      try {
+        const response = await fetch(
+          `http://localhost:3001/products/${productId}`,
+          {
+            method: "GET",
+            headers: {
+              "Content-Type": "application/json",
+            },
+          }
+        );
+
+        if (response.ok) {
+          const data = await response.json();
+          setProductData(data);
+        } else {
+          console.error("Error fetching data:", response.statusText);
+          setShowToast({
+            show: true,
+            message: "Error fetching data",
+            type: "error",
+          });
+        }
+      } catch (error) {
+        console.error(error);
+      }
+    };
+
+    fetchData();
+  }, []);
+
+  const handleEditProduct = async (formData: IFormData) => {
+    const formDataPayload: IFormData = {
       name: formData.name,
       subtitle: formData.subtitle,
       category: formData.category,
-      price: formData.price,
-      discountPercentage: formData.discountPercentage,
+      price: Number(formData.price),
+      discountPercentage: Number(formData.discountPercentage),
       description: formData.description,
       img: formData.img,
       highlighted: formData.highlighted,
@@ -33,7 +82,6 @@ export function EditProductPage() {
       });
 
       if (response.ok) {
-        console.log("Success on editing product!");
         setShowToast({
           show: true,
           message: "Success on editing product!",
@@ -55,7 +103,15 @@ export function EditProductPage() {
   return (
     <div>
       <Header />
-      <ProductForm onSubmit={handleEditProduct} mode={"edit"} />;
+      <MobileMenu/>
+      <ProductForm
+        productData={productData}
+        onSubmit={handleEditProduct}
+        mode={"edit"}
+      />
+      {showToast.show && (
+        <Toast toastProps={showToast} handleRemoveToast={setShowToast} />
+      )}
       <Footer />
     </div>
   );

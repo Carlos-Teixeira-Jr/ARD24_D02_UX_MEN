@@ -8,14 +8,14 @@ import { validateName } from "../../utils/validators/validateName";
 import { validatePrice } from "../../utils/validators/validatePrice";
 
 interface IProductForm {
-  productData?: IFormData;
-  onSubmit: (data: IFormDataPayload) => void;
+  productData?: IFormDataPayload;
+  onSubmit: (data: IFormData) => void;
   mode: "create" | "edit";
 }
 
 export function ProductForm({ productData, onSubmit, mode }: IProductForm) {
 
-  const [formData, setFormData] = useState({
+  const [formData, setFormData] = useState<IFormDataPayload>({
     name: "",
     subtitle: "",
     category: "",
@@ -147,22 +147,21 @@ export function ProductForm({ productData, onSubmit, mode }: IProductForm) {
         category: "Select category",
       });
     }
-    if (!validatePrice(formData.price).isValid) {
-      console.log("entrou no erro de preço");
-      newFormDataErrors.price = validatePrice(formData.price).errorMsg;
+    if (!validatePrice((formData.price).toString()).isValid) {
+      newFormDataErrors.price = validatePrice((formData.price).toString()).errorMsg;
       setFormDataErrors({
         ...newFormDataErrors,
-        price: validatePrice(formData.price).errorMsg,
+        price: validatePrice((formData.price).toString()).errorMsg,
       });
     }
-    if (!validateDiscount(formData.discountPercentage).isValid) {
-      if (!validateDiscount(formData.discountPercentage).isValid) {
+    if (!validateDiscount(formData.discountPercentage.toString()).isValid) {
+      if (!validateDiscount(formData.discountPercentage.toString()).isValid) {
         newFormDataErrors.discountPercentage = validateDiscount(
-          formData.discountPercentage
+          formData.discountPercentage.toString()
         ).errorMsg;
         setFormDataErrors({
           ...newFormDataErrors,
-          discountPercentage: validateDiscount(formData.discountPercentage)
+          discountPercentage: validateDiscount(formData.discountPercentage.toString())
             .errorMsg,
         });
       }
@@ -186,8 +185,8 @@ export function ProductForm({ productData, onSubmit, mode }: IProductForm) {
       setFormDataErrors(newFormDataErrors);
       return;
     } else {
-      const formatedPrice = formData.price.replace("$", "").replace(",", ".");
-      const formatedDiscount = formData.discountPercentage.replace("%", "");
+      const formatedPrice = (formData.price).toString().replace("$", "").replace(",", ".");
+      const formatedDiscount = (formData.discountPercentage).toString().replace("%", "");
       const parsedFormData = {
         ...formData,
         price: parseFloat(formatedPrice),
@@ -203,10 +202,10 @@ export function ProductForm({ productData, onSubmit, mode }: IProductForm) {
       <main className="flex md:flex-row flex-col gap-5 md:gap-14">
         <div className="flex-1 md:pt-8.5 md:pl-16 p-5 flex flex-col gap-5">
           <div className="gap-1 flex flex-col w-2/3">
-            <h1 className="font-secondary text-primary text-titles font-bold text-4xl">
+            <h1 className="font-secondary text-titles font-bold text-4xl">
               {mode === "create" ? "Register" : "Edit"} your plant
             </h1>
-            <p className="font-inter text-[#64748B] font-normal">
+            <p className="font-inter font-normal">
               Lorem ipsum dolor sit amet consectetur. Turpis vitae at et massa
               neque.
             </p>
@@ -225,7 +224,7 @@ export function ProductForm({ productData, onSubmit, mode }: IProductForm) {
                     <input
                       value={input.value.toString()}
                       placeholder={input.placeholder}
-                      className="border p-3 rounded-lg border-[#E2E8F0] h-11.5 bg-[#F1F5F9] text-[#64748B]"
+                      className="border p-3 rounded-lg border-[#E2E8F0] h-11.5  text-[#64748B]"
                       onChange={(e) => {
                         if (input.key === "price") {
                           setFormData({
@@ -233,7 +232,6 @@ export function ProductForm({ productData, onSubmit, mode }: IProductForm) {
                             [input.key]: formatPrice(e.target.value),
                           });
                         } else if (input.key === "discountPercentage") {
-                          console.log("test");
                           setFormData({
                             ...formData,
                             [input.key]: formatDiscount(e.target.value),
@@ -257,7 +255,7 @@ export function ProductForm({ productData, onSubmit, mode }: IProductForm) {
                     <textarea
                       value={input.value.toString()}
                       placeholder={input.placeholder}
-                      className="border p-3 rounded-lg border-[#E2E8F0] h-48.5 bg-[#F1F5F9]"
+                      className="border p-3 rounded-lg border-[#E2E8F0] h-48.5  text-[#64748B]"
                       onChange={(e) =>
                         setFormData({
                           ...formData,
@@ -275,7 +273,7 @@ export function ProductForm({ productData, onSubmit, mode }: IProductForm) {
                   <>
                     <select
                       value={input.value}
-                      className="border p-3 rounded-lg border-[#E2E8F0] h-11.5 bg-[#F1F5F9] text-[#64748B] cursor-pointer"
+                      className="border p-3 rounded-lg border-[#E2E8F0] h-11.5 text-[#64748B] cursor-pointer"
                       onChange={(e) =>
                         setFormData({
                           ...formData,

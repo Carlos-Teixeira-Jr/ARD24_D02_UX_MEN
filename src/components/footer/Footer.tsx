@@ -1,15 +1,15 @@
 const Footer = () => {
   return (
-    <div className={`bg-emerald-950 bg-[url(/src/assets/images/fundo-footer.svg)] w-full md:h-[422px] pt-5 md:pt-[80px] md:py-[48px] py-5 px-5 md:px-[83px] font-primary text-white`}>
+    <div className={`bg-emerald-950 bg-[url(/src/assets/images/fundo-footer.svg)] w-full md:h-[422px] mb-[57px] md:mb-0 pt-5 md:pt-[80px] md:py-[48px] py-5 px-5 md:px-[83px] font-primary text-white`}>
       <div className="flex md:flex-row flex-col justify-between gap-5 md:gap-0">
         <div>
           <h2 className="font-secondary text-[40px] font-bold">Stay Fresh</h2>
-          <p className="font-normal text-[16px] mt-4">compassinhos@gmail.com</p>
-          <p className="font-normal text-[16px] mt-4">+55 41 99999-9999</p>
+          <p className="font-normal text-[16px] text-white mt-4">compassinhos@gmail.com</p>
+          <p className="font-normal text-[16px] text-white mt-4">+55 41 99999-9999</p>
         </div>
         <div className="flex gap-[95px] justify-between ">
           <div>
-            <h3 className="font-bold text-2xl mb-8">Links</h3>
+            <h3 className="font-bold text-2xl text-white mb-8">Links</h3>
             <ul>
               <li>
                 <a href="/about-us">About us</a>
@@ -17,7 +17,7 @@ const Footer = () => {
             </ul>
           </div>
           <div>
-            <h3 className="font-bold text-2xl mb-8">Community</h3>
+            <h3 className="font-bold text-2xl text-white mb-8">Community</h3>
             <ul>
               <li className="pb-4 font-normal">
                 <a href="https://www.linkedin.com/login/pt" target="_blank">LinkedIn</a>
@@ -36,8 +36,8 @@ const Footer = () => {
         <a href="/">
         <div className=" bg-[url('./assets/images/GroupPlant.png')] w-[49px] h-[54px]"></div>
         </a>
-        <div className="font-primary">
-          <p>Compassinhos ®. All rights reserved.</p>
+        <div className="font-primary  text-white">
+          <p className="text-white">Compassinhos ®. All rights reserved.</p>
         </div>
       </div>
     </div>

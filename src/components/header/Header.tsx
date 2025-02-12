@@ -1,21 +1,20 @@
+import { useClerk, useUser } from "@clerk/clerk-react";
 import { DarkModeToggle } from "../darkMode/darkModeToggle";
 import { Link, NavLink } from "react-router-dom";
-import { useUser } from "@clerk/clerk-react";
-import { useClerk } from "@clerk/clerk-react";
 
 const Header = () => {
-  const isSignedIn = useUser().isSignedIn;
+  const { isSignedIn } = useUser();
   const { signOut } = useClerk();
 
   return (
-    <div className="flex place-items-center justify-between mx-auto px-[5px] md:px-[40px] h-[83px] border-slate-200 border-b-[1px]">
+    <nav className="flex md:min-w-[1350px] place-items-center justify-between mx-auto px-[5px] md:px-[40px] h-[83px] border-slate-200 border-b-[1px]">
       <a href="/">
         <div className=" bg-[url('./assets/images/Frame121.png')] w-[49px] h-[54px]" />
       </a>
-      <div>
+      <div className="hidden md:flex">
         {!isSignedIn ? (
           <ul>
-            <li className="font-inter text-[16px] hover:text-[20px]">
+            <li className="font-inter text-[16px] hover:scale-110 transition-transform duration-200 easy-in-out">
               <NavLink
                 to="/"
                 className={({ isActive }) =>
@@ -30,37 +29,37 @@ const Header = () => {
           </ul>
         ) : (
           <ul className="flex relative md:gap-[16px] gap-[10px] md:p-[16px]">
-            <li className="font-inter text-[16px] hover:text-[20px]">
+            <li className="font-inter text-[16px] hover:scale-110 transition-transform duration-200 easy-in-out">
               <NavLink
                 to="/"
                 className={({ isActive }) =>
                   isActive
                     ? "text-emerald-900 hover:text-emeral-400"
-                    : "text-slate-500 hover:text-slate-900"
+                    : "text-slate-500 hover:text-slate-600"
                 }
               >
                 Home
               </NavLink>
             </li>
-            <li className="font-inter text-[16px] hover:text-[20px]">
+            <li className="font-inter text-[16px] hover:scale-110 transition-transform duration-200 easy-in-out">
               <NavLink
-                to="/catalogo"
+                to="/products"
                 className={({ isActive }) =>
                   isActive
                     ? "text-emerald-900 hover:text-emeral-700"
-                    : "text-slate-500 hover:text-slate-900"
+                    : "text-slate-500 hover:text-slate-600"
                 }
               >
                 Poducts
               </NavLink>
             </li>
-            <li className="font-inter text-[16px] hover:text-[20px]">
+            <li className="font-inter text-[16px] hover:scale-110 transition-transform duration-200 easy-in-out">
               <NavLink
                 to="/user-config"
                 className={({ isActive }) =>
                   isActive
                     ? "text-emerald-900 hover:text-emeral-700"
-                    : "text-slate-500 hover:text-slate-900"
+                    : "text-slate-500 hover:text-slate-600"
                 }>
                 About me
               </NavLink>
@@ -70,36 +69,55 @@ const Header = () => {
       </div>
       <div>
         {isSignedIn ? (
-          <div className="flex gap-4">
-            <DarkModeToggle />
-            <Link
-              to="/"
-              className="md:px-[40px] md:py-[12px] py-2 px-2 cursor-pointer bg-emerald-900 hover:bg-emerald-700 rounded-[8px] text-white"
-            >
-              <button onClick={() => signOut()}>Log out</button>
-            </Link>
-          </div>
-        ) : (
-          <ul className="font-[inter] text-[16px] flex gap-[40px]">
-            <li>
-              <DarkModeToggle />
-            </li>
-            <li>
-              <Link to="">
-                <button className="my-[12px] cursor-pointer text-slate-900 hover:text-slate-500">
-                  Register
+          <>
+            <div className="flex gap-4">
+              {isSignedIn !== undefined && <DarkModeToggle />}
+              <Link
+                to="/"
+                className="md:min-h-[48px] md:px-[40px] md:py-[12px] py-2 px-2 cursor-pointer bg-emerald-900 hover:bg-emerald-700 rounded-[8px] text-white"
+              >
+                <button onClick={() => signOut()} className="cursor-pointer text-white">
+                  {isSignedIn === undefined ? (
+                    <div className="w-5 h-5 border-4 border-gray-300 border-t-primary rounded-full animate-spin"></div>
+                  ) : (
+                    "Log out"
+                  )}
                 </button>
               </Link>
-            </li>
+            </div>
+          </>
+        ) : (
+          <ul className="font-[inter] text-[16px] flex gap-[40px]">
+            {isSignedIn !== undefined && (
+              <>
+                <li>
+                  <DarkModeToggle />
+                </li>
+                <li>
+                  <Link to="register">
+                    <button className="my-[12px] cursor-pointer">
+                      Register
+                    </button>
+                  </Link>
+                </li>
+              </>
+            )}
+
             <li>
-              <button className=" md:px-[40px] md:py-[12px] py-2 px-2 bg-emerald-900 hover:bg-emerald-700 cursor-pointer rounded-[8px] text-white">
-                Login
-              </button>
+              <Link to="/login">
+                <button className=" md:min-w-[135px] md:min-h-[48px] md:px-[40px] md:py-[12px] py-2 px-2 bg-emerald-900 hover:bg-emerald-700 cursor-pointer rounded-[8px] text-white">
+                  {isSignedIn === undefined ? (
+                    <div className="w-5 h-5 border-4 border-gray-300 border-t-primary rounded-full animate-spin mx-auto"></div>
+                  ) : (
+                    "Log in"
+                  )}
+                </button>
+              </Link>
             </li>
           </ul>
         )}
       </div>
-    </div>
+    </nav>
   );
 };
 

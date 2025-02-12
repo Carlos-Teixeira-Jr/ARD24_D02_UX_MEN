@@ -6,30 +6,32 @@ import { validatePassword } from "../utils/validators/validatePassword";
 import { Toast } from "../components/toast/toast";
 import Header from "../components/header/Header";
 import Footer from "../components/footer/Footer";
+import { useUser } from "@clerk/clerk-react";
+import { MobileMenu } from "../components/header/MobileMenu";
 
 export function UserConfigPage() {
+  const {user} = useUser();
   const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    password: "",
+    name: user?.firstName + " " + user?.lastName || "",
+    email: user?.primaryEmailAddress?.emailAddress || "",
+    currentPassword: "",
+    newPassword: "",
   });
 
   const [formDataErrors, setFormDataErrors] = useState({
     name: "",
     email: "",
-    password: "",
+    currentPassword: "",
+    newPassword: ""
   });
 
   const [hiddenPassword, setHiddenPassword] = useState("");
+  const [hiddenNewPassword, setHiddenNewPassword] = useState("");
   const [showToast, setShowToast] = useState({
     show: false,
     message: "",
     type: "",
   });
-  console.log("🚀 ~ UserConfigPage ~ showToast:", showToast);
-
-  // const {userId} = useAuth();
-  const userId = 1;
 
   const inputs = [
     {
@@ -47,51 +49,39 @@ export function UserConfigPage() {
       errorMsg: formDataErrors.email,
     },
     {
-      key: "password",
+      key: "currentPassword",
       value: hiddenPassword,
-      placeholder: "Echinocereus Cactus",
-      label: "Password",
-      errorMsg: formDataErrors.password,
+      placeholder: "",
+      label: "Current password",
+      errorMsg: formDataErrors.currentPassword,
+    },
+    {
+      key: "newPassword",
+      value: hiddenNewPassword,
+      placeholder: "",
+      label: "New password",
+      errorMsg: formDataErrors.newPassword,
     },
   ];
 
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await fetch(`http://localhost:3001/users/${userId}`, {
-          method: "GET",
-          headers: {
-            "Content-Type": "application/json",
-          },
-        });
-
-        if (response.ok) {
-          const data = await response.json();
-          const maskedPassword = "*".repeat(data.password.length);
-          setFormData({
-            name: data.name,
-            email: data.email,
-            password: data.password,
-          });
-          setHiddenPassword(maskedPassword);
-        } else {
-          console.error("Error fetching data:", response.statusText);
-        }
-      } catch (error) {
-        console.error(error);
-      }
-    };
-    fetchData();
-  }, []);
-
   const handlePasswordChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const actualPassword =
-      e.target.value.length > formData.password.length
-        ? formData.password + e.target.value.slice(-1)
-        : formData.password.slice(0, -1);
+      e.target.value.length > formData.currentPassword.length
+        ? formData.currentPassword + e.target.value.slice(-1)
+        : formData.currentPassword.slice(0, -1);
 
-    setFormData({ ...formData, password: actualPassword });
+    setFormData({ ...formData, currentPassword: actualPassword });
     setHiddenPassword("*".repeat(actualPassword.length));
+  };
+  
+  const handleNewPasswordChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const actualPassword =
+      e.target.value.length > formData.newPassword.length
+        ? formData.newPassword + e.target.value.slice(-1)
+        : formData.newPassword.slice(0, -1);
+
+    setFormData({ ...formData, newPassword: actualPassword });
+    setHiddenNewPassword("*".repeat(actualPassword.length));
   };
 
   useEffect(() => {
@@ -113,13 +103,15 @@ export function UserConfigPage() {
     setFormDataErrors({
       name: "",
       email: "",
-      password: "",
+      currentPassword: "",
+      newPassword: ""
     });
 
     let newFormDataErrors = {
       name: "",
       email: "",
-      password: "",
+      currentPassword: "",
+      newPassword: ""
     };
 
     if (!validateName(formData.name).isValid) {
@@ -136,11 +128,11 @@ export function UserConfigPage() {
         email: validateEmail(formData.email).errorMsg,
       });
     }
-    if (!validatePassword(formData.password).isValid) {
-      newFormDataErrors.password = validatePassword(formData.password).errorMsg;
+    if (!validatePassword(formData.currentPassword).isValid) {
+      newFormDataErrors.currentPassword = validatePassword(formData.currentPassword).errorMsg;
       setFormDataErrors({
         ...newFormDataErrors,
-        password: validatePassword(formData.password).errorMsg,
+        currentPassword: validatePassword(formData.currentPassword).errorMsg,
       });
     }
 
@@ -150,27 +142,15 @@ export function UserConfigPage() {
     }
 
     try {
-      const response = await fetch(`http://localhost:3001/users/${userId}`, {
-        method: "PATCH",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(formData),
-      });
+      await user?.update({
+        firstName: formData.name.split(" ")[0],
+        lastName: formData.name.split(" ")[1],
+      })
 
-      if (response.ok) {
-        console.log("Success on editing user!");
-        setShowToast({
-          show: true,
-          message: "Success on editing user!",
-          type: "success",
-        });
-      } else {
-        console.error("Error on editing user", response.statusText);
-        setShowToast({
-          show: true,
-          message: "Error on editing user",
-          type: "error",
+      if (formData.currentPassword && formData.newPassword) {
+        await user?.updatePassword({
+          currentPassword: formData.currentPassword,
+          newPassword: formData.newPassword,
         });
       }
     } catch (error) {
@@ -186,7 +166,8 @@ export function UserConfigPage() {
   return (
     <>
       <Header />
-      <main className="flex md:flex-row flex-col gap-5 md:gap-14 bg-white">
+      <MobileMenu/>
+      <main className="flex md:flex-row flex-col gap-5 md:gap-14">
         <div className="flex-1 md:pt-8.5 md:pl-16 p-5 flex flex-col gap-5">
           <div className="gap-1 flex flex-col w-2/3">
             <h1 className="font-secondary text-primary text-titles font-bold text-4xl">
@@ -214,11 +195,11 @@ export function UserConfigPage() {
                   type="text"
                   placeholder={input.placeholder}
                   value={input.value}
-                  className="border p-3 rounded-lg border-[#E2E8F0] h-11.5 bg-[#F1F5F9] text-[#64748B]"
+                  className="border p-3 rounded-lg border-[#E2E8F0] h-11.5 text-[#64748B]"
                   onChange={
-                    input.key === "password"
+                    input.key === "currentPassword"
                       ? handlePasswordChange
-                      : (e) =>
+                      : input.key === "newPassword" ? handleNewPasswordChange : (e) =>
                           setFormData({
                             ...formData,
                             [input.key]: e.target.value,
@@ -235,7 +216,7 @@ export function UserConfigPage() {
 
             <button
               type="submit"
-              className="bg-primary cursor-pointer text-white font-inter font-semibold py-2.5 rounded-md"
+              className="bg-primary hover:bg-emerald-700 cursor-pointer text-white font-inter font-semibold py-2.5 rounded-md"
             >
               Edit account
             </button>

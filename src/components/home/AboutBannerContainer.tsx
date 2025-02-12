@@ -9,7 +9,7 @@ const AboutBannerContainer = () => {
       </div>
       <div className="md:col-span-1 justify-items-center md:justify-items-normal">
         <div className="w-full md:w-[555px] h-[172px] bg-[url('./assets/images/about3.png')]"></div>
-        <p className="my-8 md:text-left w-[90%] text-slate-500 font-primary">
+        <p className="my-8 md:text-left w-[90%] font-primary">
           Our website offers a wide array of stunning plants, ranging from
           vibrant flowers to lush indoor foliage, allowing you to create your
           very own green oasis. In addition to our extensive plant selection, we
@@ -23,7 +23,7 @@ const AboutBannerContainer = () => {
           Get ready to explore our virtual garden and discover the joys of
           gardening with us!
         </p>
-        <Link to="/catalogo">
+        <Link to="/products">
           <button className="px-30 md:px-10 py-3 rounded-[8px] text-white bg-emerald-900 hover:bg-emerald-700 font-semibold cursor-pointer">
             See more photos
           </button>

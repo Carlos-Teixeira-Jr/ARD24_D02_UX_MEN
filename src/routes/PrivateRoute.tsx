@@ -1,15 +1,17 @@
 import { Navigate } from "react-router-dom";
 import { ReactNode } from "react";
-import { useAuth } from "@clerk/clerk-react";
+import { useUser } from "@clerk/clerk-react";
 
 interface IPrivateRoute {
   children: ReactNode
 }
 
 export function PrivateRoute({children}: IPrivateRoute) {
-  // const {isSignedIn} = useAuth();
-  // Determina se o usuário está logado ou não;
-  const isSignedIn = true;
+  const {isSignedIn} = useUser();
 
-  return isSignedIn ? <>{children}</> : <Navigate to="/login" replace />
+  if (isSignedIn !== undefined) {
+    return (
+      isSignedIn ? <>{children}</> : <Navigate to="/forbidden-page" replace />
+    ) 
+  }
 }

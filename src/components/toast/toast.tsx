@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-interface IToast {
+export interface IToast {
   toastProps: {
     message: string;
     type: "success" | "error" | string;

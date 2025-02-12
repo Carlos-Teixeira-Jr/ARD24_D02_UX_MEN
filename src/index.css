@@ -6,7 +6,87 @@
   }
 
   html.dark body {
-    @apply bg-black
+    @apply bg-gray-900
+  }
+
+  h3{
+    @apply text-slate-950
+  }
+  
+  html.dark h3{
+    @apply text-slate-500
+  }
+
+  p{
+    @apply text-slate-500
+  }
+
+  html.dark p{
+    @apply text-slate-300
+  }
+
+  h1{
+    @apply text-emerald-900
+  }
+  
+  html.dark h1{
+    @apply text-emerald-600
+  }
+  
+  label{
+    @apply text-gray-700
+  }
+  
+  html.dark label{
+    @apply text-gray-400
+  }
+  
+  span{
+    @apply text-gray-700
+  }
+  
+  html.dark span{
+    @apply text-gray-400
+  }
+
+  input{
+    @apply bg-[#F1F5F9] border border-[slate/200];
+  }
+
+  html.dark input{
+    @apply text-gray-100 bg-gray-800;
+  }
+
+  textarea{
+    @apply bg-[#F1F5F9] border border-[slate/200];
+  }
+
+  html.dark textarea{
+    @apply text-gray-100 bg-gray-800;
+  }
+
+  select{
+    @apply bg-[#F1F5F9] border border-[slate/200];
+  }
+
+  html.dark select{
+    @apply text-gray-100 bg-gray-800;
+  }
+  
+  button{
+    @apply text-slate-900 hover:text-slate-500;
+  }
+
+  html.dark button{
+    @apply text-slate-500 hover:text-slate-300;
+  }
+  
+  nav{
+    @apply bg-white;
+  }
+
+  html.dark nav{
+    @apply bg-gray-950;
   }
 }
 

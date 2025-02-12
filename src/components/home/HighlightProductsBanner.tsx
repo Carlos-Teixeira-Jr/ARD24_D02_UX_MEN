@@ -7,13 +7,10 @@ import { IFormDataPayload } from "../../interfaces/CreatePlantInterface";
 
 const HighlightProductsBanner = () => {
   const [product, setProduct] = useState<IFormDataPayload[]>([]);
-  const [actualSlide, setActualSlide] = useState(0);
 
   let sliderRef = useRef<Slider | null>(null);
   const next = () => {
-    if (actualSlide < product.length - 3) {
       sliderRef.current?.slickNext();
-    }
   };
   const previous = () => {
     sliderRef.current?.slickPrev();
@@ -48,9 +45,6 @@ const HighlightProductsBanner = () => {
     speed: 300,
     slidesToShow: 3.1,
     slidesToScroll: 1,
-    afterChange: (index: number) => {
-      setActualSlide(index + 2);
-    },
   };
 
   return (

@@ -57,6 +57,22 @@
     @apply text-gray-100 bg-gray-800;
   }
 
+  textarea{
+    @apply bg-[#F1F5F9] border border-[slate/200];
+  }
+
+  html.dark textarea{
+    @apply text-gray-100 bg-gray-800;
+  }
+
+  select{
+    @apply bg-[#F1F5F9] border border-[slate/200];
+  }
+
+  html.dark select{
+    @apply text-gray-100 bg-gray-800;
+  }
+  
   button{
     @apply text-slate-900 hover:text-slate-500;
   }

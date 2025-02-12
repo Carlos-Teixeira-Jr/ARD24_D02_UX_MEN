@@ -1,7 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router";
 import { useSignUp } from "@clerk/clerk-react";
-import { handleSaveUserOnDb } from "../utils/hooks/handleCreateUserOnDb";
 import { validateEmail } from "../utils/validators/validateEmail";
 import { validateName } from "../utils/validators/validateName";
 import { validatePassword } from "../utils/validators/validatePassword";
@@ -121,19 +120,6 @@ const RegisterUser: React.FC = () => {
       if (signUp) {
         try {
           await signUp.create({
-            firstName: name.split(" ")[0] || "teste",
-            lastName: name.split(" ")[1] || "teste2",
-            emailAddress: email,
-            password,
-          });
-
-          setShowToast({
-            show: true,
-            message: "Success on login!",
-            type: "success",
-          });
-
-          await handleSaveUserOnDb({
             firstName: name.split(" ")[0] || "teste",
             lastName: name.split(" ")[1] || "teste2",
             emailAddress: email,

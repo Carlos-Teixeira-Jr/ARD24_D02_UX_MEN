@@ -76,7 +76,7 @@ const Header = () => {
                 to="/"
                 className="md:min-h-[48px] md:px-[40px] md:py-[12px] py-2 px-2 cursor-pointer bg-emerald-900 hover:bg-emerald-700 rounded-[8px] text-white"
               >
-                <button onClick={() => signOut()} className="cursor-pointer">
+                <button onClick={() => signOut()} className="cursor-pointer text-white">
                   {isSignedIn === undefined ? (
                     <div className="w-5 h-5 border-4 border-gray-300 border-t-primary rounded-full animate-spin"></div>
                   ) : (

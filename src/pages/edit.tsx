@@ -8,6 +8,7 @@ import Header from "../components/header/Header";
 import Footer from "../components/footer/Footer";
 import { Toast } from "../components/toast/toast";
 import { MobileMenu } from "../components/header/MobileMenu";
+import { useNavigate } from "react-router-dom";
 
 export function EditProductPage() {
   const [productData, setProductData] = useState<IFormDataPayload>({
@@ -26,6 +27,8 @@ export function EditProductPage() {
     message: "",
     type: "",
   });
+
+  const navigate = useNavigate()
 
   useEffect(() => {
     const productId = window.location.pathname.split("/")[2];
@@ -73,8 +76,8 @@ export function EditProductPage() {
     };
 
     try {
-      const response = await fetch("http://localhost:3001/products", {
-        method: "PATCH",
+      const response = await fetch(`http://localhost:3001/products/${productData.id}`, {
+        method: "PUT",
         headers: {
           "Content-Type": "application/json",
         },
@@ -87,6 +90,7 @@ export function EditProductPage() {
           message: "Success on editing product!",
           type: "success",
         });
+        navigate(`/products/${productData.id}/edit`)
       } else {
         console.error("Error on editing product", response.statusText);
         setShowToast({

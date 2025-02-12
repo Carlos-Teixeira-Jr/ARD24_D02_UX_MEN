@@ -1,5 +1,5 @@
 import { useSignIn, useUser } from "@clerk/clerk-react";
-import { useState, useCallback, FormEvent, useEffect } from "react";
+import { useState, FormEvent, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { Toast } from "../components/toast/toast";
 import { validateEmail } from "../utils/validators/validateEmail";
@@ -23,7 +23,6 @@ const LoginForm: React.FC = () => {
   });
 
   const [emailError, setEmailError] = useState("");
-  console.log("🚀 ~ emailError:", emailError);
   const [passwordError, setPasswordError] = useState("");
 
   const handlePasswordChange = (e: React.ChangeEvent<HTMLInputElement>) => {

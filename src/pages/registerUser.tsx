@@ -8,7 +8,7 @@ import { Toast } from "../components/toast/toast";
 
 const RegisterUser: React.FC = () => {
   const navigate = useNavigate();
-  const { signUp } = useSignUp();
+  const { signUp, isLoaded } = useSignUp();
 
   const [loading, setLoading] = useState(false)
 
@@ -123,7 +123,7 @@ const RegisterUser: React.FC = () => {
         try {
           setLoading(true)
 
-          await signUp.create({
+          const teste = await signUp.create({
             firstName: name.split(" ")[0] || "teste",
             lastName: name.split(" ")[1] || "teste2",
             emailAddress: email,

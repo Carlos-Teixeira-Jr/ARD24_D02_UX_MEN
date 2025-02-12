@@ -126,19 +126,6 @@ const RegisterUser: React.FC = () => {
             emailAddress: email,
             password,
           });
-
-          setShowToast({
-            show: true,
-            message: "Success on login!",
-            type: "success",
-          });
-
-          await handleSaveUserOnDb({
-            firstName: name.split(" ")[0] || "teste",
-            lastName: name.split(" ")[1] || "teste2",
-            emailAddress: email,
-            password,
-          });
         } catch (error: any) {
           setShowToast({
             show: true,

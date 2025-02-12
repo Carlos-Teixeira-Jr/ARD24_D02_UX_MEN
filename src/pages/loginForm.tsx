@@ -81,7 +81,7 @@ const LoginForm: React.FC = () => {
                 id="emailAddress"
                 value={emailAddress}
                 onChange={(e) => setEmailAddress(e.target.value)}
-                className="w-full p-2 border border-gray-300 rounded-lg mt-1"
+                className="w-full p-2 border border-gray-300 rounded-lg mt-1 text-gray-600"
                 placeholder="email@example.com"
                 required
               />
@@ -95,7 +95,7 @@ const LoginForm: React.FC = () => {
                 id="password"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
-                className="w-full p-2 border border-gray-300 rounded-lg mt-1"
+                className="w-full p-2 border border-gray-300 rounded-lg mt-1 text-gray-600"
                 placeholder="••••••••"
                 required
               />

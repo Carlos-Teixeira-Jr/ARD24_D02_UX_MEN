@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { ProductForm } from "../components/registerProduct/productForm";
-import { IFormDataPayload } from "../interfaces/CreatePlantInterface";
+import { IFormData, IFormDataPayload } from "../interfaces/CreatePlantInterface";
 import { Toast } from "../components/toast/toast";
 import Header from "../components/header/Header";
 import Footer from "../components/footer/Footer";
@@ -19,8 +19,8 @@ export function RegisterProductPage() {
 
   const navigate = useNavigate();
 
-  const handleRegisterProduct = async (formData: IFormDataPayload) => {
-    const formDataPayload: IFormDataPayload = {
+  const handleRegisterProduct = async (formData: IFormData) => {
+    const formDataPayload: IFormData = {
       name: formData.name,
       subtitle: formData.subtitle,
       category: formData.category,

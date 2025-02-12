@@ -153,6 +153,12 @@ export function UserConfigPage() {
           newPassword: formData.newPassword,
         });
       }
+
+      setShowToast({
+        show: true,
+        message: "Success on editing user",
+        type: "success",
+      })
     } catch (error) {
       console.error(error);
       setShowToast({

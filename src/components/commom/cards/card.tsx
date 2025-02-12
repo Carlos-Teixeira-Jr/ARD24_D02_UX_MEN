@@ -28,7 +28,7 @@ export default function Card({ produto }: ICard) {
         </p>
       </div>
       <div className="mt-[14px] w-[323px]">
-        <h2 className="font-primary font-semibold text-2xl text-slate-600">
+        <h2 className="font-primary font-semibold text-2xl text-slate-600 hover:underline hover:cursor-pointer">
           {produto.name}
         </h2>
         <p className="flex font-primary text-sm md:text[16px] text-slate-500 gap-4">

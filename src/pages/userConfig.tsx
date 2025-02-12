@@ -6,6 +6,7 @@ import { validatePassword } from "../utils/validators/validatePassword";
 import { Toast } from "../components/toast/toast";
 import Header from "../components/header/Header";
 import Footer from "../components/footer/Footer";
+import { useAuth, useUser } from "@clerk/clerk-react";
 
 export function UserConfigPage() {
   const [formData, setFormData] = useState({
@@ -27,8 +28,10 @@ export function UserConfigPage() {
     type: "",
   });
 
-  // const {userId} = useAuth();
-  const userId = 1;
+  const {userId } = useAuth();
+  const {user} = useUser();
+  console.log("🚀 ~ UserConfigPage ~ userId:", userId)
+  console.log("🚀 ~ UserConfigPage ~ user:", user)
 
   const inputs = [
     {
@@ -67,8 +70,9 @@ export function UserConfigPage() {
         if (response.ok) {
           const data = await response.json();
           const maskedPassword = "*".repeat(data.password.length);
+          const formatedName = data.firstName + " " + data.lastName;
           setFormData({
-            name: data.name,
+            name: formatedName,
             email: data.email,
             password: data.password,
           });

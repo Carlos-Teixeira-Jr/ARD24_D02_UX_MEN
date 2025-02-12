@@ -2,52 +2,97 @@
   "users": [
     {
       "id": "1",
-      "name": "user exemplo",
-      "email": "emailexemplo@email.com",
+      "firstName": "trtrtrtrtr",
+      "lastName": "Teixeira",
+      "email": "carlosnovo@email.com",
       "password": "Teste123!"
+    },
+    {
+      "id": "7764",
+      "firstName": "Segundo",
+      "lastName": "usuário",
+      "emailAddress": "jepedo7189@perceint.com",
+      "password": "Segundousuario147!"
+    },
+    {
+      "id": "c900",
+      "firstName": "Novo",
+      "lastName": "usergagagaga",
+      "emailAddress": "nadezhda7766@uorak.com",
+      "password": "Testeteste147!"
+    },
+    {
+      "id": "1265",
+      "firstName": "User",
+      "lastName": "Two",
+      "emailAddress": "yrma9734@uorak.com",
+      "password": "Solange159!"
+    },
+    {
+      "id": "sua_2sunUDk3bDF647gvhNmiuKMMvjJ",
+      "firstName": "Testei",
+      "lastName": "três",
+      "emailAddress": "tomasz4633@uorak.com",
+      "password": "Azsx1313!"
+    },
+    {
+      "id": "sua_2suxXTL6SjGzGmlTVncDTsLyMdD",
+      "firstName": "teste",
+      "lastName": "dois",
+      "emailAddress": "zia250@uorak.com",
+      "password": "Dois1256!"
+    },
+    {
+      "id": "sua_2suxeXAKiruhqHFbgcgnnBW38iU",
+      "firstName": "teste",
+      "lastName": "dois",
+      "emailAddress": "zia250@uorak.com",
+      "password": "Dois1256!"
+    },
+    {
+      "id": "sua_2suy01SwoAg1aRxFMwwkkLnumKH",
+      "firstName": "Teste",
+      "lastName": "outro",
+      "emailAddress": "anara7641@uorak.com",
+      "password": "Anara1346!"
+    },
+    {
+      "id": "sua_2suyKEGnrLeWaVRPPs7BkkSGNoF",
+      "firstName": "Teste",
+      "lastName": "outro",
+      "emailAddress": "anara7641@uorak.com",
+      "password": "Anara1346!"
+    },
+    {
+      "id": "",
+      "firstName": "Quatro",
+      "lastName": "quatrooo",
+      "emailAddress": "benyounes3024@uorak.com",
+      "password": "Error193!"
+    },
+    {
+      "id": "",
+      "firstName": "Quatro",
+      "lastName": "quatrooo",
+      "emailAddress": "yaru3722@uorak.com",
+      "password": "Error193!"
+    },
+    {
+      "id": "cde4",
+      "firstName": "Marcelo",
+      "lastName": "Almeida",
+      "emailAddress": "armelinda7558@uorak.com",
+      "password": "Celo1526!"
+    },
+    {
+      "id": "891e",
+      "firstName": "Marcelo",
+      "lastName": "Almeida",
+      "emailAddress": "armelinda7558@uorak.com",
+      "password": "Celo1526!"
     }
   ],
   "products": [
-    {
-      "id": "1",
-      "name": "Product 1",
-      "price": 19.99,
-      "description": "Description for Product 1",
-      "category": "indoor",
-      "highlighted": true,
-      "img": "https://gachwala.in/wp-content/uploads/2022/06/IMAGE-1-13.webp",
-      "discountPercentage": 10
-    },
-    {
-      "id": "2",
-      "name": "Product 2",
-      "price": 29.99,
-      "description": "Description for Product 2",
-      "category": "office desk",
-      "highlighted": true,
-      "img": "https://gachwala.in/wp-content/uploads/2022/06/IMAGE-1-13.webp",
-      "discountPercentage": 0
-    },
-    {
-      "id": "3",
-      "name": "Product 3",
-      "price": 29.99,
-      "description": "Description for Product 3",
-      "category": "office desk",
-      "highlighted": true,
-      "img": "https://gachwala.in/wp-content/uploads/2022/06/IMAGE-1-13.webp",
-      "discountPercentage": 30
-    },
-    {
-      "id": "4",
-      "name": "Product 4",
-      "price": 29.99,
-      "description": "Description for Product 4",
-      "category": "office desk",
-      "highlighted": true,
-      "img": "https://gachwala.in/wp-content/uploads/2022/06/IMAGE-1-13.webp",
-      "discountPercentage": 20
-    },
     {
       "id": "e2b3",
       "name": "produto 3",

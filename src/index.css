@@ -64,6 +64,14 @@
   html.dark button{
     @apply text-slate-500 hover:text-slate-300;
   }
+  
+  nav{
+    @apply bg-white;
+  }
+
+  html.dark nav{
+    @apply bg-gray-950;
+  }
 }
 
 @theme {

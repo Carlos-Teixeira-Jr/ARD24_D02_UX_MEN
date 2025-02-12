@@ -7,7 +7,7 @@ const Header = () => {
   const { signOut } = useClerk();
 
   return (
-    <div className="flex md:min-w-[1350px] place-items-center justify-between mx-auto px-[5px] md:px-[40px] h-[83px] border-slate-200 border-b-[1px]">
+    <nav className="flex md:min-w-[1350px] place-items-center justify-between mx-auto px-[5px] md:px-[40px] h-[83px] border-slate-200 border-b-[1px]">
       <a href="/">
         <div className=" bg-[url('./assets/images/Frame121.png')] w-[49px] h-[54px]" />
       </a>
@@ -117,7 +117,7 @@ const Header = () => {
           </ul>
         )}
       </div>
-    </div>
+    </nav>
   );
 };
 

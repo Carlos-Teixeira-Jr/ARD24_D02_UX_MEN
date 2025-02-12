@@ -11,10 +11,10 @@ export function ProductDetails({ product }: IProductDetails) {
       <div className="flex flex-col gap-5 w-[90%] md:w-1/2 md:pl-12 md:py-14">
         <div className="gap-1">
           <h1 className="font-secondary text-titles font-bold text-4xl">
-            Echinocereus Cactus
+            {product.name}
           </h1>
           <p className="text-normal font-inter">
-            A majestic addition to your plant collection
+            {product.subtitle}
           </p>
         </div>
 

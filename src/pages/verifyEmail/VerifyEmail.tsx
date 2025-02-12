@@ -22,7 +22,7 @@ export function VerifyEmail() {
 
   return (
     <main className="flex flex-col justify-center items-center h-screen gap-5">
-      <h1 className="text-xl font-primary font-normal text-gray-500 w-1/3">
+      <h1 className="text-xl font-primary font-normal text-gray-500 px-5 md:px-0 md:w-1/3">
         An email verification link has been sent to your email. Please check
         your inbox and click on the verification button to access your account.
       </h1>

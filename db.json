@@ -65,6 +65,17 @@
       "description": "Lorem ipsun Lorem ipsun Lorem ipsun Lorem ipsun Lorem ipsun Lorem ipsun Lorem ipsun Lorem ipsun Lorem ipsun Lorem ipsun Lorem ipsun Lorem ipsun Lorem ipsun ",
       "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1b/Elephant_creeper_%28Argyreia_nervosa%29_-_20100808.jpg/1200px-Elephant_creeper_%28Argyreia_nervosa%29_-_20100808.jpg",
       "highlighted": true
+    },
+    {
+      "name": "Teste de cccccccc",
+      "subtitle": "tste1111",
+      "category": "terracy & balcony",
+      "price": 50,
+      "discountPercentage": 5,
+      "description": "Lorem",
+      "img": "https://images.freeimages.com/images/large-previews/07a/closeup-of-a-beautiful-plant-1192183.jpg",
+      "highlighted": false,
+      "id": "06e6"
     }
   ]
 }

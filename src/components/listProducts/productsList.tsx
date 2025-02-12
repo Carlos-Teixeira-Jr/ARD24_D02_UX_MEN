@@ -74,7 +74,7 @@ export function ProductsList({filters}: ICard) {
             handleFilterInputChange(e.target.value)
           }
         />
-        <button className="my-[12px] cursor-pointer text-white  bg-emerald-900 hover:bg-emerald-700 p-3 rounded-lg text-nowrap px-10 py-3 w-full" onClick={() => navigate('/products/new')}>
+        <button className="my-[12px] cursor-pointer text-white  bg-emerald-900 hover:bg-emerald-700 p-3 rounded-lg text-nowrap px-10 py-3 w-full md:w-auto" onClick={() => navigate('/products/new')}>
           Add plant
         </button>
       </div>

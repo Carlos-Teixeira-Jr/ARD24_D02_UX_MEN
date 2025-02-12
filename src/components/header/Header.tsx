@@ -1,4 +1,4 @@
-import { useAuth, useClerk, useUser } from "@clerk/clerk-react";
+import { useClerk, useUser } from "@clerk/clerk-react";
 import { DarkModeToggle } from "../darkMode/darkModeToggle";
 import { Link, NavLink } from "react-router-dom";
 
@@ -14,7 +14,7 @@ const Header = () => {
       <div>
         {!isSignedIn ? (
           <ul>
-            <li className="font-inter text-[16px] hover:text-[20px]">
+            <li className="font-inter text-[16px] hover:scale-110 transition-transform duration-200 easy-in-out">
               <NavLink
                 to="/"
                 className={({ isActive }) =>
@@ -29,7 +29,7 @@ const Header = () => {
           </ul>
         ) : (
           <ul className="flex relative md:gap-[16px] gap-[10px] md:p-[16px]">
-            <li className="font-inter text-[16px] hover:text-[20px]">
+            <li className="font-inter text-[16px] hover:scale-110 transition-transform duration-200 easy-in-out">
               <NavLink
                 to="/"
                 className={({ isActive }) =>
@@ -41,7 +41,7 @@ const Header = () => {
                 Home
               </NavLink>
             </li>
-            <li className="font-inter text-[16px] hover:text-[20px]">
+            <li className="font-inter text-[16px] hover:scale-110 transition-transform duration-200 easy-in-out">
               <NavLink
                 to="/products"
                 className={({ isActive }) =>
@@ -53,7 +53,7 @@ const Header = () => {
                 Poducts
               </NavLink>
             </li>
-            <li className="font-inter text-[16px] hover:text-[20px]">
+            <li className="font-inter text-[16px] hover:scale-110 transition-transform duration-200 easy-in-out">
               <NavLink
                 to="/user-config"
                 className={({ isActive }) =>

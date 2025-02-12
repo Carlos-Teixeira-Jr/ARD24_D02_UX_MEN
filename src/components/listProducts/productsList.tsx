@@ -26,10 +26,8 @@ export function ProductsList({filters}: ICard) {
           }
         );
         const data = await response.json();
-        console.log(data);
 
         if (response.ok) {
-          console.log(data);
           setProducts(data);
           setFilteredProducts(data);
         } else {
@@ -67,7 +65,7 @@ export function ProductsList({filters}: ICard) {
 
   return (
     <section className="pt-8 pb-26 px-7 w-full">
-      <div className="flex justify-center align-items-center items-center gap-7 mb-7">
+      <div className="flex flex-col md:flex-row justify-center align-items-center items-center gap-7 mb-7">
         <input
           className="border p-3 rounded-lg border-[#E2E8F0] h-11.5 bg-[#F1F5F9] text-[#64748B] w-full"
           value={input}
@@ -76,7 +74,7 @@ export function ProductsList({filters}: ICard) {
             handleFilterInputChange(e.target.value)
           }
         />
-        <button className="my-[12px] cursor-pointer text-white  bg-emerald-900 hover:bg-emerald-700 p-3 rounded-lg text-nowrap px-10 py-3" onClick={() => navigate('/products/new')}>
+        <button className="my-[12px] cursor-pointer text-white  bg-emerald-900 hover:bg-emerald-700 p-3 rounded-lg text-nowrap px-10 py-3 w-full" onClick={() => navigate('/products/new')}>
           Add plant
         </button>
       </div>

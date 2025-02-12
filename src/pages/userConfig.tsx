@@ -11,7 +11,6 @@ import { MobileMenu } from "../components/header/MobileMenu";
 
 export function UserConfigPage() {
   const {user} = useUser();
-  console.log("🚀 ~ UserConfigPage ~ user:", user)
   const [formData, setFormData] = useState({
     name: user?.firstName + " " + user?.lastName || "",
     email: user?.primaryEmailAddress?.emailAddress || "",

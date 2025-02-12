@@ -9,18 +9,18 @@ import { validatePrice } from "../../utils/validators/validatePrice";
 
 interface IProductForm {
   productData?: IFormData;
-  onSubmit: (data: IFormDataPayload) => void;
+  onSubmit: (data: IFormData) => void;
   mode: "create" | "edit";
 }
 
 export function ProductForm({ productData, onSubmit, mode }: IProductForm) {
 
-  const [formData, setFormData] = useState({
+  const [formData, setFormData] = useState<IFormData>({
     name: "",
     subtitle: "",
     category: "",
-    price: "",
-    discountPercentage: "",
+    price: 0.0,
+    discountPercentage: 0,
     description: "",
     img: "",
     highlighted: false,
@@ -147,22 +147,21 @@ export function ProductForm({ productData, onSubmit, mode }: IProductForm) {
         category: "Select category",
       });
     }
-    if (!validatePrice(formData.price).isValid) {
-      console.log("entrou no erro de preço");
-      newFormDataErrors.price = validatePrice(formData.price).errorMsg;
+    if (!validatePrice((formData.price).toString()).isValid) {
+      newFormDataErrors.price = validatePrice((formData.price).toString()).errorMsg;
       setFormDataErrors({
         ...newFormDataErrors,
-        price: validatePrice(formData.price).errorMsg,
+        price: validatePrice((formData.price).toString()).errorMsg,
       });
     }
-    if (!validateDiscount(formData.discountPercentage).isValid) {
-      if (!validateDiscount(formData.discountPercentage).isValid) {
+    if (!validateDiscount(formData.discountPercentage.toString()).isValid) {
+      if (!validateDiscount(formData.discountPercentage.toString()).isValid) {
         newFormDataErrors.discountPercentage = validateDiscount(
-          formData.discountPercentage
+          formData.discountPercentage.toString()
         ).errorMsg;
         setFormDataErrors({
           ...newFormDataErrors,
-          discountPercentage: validateDiscount(formData.discountPercentage)
+          discountPercentage: validateDiscount(formData.discountPercentage.toString())
             .errorMsg,
         });
       }
@@ -186,8 +185,8 @@ export function ProductForm({ productData, onSubmit, mode }: IProductForm) {
       setFormDataErrors(newFormDataErrors);
       return;
     } else {
-      const formatedPrice = formData.price.replace("$", "").replace(",", ".");
-      const formatedDiscount = formData.discountPercentage.replace("%", "");
+      const formatedPrice = (formData.price).toString().replace("$", "").replace(",", ".");
+      const formatedDiscount = (formData.discountPercentage).toString().replace("%", "");
       const parsedFormData = {
         ...formData,
         price: parseFloat(formatedPrice),
@@ -223,20 +222,20 @@ export function ProductForm({ productData, onSubmit, mode }: IProductForm) {
                 {input.key !== "description" && input.key !== "category" ? (
                   <>
                     <input
-                      value={input.value.toString()}
+                      value={input.value}
                       placeholder={input.placeholder}
                       className="border p-3 rounded-lg border-[#E2E8F0] h-11.5 bg-[#F1F5F9] text-[#64748B]"
                       onChange={(e) => {
                         if (input.key === "price") {
                           setFormData({
                             ...formData,
-                            [input.key]: formatPrice(e.target.value),
+                            [input.key]: Number(formatPrice(e.target.value)),
                           });
                         } else if (input.key === "discountPercentage") {
                           console.log("test");
                           setFormData({
                             ...formData,
-                            [input.key]: formatDiscount(e.target.value),
+                            [input.key]: Number(formatDiscount(e.target.value)),
                           });
                         } else {
                           setFormData({
@@ -257,7 +256,7 @@ export function ProductForm({ productData, onSubmit, mode }: IProductForm) {
                     <textarea
                       value={input.value.toString()}
                       placeholder={input.placeholder}
-                      className="border p-3 rounded-lg border-[#E2E8F0] h-48.5 bg-[#F1F5F9]"
+                      className="border p-3 rounded-lg border-[#E2E8F0] h-48.5 bg-[#F1F5F9] text-[#64748B]"
                       onChange={(e) =>
                         setFormData({
                           ...formData,

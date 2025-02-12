@@ -26,7 +26,6 @@ export function UserConfigPage() {
     message: "",
     type: "",
   });
-  console.log("🚀 ~ UserConfigPage ~ showToast:", showToast);
 
   // const {userId} = useAuth();
   const userId = 1;

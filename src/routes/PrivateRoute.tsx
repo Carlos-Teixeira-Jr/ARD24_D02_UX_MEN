@@ -11,5 +11,5 @@ export function PrivateRoute({children}: IPrivateRoute) {
   // Determina se o usuário está logado ou não;
   const isSignedIn = true;
 
-  return isSignedIn ? <>{children}</> : <Navigate to="/login" replace />
+  return isSignedIn ? <>{children}</> : <Navigate to="/forbidden-page" replace />
 }

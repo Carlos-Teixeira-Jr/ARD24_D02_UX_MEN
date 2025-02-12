@@ -11,18 +11,19 @@ export interface ICreatePlantSelect {
 }
 
 export interface IFormData {
+  id?: string;
   name: string;
   subtitle: string;
   category: string;
-  price: string;
-  discountPercentage: string;
+  price: number;
+  discountPercentage: number;
   description: string;
   img: string;
   highlighted: boolean;
 }
 
 export interface IFormDataPayload {
-  id: string;
+  id?: string;
   name: string;
   subtitle: string;
   category: string;

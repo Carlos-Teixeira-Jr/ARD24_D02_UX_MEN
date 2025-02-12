@@ -1,20 +1,67 @@
-import React, { useState } from 'react';
-
-// import { SignIn } from "@clerk/clerk-react";
+import { useSignIn, useUser } from "@clerk/clerk-react";
+import { FormEvent, useCallback, useEffect, useState } from "react";
+import { useNavigate } from "react-router";
 
 const LoginForm: React.FC = () => {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [stayConnected, setStayConnected] = useState(false);
+  const navigate = useNavigate();
 
-  const handleSubmit = (event: React.FormEvent) => {
-    event.preventDefault();
-  };
+  const { signIn, setActive } = useSignIn();
+  const { isSignedIn } = useUser();
+
+  const [emailAddress, setEmailAddress] = useState("");
+  const [password, setPassword] = useState("");
+  const [stayConnected, setStayConnected] = useState(false);
+  const [loading, setLoading] = useState(false);
+
+  const [showToast, setShowToast] = useState({
+    show: false,
+    message: "",
+    type: "",
+  });
+
+  const [error, setError] = useState("");
+
+  const handleSubmit = useCallback(
+    async (event: FormEvent) => {
+      event.preventDefault();
+
+      setError("");
+      setLoading(true);
+
+      try {
+        const signInResource = await signIn?.create({
+          identifier: emailAddress,
+          password,
+        });
+
+
+        await setActive?.({ session: signInResource?.createdSessionId });
+
+      } catch (error: any) {
+        if (error?.errors?.[0]?.code === "session_exists") {
+        } else {
+          setError(JSON.stringify(error?.errors));
+
+        }
+      } finally {
+        setLoading(false);
+      }
+    },
+    [signIn, emailAddress, navigate, setActive, password]
+  );
+
+  useEffect(() => {
+    if (isSignedIn) {
+      navigate("/products");
+    }
+  }, [isSignedIn, navigate]);
 
   return (
     <div className="flex min-h-screen">
       <div className="flex place-items-center justify-between mx-auto px-[40px] h-[83px]">
+      <a href="/">
         <div className=" bg-[url('./assets/images/Logo.png')] w-[49px] h-[54px]"></div>
+      </a>
       </div>   
       <div className="w-1/2 flex items-center">
         <div>
@@ -26,12 +73,12 @@ const LoginForm: React.FC = () => {
           </p>
           <form onSubmit={handleSubmit}>
             <div className="mb-4">
-              <label htmlFor="email" className="block">E-mail:</label>
+              <label htmlFor="emailAddress" className="block text-gray-700">E-mail:</label>
               <input 
                 type="email"
-                id="email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
+                id="emailAddress"
+                value={emailAddress}
+                onChange={(e) => setEmailAddress(e.target.value)}
                 className="w-full p-2 border border-gray-300 rounded-lg mt-1"
                 placeholder="email@example.com"
                 required
@@ -60,7 +107,8 @@ const LoginForm: React.FC = () => {
                 <span className="ml-2">Stay connected</span>
               </label>
             </div>
-            <button type="submit" className="w-full bg-primary hover:bg-emerald-700 text-white p-3 rounded-lg mb-4 font-inter font-semibold cursor-pointer">Login</button>
+            <button disabled={loading} type="submit" className="w-full bg-primary text-white p-3 rounded-lg mb-4 font-inter font-semibold cursor-pointer">Login</button>
+            {error && <div>{error}</div>}
           </form>
         </div>
       </div>
@@ -68,6 +116,6 @@ const LoginForm: React.FC = () => {
       </div>
     </div>
   );
-};
+};    
 
 export default LoginForm;

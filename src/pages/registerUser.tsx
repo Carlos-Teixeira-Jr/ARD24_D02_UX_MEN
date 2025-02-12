@@ -165,18 +165,18 @@ const RegisterUser: React.FC = () => {
   };
 
   return (
-    <div className="flex min-h-screen">
-      <div className="flex place-items-center justify-between mx-auto px-[40px] h-[83px]">
+    <div className="md:flex max-w-full md:min-h-screen ">
+      <div className="flex place-items-center md:justify-between mx-auto px-[40px] h-[83px]">
         <a href="/">
-          <div className=" bg-[url('./assets/images/Logo.png')] w-[49px] h-[54px]"></div>
+          <div className="bg-[url('./assets/images/Logo.png')] w-[49px] h-[54px]"></div>
         </a>
       </div>
-      <div className="w-1/2 flex items-center  bg-white">
+      <div className="justify-self-center md:w-1/2 md:flex justify-items-center md:items-center">
         <div>
-          <h1 className="w-120 font-secondary text-primary text-titles font-bold text-4xl">
+          <h1 className="md:w-120 font-secondary text-titles font-bold text-4xl">
             Register
           </h1>
-          <p className="font-inter text-[#64748B] font-normal">
+          <p className="font-inter font-normal mb-5 md:mb-0">
             Lorem ipsum dolor sit amet consectetur.
           </p>
 
@@ -196,7 +196,7 @@ const RegisterUser: React.FC = () => {
                   type="text"
                   placeholder={input.placeholder}
                   value={input.value}
-                  className="border p-3 rounded-lg border-[#E2E8F0] h-11.5 bg-[#F1F5F9] text-[#64748B]"
+                  className="border p-3 rounded-lg border-[#E2E8F0] h-11.5 "
                   onChange={(e) => {
                     if (input.key === "password") {
                       handlePasswordChange(e);
@@ -228,7 +228,7 @@ const RegisterUser: React.FC = () => {
         </div>
       </div>
       <div
-        className="w-1/2 bg-cover bg-center p-92"
+        className="hidden md:flex w-1/2 bg-cover bg-center p-92"
         style={{ backgroundImage: "url(src/assets/images/plant.png)" }}
       ></div>
       <Toast toastProps={showToast} handleRemoveToast={setShowToast} />

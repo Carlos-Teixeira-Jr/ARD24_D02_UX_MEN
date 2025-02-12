@@ -27,7 +27,7 @@ export function ListProductsPage() {
       <Header />
       <MobileMenu/>
 
-      <div className="flex">
+      <div className="block md:flex">
         <SideMenu handleSelectedFilters={(filters) => setSelectedFilters(filters)} />
 
         <ProductsList filters={selectedFilters} />

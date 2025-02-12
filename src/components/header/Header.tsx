@@ -7,7 +7,7 @@ const Header = () => {
   const { signOut } = useClerk();
 
   return (
-    <div className="flex md:min-w-[1350px] place-items-center justify-between mx-auto px-[5px] md:px-[40px] h-[83px] border-slate-200 border-b-[1px]">
+    <nav className="flex md:min-w-[1350px] place-items-center justify-between mx-auto px-[5px] md:px-[40px] h-[83px] border-slate-200 border-b-[1px]">
       <a href="/">
         <div className=" bg-[url('./assets/images/Frame121.png')] w-[49px] h-[54px]" />
       </a>
@@ -19,7 +19,7 @@ const Header = () => {
                 to="/"
                 className={({ isActive }) =>
                   isActive
-                    ? "text-emerald-900 hover:text-emeral-00"
+                    ? "text-emerald-900 hover:text-emeral-400"
                     : "text-slate-500 hover:text-slate-900"
                 }
               >
@@ -95,7 +95,7 @@ const Header = () => {
                 </li>
                 <li>
                   <Link to="register">
-                    <button className="my-[12px] cursor-pointer text-slate-900 hover:text-slate-500">
+                    <button className="my-[12px] cursor-pointer">
                       Register
                     </button>
                   </Link>
@@ -117,7 +117,7 @@ const Header = () => {
           </ul>
         )}
       </div>
-    </div>
+    </nav>
   );
 };
 

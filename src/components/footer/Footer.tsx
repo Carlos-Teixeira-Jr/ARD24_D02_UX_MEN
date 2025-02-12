@@ -1,6 +1,6 @@
 const Footer = () => {
   return (
-    <div className={`bg-emerald-950 bg-[url(/src/assets/images/fundo-footer.svg)] w-full md:h-[422px] pt-5 md:pt-[80px] md:py-[48px] py-5 px-5 md:px-[83px] font-primary text-white`}>
+    <div className={`bg-emerald-950 bg-[url(/src/assets/images/fundo-footer.svg)] w-full md:h-[422px] mb-[57px] md:mb-0 pt-5 md:pt-[80px] md:py-[48px] py-5 px-5 md:px-[83px] font-primary text-white`}>
       <div className="flex md:flex-row flex-col justify-between gap-5 md:gap-0">
         <div>
           <h2 className="font-secondary text-[40px] font-bold">Stay Fresh</h2>

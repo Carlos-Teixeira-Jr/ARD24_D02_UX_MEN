@@ -7,20 +7,20 @@ interface IProductDetails {
 
 export function ProductDetails({ product }: IProductDetails) {
   return (
-    <div className="flex gap-14 justify-between">
-      <div className="flex flex-col gap-5 w-1/2 pl-12 py-14">
+    <div className="md:flex gap-14 justify-items-center md:justify-between">
+      <div className="flex flex-col gap-5 w-[90%] md:w-1/2 md:pl-12 md:py-14">
         <div className="gap-1">
-          <h1 className="font-secondary text-primary text-titles font-bold text-4xl">
+          <h1 className="font-secondary text-titles font-bold text-4xl">
             Echinocereus Cactus
           </h1>
-          <p className="text-normal font-inter text-[#64748B]">
+          <p className="text-normal font-inter">
             A majestic addition to your plant collection
           </p>
         </div>
 
-        <img className="w-full" src={product.img} />
+        <img className="w-full object-cover h-[200px] md:h-[385px]" src={product.img} />
 
-        <div className="flex py-5 gap-6">
+        <div className="flex md:py-5 gap-6">
           <div>
             <p className="text-normal font-inter text-[#334155]">Price</p>
             <p className="text-normal font-inter text-[#64748B]">
@@ -45,7 +45,7 @@ export function ProductDetails({ product }: IProductDetails) {
           </div>
         </div>
 
-        <div className="flex py-5 gap-6">
+        <div className="flex py-3 md:py-5 gap-6">
           <div>
             <p className="text-normal font-inter text-[#334155]">Description</p>
             <p className="text-normal font-inter text-[#64748B]">
@@ -54,7 +54,7 @@ export function ProductDetails({ product }: IProductDetails) {
           </div>
         </div>
 
-        <div className="flex flex-col py-5 gap-2">
+        <div className="flex flex-col md:py-5 gap-2">
           <p className="text-normal font-inter text-[#334155]">Category</p>
           <div className="px-3 py-1.5 bg-[#D1FAE5] rounded-3xl w-fit">
             {product.category}
@@ -67,7 +67,7 @@ export function ProductDetails({ product }: IProductDetails) {
           </button>
         </a>
       </div>
-      <div className="flex-1 bg-gradient-to-b from-black/0 to-black/40">
+      <div className="hidden md:block flex-1 bg-gradient-to-b from-black/0 to-black/40">
         <img src={plantImage} className="w-full h-full object-cover" />
       </div>
     </div>

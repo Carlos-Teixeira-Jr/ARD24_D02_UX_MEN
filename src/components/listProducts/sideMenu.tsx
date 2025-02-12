@@ -64,18 +64,18 @@ export function SideMenu({handleSelectedFilters}: ISideMenu) {
 
   return (
     <>
-      <section className="w-60 border border-t-0 border-[#E2E8F0]">
+      <section className="w-full md:w-60 border border-t-0 border-[#E2E8F0]">
         <div className="py-5 px-10 border-b border-b-[#E2E8F0]">
           <p className="text-[#475569] font-inter font-normal text-[16px]">
             Filter
           </p>
         </div>
-        <div className="pl-10 pt-8 pr-5 flex flex-col gap-6">
+        <div className="pl-10 py-4 md:pt-8 pr-5 flex flex-col gap-6">
           <h3 className="text-[#475569] font-inter font-normal text-[16px]">
             Categories
           </h3>
 
-          <div className="flex flex-col gap-5">
+          <div className="grid grid-cols-2 md:flex md:flex-col gap-5">
             {categories.map((category) => (
               <div key={category.key} className="flex gap-2">
                 <input

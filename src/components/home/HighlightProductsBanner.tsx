@@ -4,7 +4,6 @@ import "slick-carousel/slick/slick-theme.css";
 import { useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import { IFormDataPayload } from "../../interfaces/CreatePlantInterface";
-import Card from "../commom/cards/card";
 
 const HighlightProductsBanner = () => {
   const [product, setProduct] = useState<IFormDataPayload[]>([]);
@@ -58,7 +57,7 @@ const HighlightProductsBanner = () => {
     <div className="mt-12 md:mt-[164px] mb-[96px]">
       <div className="max-w-[90%] md:flex md:justify-between mb-8 mx-[5%] md:mx-[112px]">
         <div className="md:w-[548px]">
-          <h1 className="max-w-[90%] md:w-[455px] font-secondary font-bold text-3xl md:text-[40px] mb-4">
+          <h1 className="md:w-[455px] font-secondary font-bold text-3xl md:text-[40px] mb-4">
             This weeks Most Popular and best selling
           </h1>
           <p className="md:w-[500px] font-primary text-[16px]">
@@ -84,13 +83,13 @@ const HighlightProductsBanner = () => {
               produto.highlighted && (
                 <Link to={`/products/${produto.id}`}>
                   <div className="max-w-[389px] relative md:h-[462px] border-2 border-transparent ">
-                    <div className="w-full h-[200px] md:h-[388px]">
+                    <div className="w-full md:h-[388px]">
                       <img
                         src={produto.img}
                         className="w-full h-[150px] md:h-[388px] object-cover"
                         alt="Plant image"
                       />
-                      <p className="md:absolute right-2 top-2 rounded-full md:w-fit justify-self-end bg-emerald-100 py-[6.48px] md:px-[12.95px] w-full text-center text-sm  md:text-[16px] border-[1.62px] border-emerald-50 text-emerald-900 font-primary">
+                      <p className="md:absolute mt-2 md:mt-0 right-2 top-2 rounded-full md:w-fit justify-self-end bg-emerald-100 py-[6.48px] md:px-[12.95px] w-full text-center text-sm  md:text-[16px] border-[1.62px] border-emerald-50 text-emerald-900 font-primary">
                         {produto.category}
                       </p>
                     </div>

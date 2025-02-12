@@ -2,7 +2,7 @@ import { NavLink } from "react-router-dom";
 
 export function MobileMenu() {
   return (
-    <nav className="bg-white fixed bottom-0 px-5 py-3 flex w-full justify-between items-center gap-5 text-2xl border-t md:hidden">
+    <nav className="fixed z-1 bottom-0 px-5 py-3 flex w-full justify-between items-center gap-5 text-2xl border-t md:hidden">
       <ul className="flex justify-between w-full">
         <li>
           <NavLink

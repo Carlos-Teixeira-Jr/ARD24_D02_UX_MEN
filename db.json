@@ -76,6 +76,17 @@
       "img": "https://images.freeimages.com/images/large-previews/07a/closeup-of-a-beautiful-plant-1192183.jpg",
       "highlighted": false,
       "id": "06e6"
+    },
+    {
+      "id": "8f80",
+      "name": "dioneia",
+      "subtitle": "planta carnivra",
+      "category": "indoor",
+      "price": 30,
+      "discountPercentage": 0,
+      "description": "come mosca quando quer, hiberna no inverno, natural de pantanos, gosta de solo \"ruim\"",
+      "img": "https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcQpHUQYAQLvDOl4WiV-U4_5suXz63d3OhwHVnM56jxU5UxpT8WNXOSQkeY13J8hNATnv5pyfLL9jCCYQf5_VqFHqA",
+      "highlighted": true
     }
   ]
 }

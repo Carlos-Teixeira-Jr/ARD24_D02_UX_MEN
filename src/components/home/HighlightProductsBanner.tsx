@@ -83,13 +83,13 @@ const HighlightProductsBanner = () => {
               produto.highlighted && (
                 <Link to={`/products/${produto.id}`}>
                   <div className="max-w-[389px] relative md:h-[462px] border-2 border-transparent ">
-                    <div className="w-full h-[200px] md:h-[388px]">
+                    <div className="w-full md:h-[388px]">
                       <img
                         src={produto.img}
                         className="w-full h-[150px] md:h-[388px] object-cover"
                         alt="Plant image"
                       />
-                      <p className="md:absolute right-2 top-2 rounded-full md:w-fit justify-self-end bg-emerald-100 py-[6.48px] md:px-[12.95px] w-full text-center text-sm  md:text-[16px] border-[1.62px] border-emerald-50 text-emerald-900 font-primary">
+                      <p className="md:absolute mt-2 md:mt-0 right-2 top-2 rounded-full md:w-fit justify-self-end bg-emerald-100 py-[6.48px] md:px-[12.95px] w-full text-center text-sm  md:text-[16px] border-[1.62px] border-emerald-50 text-emerald-900 font-primary">
                         {produto.category}
                       </p>
                     </div>

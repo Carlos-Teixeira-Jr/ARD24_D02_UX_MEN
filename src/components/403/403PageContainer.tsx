@@ -11,7 +11,7 @@ export function ForbiddenPageContainer() {
       </div>
       <div className="relative">
         <img src="/src/assets/images/403-page.png"/>
-        <img className="absolute top-10 md:top-40 md:right-33 right-12 md:w-sm w-xs animate-pulse" src="/src/assets/images/lock.png"/>
+        <img className="absolute top-10 md:top-15 md:right-15 right-12 md:w-sm w-xs animate-pulse" src="/src/assets/images/lock.png"/>
       </div>
     </section>
   );

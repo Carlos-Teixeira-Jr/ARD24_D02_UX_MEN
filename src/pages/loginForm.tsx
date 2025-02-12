@@ -2,6 +2,7 @@ import { useSignIn, useUser } from "@clerk/clerk-react";
 import { useState, useCallback, FormEvent, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { Toast } from "../components/toast/toast";
+import { validateEmail } from "../utils/validators/validateEmail";
 
 const LoginForm: React.FC = () => {
   const navigate = useNavigate();
@@ -21,7 +22,9 @@ const LoginForm: React.FC = () => {
     type: "",
   });
 
-  const [error, setError] = useState("");
+  const [emailError, setEmailError] = useState("");
+  console.log("🚀 ~ emailError:", emailError);
+  const [passwordError, setPasswordError] = useState("");
 
   const handlePasswordChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const actualPassword =
@@ -33,13 +36,24 @@ const LoginForm: React.FC = () => {
     setHiddenPassword("*".repeat(actualPassword.length));
   };
 
-  const handleSubmit = useCallback(
-    async (event: FormEvent) => {
-      event.preventDefault();
+  const handleSubmit = async (event: FormEvent) => {
+    event.preventDefault();
 
-      setError("");
-      setLoading(true);
+    setEmailError("");
+    setPasswordError("");
+    setLoading(true);
 
+    if (!validateEmail(emailAddress).isValid) {
+      setEmailError(validateEmail(emailAddress).errorMsg);
+    }
+    if (!password) {
+      setPasswordError("Password is required");
+    }
+
+    let input = "";
+    let message = "";
+
+    if (emailError === "" && passwordError === "") {
       try {
         const signInResource = await signIn?.create({
           identifier: emailAddress,
@@ -47,22 +61,37 @@ const LoginForm: React.FC = () => {
         });
 
         await setActive?.({ session: signInResource?.createdSessionId });
+
+        setLoading(false);
       } catch (error: any) {
-        if (error?.errors?.[0]?.code === "session_exists") {
-        } else {
-          setError(JSON.stringify(error?.errors[0].longMessage));
-          setShowToast({
-            show: true,
-            message: error?.errors[0].longMessage,
-            type: "error",
-          })
+        input = error.errors[0].meta.paramName;
+        message = error.errors[0].longMessage;
+
+        if (input === "identifier") {
+          setEmailError(message);
+        } else if (input === "password") {
+          setPasswordError(message);
         }
+
+        setLoading(false);
+
+        setShowToast({
+          show: true,
+          message: message,
+          type: "error",
+        })
       } finally {
         setLoading(false);
       }
-    },
-    [signIn, emailAddress, navigate, setActive, password]
-  );
+    } else {
+      setLoading(false)
+      setShowToast({
+        show: true,
+        message: "There's an empty field",
+        type: "error",
+      })
+    }
+  };
 
   useEffect(() => {
     if (isSignedIn) {
@@ -73,10 +102,10 @@ const LoginForm: React.FC = () => {
   return (
     <div className="md:flex min-h-screen">
       <div className="flex place-items-center justify-between mx-auto px-[40px] h-[83px]">
-      <a href="/">
-        <div className=" bg-[url('./assets/images/Logo.png')] w-[49px] h-[54px]"></div>
-      </a>
-      </div>   
+        <a href="/">
+          <div className=" bg-[url('./assets/images/Logo.png')] w-[49px] h-[54px]"></div>
+        </a>
+      </div>
       <div className="w-[90%] justify-self-center md:w-1/2 md:flex items-center">
         <div>
           <h1 className="md:w-120 font-secondary text-titles font-bold text-4xl">
@@ -91,14 +120,13 @@ const LoginForm: React.FC = () => {
                 E-mail:
               </label>
               <input
-                type="email"
                 id="emailAddress"
                 value={emailAddress}
                 onChange={(e) => setEmailAddress(e.target.value)}
                 className="w-full p-2 border border-gray-300 rounded-lg mt-1 text-gray-600"
                 placeholder="email@example.com"
-                required
               />
+              {emailError && <p className="text-red-500">{emailError}</p>}
             </div>
             <div className="mb-4">
               <label htmlFor="password" className="block">
@@ -109,8 +137,8 @@ const LoginForm: React.FC = () => {
                 value={hiddenPassword}
                 onChange={handlePasswordChange}
                 className="w-full p-2 border border-gray-300 rounded-lg mt-1 text-gray-600"
-                required
               />
+              {passwordError && <p className="text-red-500">{passwordError}</p>}
             </div>
             <div className="mb-4">
               <label className="inline-flex items-center">
@@ -130,10 +158,9 @@ const LoginForm: React.FC = () => {
             >
               Login
             </button>
-            {error && (
-              <div className="text-red-500 mb-4">{error}</div>
+            {showToast.show && (
+              <Toast toastProps={showToast} handleRemoveToast={setShowToast} />
             )}
-            {error && <Toast toastProps={showToast} handleRemoveToast={setShowToast} />}
           </form>
         </div>
       </div>

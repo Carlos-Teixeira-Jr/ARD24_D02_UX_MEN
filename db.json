@@ -90,6 +90,20 @@
       "lastName": "Almeida",
       "emailAddress": "armelinda7558@uorak.com",
       "password": "Celo1526!"
+    },
+    {
+      "id": "cad0",
+      "firstName": "gian",
+      "lastName": "teste2",
+      "emailAddress": "IECELI@GMAIL.COM",
+      "password": "12312312aA."
+    },
+    {
+      "id": "0e56",
+      "firstName": "gian",
+      "lastName": "teste2",
+      "emailAddress": "tihitex239@prorsd.com",
+      "password": "123aA.123"
     }
   ],
   "products": [

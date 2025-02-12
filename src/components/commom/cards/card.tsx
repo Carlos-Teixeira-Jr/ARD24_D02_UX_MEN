@@ -31,7 +31,7 @@ export default function Card({ produto }: ICard) {
         <h2 className="font-primary font-semibold text-2xl text-slate-600">
           {produto.name}
         </h2>
-        <p className="flex font-primary text-slate-500 gap-4">
+        <p className="flex font-primary text-sm md:text[16px] text-slate-500 gap-4">
           R$
           {(
             Number(produto.price) -

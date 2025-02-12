@@ -28,7 +28,6 @@ export function EditProductPage() {
 
   useEffect(() => {
     const productId = window.location.pathname.split("/")[2];
-    console.log("🚀 ~ useEffect ~ productId:", productId);
     const fetchData = async () => {
       try {
         const response = await fetch(

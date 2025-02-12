@@ -71,21 +71,22 @@ const RegisterUser: React.FC = () => {
       e.target.value.length > formData.password.length
         ? formData.password + e.target.value.slice(-1)
         : formData.password.slice(0, -1);
-  
+
     setFormData({ ...formData, password: actualPassword });
     setHiddenPassword("*".repeat(actualPassword.length));
   };
 
-  const handlePasswordConfirmationChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handlePasswordConfirmationChange = (
+    e: React.ChangeEvent<HTMLInputElement>
+  ) => {
     const actualPassword =
       e.target.value.length > formData.passwordConfirmation.length
         ? formData.passwordConfirmation + e.target.value.slice(-1)
         : formData.passwordConfirmation.slice(0, -1);
-  
+
     setFormData({ ...formData, passwordConfirmation: actualPassword });
     setHiddenPasswordConfirmation("*".repeat(actualPassword.length));
   };
-  
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -125,6 +126,7 @@ const RegisterUser: React.FC = () => {
             emailAddress: email,
             password,
           });
+
           setShowToast({
             show: true,
             message: "Success on login!",
@@ -215,7 +217,10 @@ const RegisterUser: React.FC = () => {
                     } else if (input.key === "passwordConfirmation") {
                       handlePasswordConfirmationChange(e);
                     } else {
-                      setFormData((prev) => ({ ...prev, [input.key]: e.target.value }));
+                      setFormData((prev) => ({
+                        ...prev,
+                        [input.key]: e.target.value,
+                      }));
                     }
                   }}
                 />

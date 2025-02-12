@@ -18,7 +18,7 @@ import { ListProductsPage } from "./pages/listProducts";
 import { PageNotFoundPage } from "./pages/404Page";
 import { useEffect } from "react";
 import { ForbiddenPage } from "./pages/403Page";
-import { VerifyEmail } from "./pages/VerifyEmail";
+import { VerifyEmail } from "./pages/verifyEmail/VerifyEmail";
 import { ProductDetailsPage } from "./pages/productDetails";
 
 const routes = [

@@ -27,8 +27,8 @@ export interface IFormDataPayload {
   name: string;
   subtitle: string;
   category: string;
-  price: number;
-  discountPercentage: number;
+  price: string;
+  discountPercentage: string;
   description: string;
   img: string;
   highlighted: boolean;

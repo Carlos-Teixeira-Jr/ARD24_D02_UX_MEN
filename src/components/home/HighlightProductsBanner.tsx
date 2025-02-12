@@ -101,12 +101,12 @@ const HighlightProductsBanner = () => {
                       <p className="md:flex font-primary text-sm md:text[16px] text-slate-500 gap-4">
                         R$
                         {(
-                          produto.price -
-                          (produto.price * produto.discountPercentage) / 100
+                          Number(produto.price) -
+                          (Number(produto.price) * Number(produto.discountPercentage)) / 100
                         ).toFixed(2)}
-                        {produto.discountPercentage !== 0 && (
+                        {Number(produto.discountPercentage) !== 0 && (
                           <p className="text-slate-400 line-through">
-                            R${produto.price.toFixed(2)}
+                            R${Number(produto.price).toFixed(2)}
                           </p>
                         )}
                       </p>

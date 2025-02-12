@@ -10,6 +10,8 @@ const RegisterUser: React.FC = () => {
   const navigate = useNavigate();
   const { signUp } = useSignUp();
 
+  const [loading, setLoading] = useState(false)
+
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -119,21 +121,15 @@ const RegisterUser: React.FC = () => {
       const { name, email, password } = formData;
       if (signUp) {
         try {
+          setLoading(true)
+
           await signUp.create({
             firstName: name.split(" ")[0] || "teste",
             lastName: name.split(" ")[1] || "teste2",
             emailAddress: email,
             password,
           });
-        } catch (error: any) {
-          setShowToast({
-            show: true,
-            message: "Error on login!",
-            type: "error",
-          });
-        }
 
-        try {
           await signUp.prepareVerification({
             redirectUrl: "http://localhost:5173/verify",
             strategy: "email_link",
@@ -141,23 +137,25 @@ const RegisterUser: React.FC = () => {
 
           setShowToast({
             show: true,
-            message: "Success on login!",
+            message: "Success on signup!",
             type: "success",
           });
 
-          navigate("/verify");
+          setTimeout(() => {
+            navigate("/verify");
+          }, 3000);
         } catch (error: any) {
-          console.error("erro", error.errors);
           setShowToast({
             show: true,
-            message: "Error on login!",
+            message: "Error on signup!",
             type: "error",
           });
+          setLoading(false)
         }
       } else {
         setShowToast({
           show: true,
-          message: "Error on login!",
+          message: "Error on signup!",
           type: "error",
         });
       }
@@ -196,7 +194,7 @@ const RegisterUser: React.FC = () => {
                   type="text"
                   placeholder={input.placeholder}
                   value={input.value}
-                  className="border p-3 rounded-lg border-[#E2E8F0] h-11.5 "
+                  className="border p-3 rounded-lg border-[#E2E8F0] h-11.5 text-gray-500"
                   onChange={(e) => {
                     if (input.key === "password") {
                       handlePasswordChange(e);
@@ -221,8 +219,11 @@ const RegisterUser: React.FC = () => {
             <button
               type="submit"
               className="bg-primary cursor-pointer text-white font-inter font-semibold py-2.5 rounded-md"
+              disabled={loading}
             >
-              Signup
+              {loading ? (
+                <div className="w-5 h-5 border-4 border-gray-300 border-t-primary rounded-full animate-spin mx-auto"></div>
+              ) : "Register"}
             </button>
           </form>
         </div>

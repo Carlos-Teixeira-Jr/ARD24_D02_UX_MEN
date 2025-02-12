@@ -8,7 +8,6 @@ interface IPrivateRoute {
 
 export function PrivateRoute({children}: IPrivateRoute) {
   const {isSignedIn} = useUser();
-  console.log("🚀 ~ PrivateRoute ~ isSignedIn:", isSignedIn)
 
   if (isSignedIn !== undefined) {
     return (

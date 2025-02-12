@@ -82,7 +82,6 @@ export function EditProductPage() {
       });
 
       if (response.ok) {
-        console.log("Success on editing product!");
         setShowToast({
           show: true,
           message: "Success on editing product!",

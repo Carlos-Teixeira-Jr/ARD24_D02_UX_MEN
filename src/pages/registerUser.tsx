@@ -8,7 +8,7 @@ import { Toast } from "../components/toast/toast";
 
 const RegisterUser: React.FC = () => {
   const navigate = useNavigate();
-  const { signUp, isLoaded } = useSignUp();
+  const { signUp, isLoaded, setActive } = useSignUp();
 
   const [loading, setLoading] = useState(false)
 
@@ -119,16 +119,18 @@ const RegisterUser: React.FC = () => {
 
     if (!Object.values(newFormDataErrors).some((error) => error !== "")) {
       const { name, email, password } = formData;
-      if (signUp) {
+      if (isLoaded) {
         try {
           setLoading(true)
 
-          const teste = await signUp.create({
+          await signUp.create({
             firstName: name.split(" ")[0] || "teste",
             lastName: name.split(" ")[1] || "teste2",
             emailAddress: email,
             password,
           });
+
+          setActive({session: signUp.createdSessionId});
 
           await signUp.prepareVerification({
             redirectUrl: "http://localhost:5173/verify",

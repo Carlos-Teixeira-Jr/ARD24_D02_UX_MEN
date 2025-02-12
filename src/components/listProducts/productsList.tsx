@@ -81,7 +81,7 @@ export function ProductsList({filters}: ICard) {
         </button>
       </div>
 
-      <div className="flex flex-wrap gap-17">
+      <div className="flex flex-wrap gap-17 gap-y-25">
         {filteredProducts.map((produto: IFormDataPayload) => (
           <Card key={produto.id} produto={produto} />
         ))}

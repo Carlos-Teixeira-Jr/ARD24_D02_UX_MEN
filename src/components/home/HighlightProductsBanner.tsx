@@ -90,7 +90,7 @@ const HighlightProductsBanner = () => {
                         className="w-full h-[150px] md:h-[388px] object-cover"
                         alt="Plant image"
                       />
-                      <p className="md:absolute right-2 top-2 rounded-full md:w-fit justify-self-end bg-emerald-100 py-[6.48px] px-[12.95px] w-full text-center text-sm  md:text-[16px] border-[1.62px] border-emerald-50 text-emerald-900 font-primary">
+                      <p className="md:absolute right-2 top-2 rounded-full md:w-fit justify-self-end bg-emerald-100 py-[6.48px] md:px-[12.95px] w-full text-center text-sm  md:text-[16px] border-[1.62px] border-emerald-50 text-emerald-900 font-primary">
                         {produto.category}
                       </p>
                     </div>

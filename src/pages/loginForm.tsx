@@ -65,12 +65,12 @@ const LoginForm: React.FC = () => {
         <div className=" bg-[url('./assets/images/Logo.png')] w-[49px] h-[54px]"></div>
       </a>
       </div>   
-      <div className="w-1/2 flex items-center  bg-white">
+      <div className="w-1/2 flex items-center">
         <div>
-          <h1 className="w-120 font-secondary text-primary text-titles font-bold text-4xl">
+          <h1 className="w-120 font-secondary text-titles font-bold text-4xl">
             Sign Up
           </h1>
-          <p className="font-inter text-[#64748B] font-normal">
+          <p className="font-inter font-normal">
             Lorem ipsum dolor sit amet consectetur.
           </p>
           <form onSubmit={handleSubmit}>
@@ -87,7 +87,7 @@ const LoginForm: React.FC = () => {
               />
             </div>
             <div className="mb-4">
-              <label htmlFor="password" className="block text-gray-700">
+              <label htmlFor="password" className="block">
                 Password:
               </label>
               <input
@@ -108,7 +108,7 @@ const LoginForm: React.FC = () => {
                   onChange={(e) => setStayConnected(e.target.checked)}
                   className="form-checkbox"
                 />
-                <span className="ml-2 text-gray-700">Stay connected</span>
+                <span className="ml-2">Stay connected</span>
               </label>
             </div>
             <button disabled={loading} type="submit" className="w-full bg-primary text-white p-3 rounded-lg mb-4 font-inter font-semibold cursor-pointer">Login</button>

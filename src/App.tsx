@@ -18,12 +18,14 @@ import { ListProductsPage } from "./pages/listProducts";
 import { PageNotFoundPage } from "./pages/404Page";
 import { useEffect } from "react";
 import { ForbiddenPage } from "./pages/403Page";
+import { VerifyEmail } from "./pages/verifyEmail/VerifyEmail";
 import { ProductDetailsPage } from "./pages/productDetails";
 
 const routes = [
   { path: "/" },
   { path: "/login" },
   { path: "/register" },
+  {path: "/verify"},
   { path: "/about-us" },
   { path: "/page-not-found" },
   { path: "/forbidden-page" },
@@ -33,8 +35,6 @@ const routes = [
   { path: "/products/:id/edit" },
   { path: "/user-config" },
 ];
-
-//Todo: resolver isso aqui
 
 function RouteValidator() {
   const location = useLocation();
@@ -56,12 +56,14 @@ function App() {
       <RouteValidator />
       <Routes>
         <Route path="/" element={<Home />} />
+        <Route path="/verify" element={<VerifyEmail />} />
         <Route path="/login" element={<LoginForm />} />
         <Route path="/register" element={<RegisterUser />} />
         <Route path="/about-us" element={<AboutUsPage />} />
         <Route path="/page-not-found" element={<PageNotFoundPage />} />
         <Route path="/forbidden-page" element={<ForbiddenPage />} />
-
+        <Route path="verify-email" element={<VerifyEmail />} />
+        
         <Route
           path="/products"
           element={

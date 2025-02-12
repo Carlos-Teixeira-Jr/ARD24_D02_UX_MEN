@@ -1,6 +1,8 @@
 import { useSignIn, useUser } from "@clerk/clerk-react";
-import { FormEvent, useCallback, useEffect, useState } from "react";
-import { useNavigate } from "react-router";
+import { useState, useCallback, FormEvent, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+import { Toast } from "../components/toast/toast";
+
 
 const LoginForm: React.FC = () => {
   const navigate = useNavigate();
@@ -85,7 +87,9 @@ const LoginForm: React.FC = () => {
               />
             </div>
             <div className="mb-4">
-              <label htmlFor="password" className="block text-gray-700">Password:</label>
+              <label htmlFor="password" className="block text-gray-700">
+                Password:
+              </label>
               <input
                 type="password"
                 id="password"
@@ -112,8 +116,14 @@ const LoginForm: React.FC = () => {
           </form>
         </div>
       </div>
-      <div className="w-1/2 bg-cover bg-center p-92" style={{ backgroundImage: 'url(src/assets/images/plant.png)' }}>
-      </div>
+      <div
+        className="w-1/2 bg-cover bg-center p-92"
+        style={{ backgroundImage: "url(src/assets/images/plant.png)" }}
+      ></div>
+
+      {showToast.show && (
+        <Toast toastProps={showToast} handleRemoveToast={setShowToast} />
+      )}
     </div>
   );
 };    

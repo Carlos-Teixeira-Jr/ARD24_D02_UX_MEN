@@ -71,15 +71,15 @@ const LoginForm: React.FC = () => {
   }, [isSignedIn, navigate]);
 
   return (
-    <div className="flex min-h-screen">
+    <div className="md:flex min-h-screen">
       <div className="flex place-items-center justify-between mx-auto px-[40px] h-[83px]">
-        <a href="/">
-          <div className=" bg-[url('./assets/images/Logo.png')] w-[49px] h-[54px]"></div>
-        </a>
-      </div>
-      <div className="w-1/2 flex items-center">
+      <a href="/">
+        <div className=" bg-[url('./assets/images/Logo.png')] w-[49px] h-[54px]"></div>
+      </a>
+      </div>   
+      <div className="w-[90%] justify-self-center md:w-1/2 md:flex items-center">
         <div>
-          <h1 className="w-120 font-secondary text-titles font-bold text-4xl">
+          <h1 className="md:w-120 font-secondary text-titles font-bold text-4xl">
             Sign Up
           </h1>
           <p className="font-inter font-normal">
@@ -138,7 +138,7 @@ const LoginForm: React.FC = () => {
         </div>
       </div>
       <div
-        className="w-1/2 bg-cover bg-center p-92"
+        className="fixed bottom-0 md:static w-full h-[350px] md:w-1/2 bg-cover bg-center md:p-92"
         style={{ backgroundImage: "url(src/assets/images/plant.png)" }}
       ></div>
 

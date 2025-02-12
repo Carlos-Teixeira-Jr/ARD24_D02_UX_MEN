@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import Card from "../commom/cards/card";
-import { IFormData, IFormDataPayload } from "../../interfaces/CreatePlantInterface";
+import { IFormDataPayload } from "../../interfaces/CreatePlantInterface";
 import { useNavigate } from "react-router-dom";
 
 interface ICard {
@@ -81,7 +81,7 @@ export function ProductsList({filters}: ICard) {
         </button>
       </div>
 
-      <div className="flex flex-wrap gap-17 gap-y-25">
+      <div className="justify-center mx-auto flex flex-wrap gap-17 gap-y-25">
         {filteredProducts.map((produto: IFormDataPayload) => (
           <Card key={produto.id} produto={produto} />
         ))}

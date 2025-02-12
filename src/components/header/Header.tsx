@@ -102,7 +102,7 @@ const Header = () => {
                   <DarkModeToggle />
                 </li>
                 <li>
-                  <Link to="register">
+                  <Link to="/register">
                     <button className="my-[12px] cursor-pointer">
                       Register
                     </button>

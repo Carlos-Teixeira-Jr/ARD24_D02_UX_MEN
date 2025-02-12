@@ -4,8 +4,8 @@ interface ICard {
     name: string;
     subtitle: string;
     category: string;
-    price: number;
-    discountPercentage: number;
+    price: string;
+    discountPercentage: string;
     description: string;
     img: string;
     highlighted: boolean;
@@ -34,12 +34,12 @@ export default function Card({ produto }: ICard) {
         <p className="flex font-primary text-slate-500 gap-4">
           R$
           {(
-            produto.price -
-            (produto.price * produto.discountPercentage) / 100
+            Number(produto.price) -
+            (Number(produto.price) * Number(produto.discountPercentage)) / 100
           ).toFixed(2)}
-          {produto.discountPercentage !== 0 && (
+          {Number(produto.discountPercentage) !== 0 && (
             <p className="text-slate-400 line-through">
-              R${produto.price.toFixed(2)}
+              R${Number(produto.price).toFixed(2)}
             </p>
           )}
         </p>

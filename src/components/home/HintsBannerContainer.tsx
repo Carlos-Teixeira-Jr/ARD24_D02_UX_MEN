@@ -12,7 +12,7 @@ const HintsBannerContainer = () => {
         </p>
       </div>
       <div className="grid grid-cols-1 md:flex gap-12 w-[90%] md:w-full">
-        <div className="w-[90%] md:w-[374px] text-center my-4">
+        <div className="md:w-[374px] text-center my-4">
           <div className="mx-auto h-[72px] w-[72px] bg-emerald-900 rounded-full bg-[url('./assets/images/gota.svg')] bg-center bg-no-repeat"></div>
           <div>
             <h3 className="font-primary font-bold text-2xl my-6">Watering</h3>
@@ -22,7 +22,7 @@ const HintsBannerContainer = () => {
             </p>
           </div>
         </div>
-        <div className="w-[90%] md:w-[374px] text-center my-4">
+        <div className="md:w-[374px] text-center my-4">
           <div className="mx-auto h-[72px] w-[72px] bg-emerald-900 rounded-full bg-[url('./assets/images/sun.svg')] bg-center bg-no-repeat"></div>
           <div>
             <h3 className="font-primary font-bold text-2xl my-6">Sunlight</h3>
@@ -33,7 +33,7 @@ const HintsBannerContainer = () => {
             </p>
           </div>
         </div>
-        <div className="w-[90%] md:w-[374px] text-center my-4">
+        <div className="md:w-[374px] text-center my-4">
           <div className="mx-auto h-[72px] w-[72px] bg-emerald-900 rounded-full bg-[url('./assets/images/bag.svg')] bg-center bg-no-repeat"></div>
           <div>
             <h3 className="font-primary font-bold text-2xl my-6">

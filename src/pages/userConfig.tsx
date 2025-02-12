@@ -7,6 +7,7 @@ import { Toast } from "../components/toast/toast";
 import Header from "../components/header/Header";
 import Footer from "../components/footer/Footer";
 import { useUser } from "@clerk/clerk-react";
+import { MobileMenu } from "../components/header/MobileMenu";
 
 export function UserConfigPage() {
   const {user} = useUser();
@@ -51,14 +52,14 @@ export function UserConfigPage() {
     {
       key: "currentPassword",
       value: hiddenPassword,
-      placeholder: "Echinocereus Cactus",
+      placeholder: "",
       label: "Current password",
       errorMsg: formDataErrors.currentPassword,
     },
     {
       key: "newPassword",
       value: hiddenNewPassword,
-      placeholder: "Echinocereus Cactus",
+      placeholder: "",
       label: "New password",
       errorMsg: formDataErrors.newPassword,
     },
@@ -166,6 +167,7 @@ export function UserConfigPage() {
   return (
     <>
       <Header />
+      <MobileMenu/>
       <main className="flex md:flex-row flex-col gap-5 md:gap-14">
         <div className="flex-1 md:pt-8.5 md:pl-16 p-5 flex flex-col gap-5">
           <div className="gap-1 flex flex-col w-2/3">

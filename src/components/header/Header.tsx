@@ -11,7 +11,7 @@ const Header = () => {
       <a href="/">
         <div className=" bg-[url('./assets/images/Frame121.png')] w-[49px] h-[54px]" />
       </a>
-      <div>
+      <div className="hidden md:flex">
         {!isSignedIn ? (
           <ul>
             <li className="font-inter text-[16px] hover:scale-110 transition-transform duration-200 easy-in-out">

@@ -4,6 +4,7 @@ import Header from "../components/header/Header";
 import { ProductDetails } from "../components/products/productsDetails/productDetails";
 import { IFormData } from "../interfaces/CreatePlantInterface";
 import { useParams } from "react-router-dom";
+import { MobileMenu } from "../components/header/MobileMenu";
 
 export function ProductDetailsPage() {
 
@@ -21,7 +22,6 @@ export function ProductDetailsPage() {
   const urlParams = useParams();
 
   useEffect(() => {
-    // const urlParams = useParams();
     const fetchData = async () => {
       try {
         const response = await fetch(`http://localhost:3001/products/${urlParams.id}`, {
@@ -54,6 +54,7 @@ export function ProductDetailsPage() {
   return (
     <>
       <Header />
+      <MobileMenu/>
       <ProductDetails product={product}/>
       <Footer/>
     </>

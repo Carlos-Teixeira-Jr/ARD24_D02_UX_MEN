@@ -7,6 +7,7 @@ import {
 import Header from "../components/header/Header";
 import Footer from "../components/footer/Footer";
 import { Toast } from "../components/toast/toast";
+import { MobileMenu } from "../components/header/MobileMenu";
 
 export function EditProductPage() {
   const [productData, setProductData] = useState<IFormDataPayload>({
@@ -103,6 +104,7 @@ export function EditProductPage() {
   return (
     <div>
       <Header />
+      <MobileMenu/>
       <ProductForm
         productData={productData}
         onSubmit={handleEditProduct}

@@ -65,6 +65,17 @@
       "description": "Lorem ipsun Lorem ipsun Lorem ipsun Lorem ipsun Lorem ipsun Lorem ipsun Lorem ipsun Lorem ipsun Lorem ipsun Lorem ipsun Lorem ipsun Lorem ipsun Lorem ipsun ",
       "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1b/Elephant_creeper_%28Argyreia_nervosa%29_-_20100808.jpg/1200px-Elephant_creeper_%28Argyreia_nervosa%29_-_20100808.jpg",
       "highlighted": true
+    },
+    {
+      "id": "8f80",
+      "name": "dioneia",
+      "subtitle": "planta carnivra",
+      "category": "indoor",
+      "price": 30,
+      "discountPercentage": 0,
+      "description": "come mosca quando quer, hiberna no inverno, natural de pantanos, gosta de solo \"ruim\"",
+      "img": "https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcQpHUQYAQLvDOl4WiV-U4_5suXz63d3OhwHVnM56jxU5UxpT8WNXOSQkeY13J8hNATnv5pyfLL9jCCYQf5_VqFHqA",
+      "highlighted": true
     }
   ]
 }

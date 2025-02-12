@@ -81,8 +81,8 @@ const HighlightProductsBanner = () => {
           {product.map(
             (produto) =>
               produto.highlighted && (
-                <Link to={`/products/${produto.id}`}>
-                  <div className="max-w-[389px] relative md:h-[462px] border-2 border-transparent ">
+                <Link to={`/products/${produto.id}`} key={produto.id}>
+                  <div className="max-w-[389px] relative md:h-[462px] border-2 border-transparent">
                     <div className="w-full md:h-[388px]">
                       <img
                         src={produto.img}
@@ -97,7 +97,7 @@ const HighlightProductsBanner = () => {
                       <h2 className="font-primary font-semibold md:text-2xl text-slate-600">
                         {produto.name}
                       </h2>
-                      <p className="md:flex font-primary text-sm md:text[16px] text-slate-500 gap-4">
+                      <div className="md:flex font-primary text-sm md:text[16px] text-slate-500 gap-4">
                         R$
                         {(
                           Number(produto.price) -
@@ -108,7 +108,7 @@ const HighlightProductsBanner = () => {
                             R${Number(produto.price).toFixed(2)}
                           </p>
                         )}
-                      </p>
+                      </div>
                     </div>
                   </div>
                 </Link>

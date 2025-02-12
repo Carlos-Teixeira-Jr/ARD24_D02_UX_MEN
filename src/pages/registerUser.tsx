@@ -125,15 +125,7 @@ const RegisterUser: React.FC = () => {
             emailAddress: email,
             password,
           });
-        } catch (error: any) {
-          setShowToast({
-            show: true,
-            message: "Error on login!",
-            type: "error",
-          });
-        }
 
-        try {
           await signUp.prepareVerification({
             redirectUrl: "http://localhost:5173/verify",
             strategy: "email_link",
@@ -147,13 +139,23 @@ const RegisterUser: React.FC = () => {
 
           navigate("/verify");
         } catch (error: any) {
-          console.error("erro", error.errors);
           setShowToast({
             show: true,
             message: "Error on login!",
             type: "error",
           });
         }
+
+        // try {
+
+        // } catch (error: any) {
+        //   console.error("erro", error.errors);
+        //   setShowToast({
+        //     show: true,
+        //     message: "Error on login!",
+        //     type: "error",
+        //   });
+        // }
       } else {
         setShowToast({
           show: true,
@@ -196,7 +198,7 @@ const RegisterUser: React.FC = () => {
                   type="text"
                   placeholder={input.placeholder}
                   value={input.value}
-                  className="border p-3 rounded-lg border-[#E2E8F0] h-11.5 "
+                  className="border p-3 rounded-lg border-[#E2E8F0] h-11.5 text-gray-500"
                   onChange={(e) => {
                     if (input.key === "password") {
                       handlePasswordChange(e);

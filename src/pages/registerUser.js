@@ -1,0 +1,155 @@
+import { jsx as _jsx, jsxs as _jsxs } from "react/jsx-runtime";
+import { useState } from "react";
+import { useNavigate } from "react-router";
+import { useSignUp } from "@clerk/clerk-react";
+import { validateEmail } from "../utils/validators/validateEmail";
+import { validateName } from "../utils/validators/validateName";
+import { validatePassword } from "../utils/validators/validatePassword";
+import { Toast } from "../components/toast/toast";
+const RegisterUser = () => {
+    const navigate = useNavigate();
+    const { signUp, isLoaded, setActive } = useSignUp();
+    const [loading, setLoading] = useState(false);
+    const [formData, setFormData] = useState({
+        name: "",
+        email: "",
+        password: "",
+        passwordConfirmation: "",
+    });
+    const [hiddenPassword, setHiddenPassword] = useState("");
+    const [hiddenPasswordConfirmation, setHiddenPasswordConfirmation] = useState("");
+    const [formDataErrors, setFormDataErrors] = useState({
+        name: "",
+        email: "",
+        password: "",
+        passwordConfirmation: "",
+    });
+    const inputs = [
+        {
+            key: "name",
+            value: formData.name,
+            placeholder: "Insert your name",
+            label: "Name",
+            errorMsg: formDataErrors.name,
+        },
+        {
+            key: "email",
+            value: formData.email,
+            placeholder: "example@example.com",
+            label: "Email",
+            errorMsg: formDataErrors.email,
+        },
+        {
+            key: "password",
+            value: hiddenPassword,
+            placeholder: "",
+            label: "Password",
+            errorMsg: formDataErrors.password,
+        },
+        {
+            key: "passwordConfirmation",
+            value: hiddenPasswordConfirmation,
+            placeholder: "",
+            label: "Confirm password",
+            errorMsg: formDataErrors.passwordConfirmation,
+        },
+    ];
+    const [showToast, setShowToast] = useState({
+        show: false,
+        message: "",
+        type: "",
+    });
+    const handlePasswordChange = (e) => {
+        const actualPassword = e.target.value.length > formData.password.length
+            ? formData.password + e.target.value.slice(-1)
+            : formData.password.slice(0, -1);
+        setFormData({ ...formData, password: actualPassword });
+        setHiddenPassword("*".repeat(actualPassword.length));
+    };
+    const handlePasswordConfirmationChange = (e) => {
+        const actualPassword = e.target.value.length > formData.passwordConfirmation.length
+            ? formData.passwordConfirmation + e.target.value.slice(-1)
+            : formData.passwordConfirmation.slice(0, -1);
+        setFormData({ ...formData, passwordConfirmation: actualPassword });
+        setHiddenPasswordConfirmation("*".repeat(actualPassword.length));
+    };
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        let newFormDataErrors = {
+            name: "",
+            email: "",
+            password: "",
+            passwordConfirmation: "",
+        };
+        if (!validateName(formData.name).isValid) {
+            newFormDataErrors.name = validateName(formData.name).errorMsg;
+        }
+        if (!validateEmail(formData.email).isValid) {
+            newFormDataErrors.email = validateEmail(formData.email).errorMsg;
+        }
+        if (!validatePassword(formData.password).isValid) {
+            newFormDataErrors.password = validatePassword(formData.password).errorMsg;
+        }
+        if (formData.passwordConfirmation !== formData.password) {
+            newFormDataErrors.passwordConfirmation = "Passwords do not match";
+        }
+        setFormDataErrors(newFormDataErrors);
+        if (!Object.values(newFormDataErrors).some((error) => error !== "")) {
+            const { name, email, password } = formData;
+            if (isLoaded) {
+                try {
+                    setLoading(true);
+                    await signUp.create({
+                        firstName: name.split(" ")[0] || "teste",
+                        lastName: name.split(" ")[1] || "teste2",
+                        emailAddress: email,
+                        password,
+                    });
+                    setActive({ session: signUp.createdSessionId });
+                    await signUp.prepareVerification({
+                        redirectUrl: "http://localhost:5173/verify",
+                        strategy: "email_link",
+                    });
+                    setShowToast({
+                        show: true,
+                        message: "Success on signup!",
+                        type: "success",
+                    });
+                    setTimeout(() => {
+                        navigate("/verify");
+                    }, 3000);
+                }
+                catch (error) {
+                    setShowToast({
+                        show: true,
+                        message: "Error on signup!",
+                        type: "error",
+                    });
+                    setLoading(false);
+                }
+            }
+            else {
+                setShowToast({
+                    show: true,
+                    message: "Error on signup!",
+                    type: "error",
+                });
+            }
+        }
+    };
+    return (_jsxs("div", { className: "md:flex max-w-full md:min-h-screen ", children: [_jsx("div", { className: "flex place-items-center md:justify-between mx-auto px-[40px] h-[83px]", children: _jsx("a", { href: "/", children: _jsx("div", { className: "bg-[url('./assets/images/Logo.png')] w-[49px] h-[54px]" }) }) }), _jsx("div", { className: "justify-self-center md:w-1/2 md:flex justify-items-center md:items-center", children: _jsxs("div", { children: [_jsx("h1", { className: "md:w-120 font-secondary text-titles font-bold text-4xl", children: "Register" }), _jsx("p", { className: "font-inter font-normal mb-5 md:mb-0", children: "Lorem ipsum dolor sit amet consectetur." }), _jsxs("form", { className: "flex flex-col gap-5", onSubmit: (e) => handleSubmit(e), children: [inputs.map((input) => (_jsxs("div", { className: "flex flex-col gap-2", children: [_jsx("label", { htmlFor: input.key, className: "font-inter text-[#475569] font-semibold", children: input.label }), _jsx("input", { type: "text", placeholder: input.placeholder, value: input.value, className: "border p-3 rounded-lg border-[#E2E8F0] h-11.5 text-gray-500", onChange: (e) => {
+                                                if (input.key === "password") {
+                                                    handlePasswordChange(e);
+                                                }
+                                                else if (input.key === "passwordConfirmation") {
+                                                    handlePasswordConfirmationChange(e);
+                                                }
+                                                else {
+                                                    setFormData((prev) => ({
+                                                        ...prev,
+                                                        [input.key]: e.target.value,
+                                                    }));
+                                                }
+                                            } }), input.errorMsg && (_jsx("p", { className: "font-inter text-[#DC2626] font-semibold", children: input.errorMsg }))] }, input.key))), _jsx("button", { type: "submit", className: "bg-primary cursor-pointer text-white font-inter font-semibold py-2.5 rounded-md", disabled: loading, children: loading ? (_jsx("div", { className: "w-5 h-5 border-4 border-gray-300 border-t-primary rounded-full animate-spin mx-auto" })) : "Register" })] })] }) }), _jsx("div", { className: "hidden md:flex w-1/2 bg-cover bg-center p-92", style: { backgroundImage: "url(src/assets/images/plant.png)" } }), _jsx(Toast, { toastProps: showToast, handleRemoveToast: setShowToast })] }));
+};
+export default RegisterUser;

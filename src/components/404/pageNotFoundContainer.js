@@ -1,0 +1,5 @@
+import { jsx as _jsx, jsxs as _jsxs } from "react/jsx-runtime";
+import plantNorFoundImg from "../../assets/images/plantNotFound.png";
+export function PageNotFoundContainer() {
+    return (_jsxs("section", { className: "min-h-screen flex flex-col items-center justify-center pb-20", children: [_jsxs("div", { className: "flex items-center text-[10rem] font-primary text-emerald-900", children: [_jsx("h1", { className: "drop-shadow-xl", children: "4" }), _jsx("img", { className: "w-50 motion-safe:animate-bounce drop-shadow-xl", src: plantNorFoundImg }), _jsx("h1", { className: "drop-shadow-xl", children: "4" })] }), _jsxs("div", { className: "text-[3rem] md:text-[4rem] font-semibold leading-15", children: [_jsx("h1", { className: "text-emerald-900", children: "SORRY, THERE'S" }), _jsx("h1", { className: "text-gray-400", children: "NOTHING HERE!" })] }), _jsx("button", { onClick: () => window.location.href = "/", className: "w-[90%] md:w-auto px-10 py-4 md:py-3 bg-emerald-900 hover:bg-emerald-700 font-semibold md:font-normal text-2xl md:text-[16px] text-white rounded-[8px] cursor-pointer my-5 transition-colors duration-00 ease-in-out", children: "Home" })] }));
+}

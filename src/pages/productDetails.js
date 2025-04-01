@@ -5,6 +5,7 @@ import Header from "../components/header/Header";
 import { ProductDetails } from "../components/products/productsDetails/productDetails";
 import { useParams } from "react-router-dom";
 import { MobileMenu } from "../components/header/MobileMenu";
+import { API_URL } from "@/api/api";
 export function ProductDetailsPage() {
     const [product, setProduct] = useState({
         name: "",

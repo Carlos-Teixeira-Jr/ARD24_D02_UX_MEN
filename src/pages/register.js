@@ -7,6 +7,7 @@ import Footer from "../components/footer/Footer";
 import { useNavigate } from "react-router-dom";
 import { useUser } from "@clerk/clerk-react";
 import { MobileMenu } from "../components/header/MobileMenu";
+import { API_URL } from "@/api/api";
 export function RegisterProductPage() {
     const [showToast, setShowToast] = useState({
         show: false,
@@ -27,7 +28,7 @@ export function RegisterProductPage() {
             highlighted: formData.highlighted,
         };
         try {
-            const response = await fetch("${API_URL}/products", {
+            const response = await fetch(`${API_URL}/products`, {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",

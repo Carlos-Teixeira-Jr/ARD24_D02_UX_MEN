@@ -1,6 +1,7 @@
+import { API_URL } from "@/api/api";
 export async function handleSaveUserOnDb(user) {
     try {
-        const response = await fetch("${API_URL}/users", {
+        const response = await fetch(`${API_URL}/users`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",

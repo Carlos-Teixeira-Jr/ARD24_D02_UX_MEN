@@ -2,6 +2,7 @@ import { jsx as _jsx, jsxs as _jsxs } from "react/jsx-runtime";
 import { useEffect, useState } from "react";
 import Card from "../commom/cards/card";
 import { useNavigate } from "react-router-dom";
+import { API_URL } from "@/api/api";
 export function ProductsList({ filters }) {
     const [input, setInput] = useState("");
     const [products, setProducts] = useState([]);

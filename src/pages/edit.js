@@ -6,6 +6,7 @@ import Footer from "../components/footer/Footer";
 import { Toast } from "../components/toast/toast";
 import { MobileMenu } from "../components/header/MobileMenu";
 import { useNavigate } from "react-router-dom";
+import { API_URL } from "@/api/api";
 export function EditProductPage() {
     const [productData, setProductData] = useState({
         name: "",

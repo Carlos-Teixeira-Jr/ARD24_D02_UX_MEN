@@ -27,7 +27,7 @@ export function RegisterProductPage() {
             highlighted: formData.highlighted,
         };
         try {
-            const response = await fetch("http://localhost:3001/products", {
+            const response = await fetch("${API_URL}/products", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",

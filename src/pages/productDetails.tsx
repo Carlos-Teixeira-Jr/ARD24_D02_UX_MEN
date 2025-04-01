@@ -5,6 +5,7 @@ import { ProductDetails } from "../components/products/productsDetails/productDe
 import { IFormData } from "../interfaces/CreatePlantInterface";
 import { useParams } from "react-router-dom";
 import { MobileMenu } from "../components/header/MobileMenu";
+import { API_URL } from "@/api/api";
 
 export function ProductDetailsPage() {
 
@@ -24,7 +25,7 @@ export function ProductDetailsPage() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch(`http://localhost:3001/products/${urlParams.id}`, {
+        const response = await fetch(`${API_URL}/products/${urlParams.id}`, {
           method: "GET",
           headers: {
             "Content-Type": "application/json",

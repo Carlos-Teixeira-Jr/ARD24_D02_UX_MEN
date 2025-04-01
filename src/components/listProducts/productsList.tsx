@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import Card from "../commom/cards/card";
 import { IFormDataPayload } from "../../interfaces/CreatePlantInterface";
 import { useNavigate } from "react-router-dom";
+import { API_URL } from "@/api/api";
 
 interface ICard {
   filters: string[];
@@ -17,7 +18,7 @@ export function ProductsList({filters}: ICard) {
     const fetchData = async () => {
       try {
         const response = await fetch(
-          `http://localhost:3001/products`,
+          `${API_URL}/products`,
           {
             method: "GET",
             headers: {

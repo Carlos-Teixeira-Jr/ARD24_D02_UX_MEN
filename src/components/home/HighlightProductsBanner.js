@@ -4,6 +4,8 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
+import { API_URL } from "@/api/api";
+
 const HighlightProductsBanner = () => {
     const [product, setProduct] = useState([]);
     let sliderRef = useRef(null);
@@ -16,7 +18,7 @@ const HighlightProductsBanner = () => {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await fetch(`http://localhost:3001/products`, {
+                const response = await fetch(`${API_URL}/products`, {
                     method: "GET",
                     headers: {
                         "Content-Type": "application/json",

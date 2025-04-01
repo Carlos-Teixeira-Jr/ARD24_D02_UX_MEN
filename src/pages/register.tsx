@@ -7,6 +7,7 @@ import Footer from "../components/footer/Footer";
 import { useNavigate } from "react-router-dom";
 import { useUser } from "@clerk/clerk-react";
 import { MobileMenu } from "../components/header/MobileMenu";
+import { API_URL } from "@/api/api";
 
 export function RegisterProductPage() {
   const [showToast, setShowToast] = useState({
@@ -16,7 +17,6 @@ export function RegisterProductPage() {
   });
 
   const { isSignedIn } = useUser();
-
 
   const navigate = useNavigate();
 
@@ -33,7 +33,7 @@ export function RegisterProductPage() {
     };
 
     try {
-      const response = await fetch("http://localhost:3001/products", {
+      const response = await fetch(`${API_URL}/products`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

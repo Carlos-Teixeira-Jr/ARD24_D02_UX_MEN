@@ -20,7 +20,7 @@ export function ProductDetailsPage() {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await fetch(`http://localhost:3001/products/${urlParams.id}`, {
+                const response = await fetch(`${API_URL}/products/${urlParams.id}`, {
                     method: "GET",
                     headers: {
                         "Content-Type": "application/json",

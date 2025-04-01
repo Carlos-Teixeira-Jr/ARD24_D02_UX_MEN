@@ -10,7 +10,7 @@ export function ProductsList({ filters }) {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await fetch(`http://localhost:3001/products`, {
+                const response = await fetch(`${API_URL}/products`, {
                     method: "GET",
                     headers: {
                         "Content-Type": "application/json",

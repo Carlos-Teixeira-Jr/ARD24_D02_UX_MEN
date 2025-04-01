@@ -27,7 +27,7 @@ export function EditProductPage() {
         const productId = window.location.pathname.split("/")[2];
         const fetchData = async () => {
             try {
-                const response = await fetch(`http://localhost:3001/products/${productId}`, {
+                const response = await fetch(`${API_URL}/products/${productId}`, {
                     method: "GET",
                     headers: {
                         "Content-Type": "application/json",
@@ -64,7 +64,7 @@ export function EditProductPage() {
             highlighted: formData.highlighted,
         };
         try {
-            const response = await fetch(`http://localhost:3001/products/${productData.id}`, {
+            const response = await fetch(`${API_URL}/products/${productData.id}`, {
                 method: "PUT",
                 headers: {
                     "Content-Type": "application/json",

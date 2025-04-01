@@ -9,6 +9,7 @@ import Footer from "../components/footer/Footer";
 import { Toast } from "../components/toast/toast";
 import { MobileMenu } from "../components/header/MobileMenu";
 import { useNavigate } from "react-router-dom";
+import { API_URL } from "@/api/api";
 
 export function EditProductPage() {
   const [productData, setProductData] = useState<IFormDataPayload>({
@@ -35,7 +36,7 @@ export function EditProductPage() {
     const fetchData = async () => {
       try {
         const response = await fetch(
-          `http://localhost:3001/products/${productId}`,
+          `${API_URL}/products/${productId}`,
           {
             method: "GET",
             headers: {
@@ -76,7 +77,7 @@ export function EditProductPage() {
     };
 
     try {
-      const response = await fetch(`http://localhost:3001/products/${productData.id}`, {
+      const response = await fetch(`${API_URL}/products/${productData.id}`, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",

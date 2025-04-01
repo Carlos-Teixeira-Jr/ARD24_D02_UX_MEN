@@ -1,3 +1,4 @@
+import { API_URL } from "@/api/api";
 import { IToast } from "../../components/toast/toast";
 import { IUserData } from "../../interfaces/userDataInterface";
 
@@ -12,7 +13,7 @@ export async function handleSaveUserOnDb(
   user: UserProps
 ): Promise<IUserData | IToast["toastProps"]> {
   try {
-    const response = await fetch("http://localhost:3001/users", {
+    const response = await fetch(`${API_URL}/users`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
